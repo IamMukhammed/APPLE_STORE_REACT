@@ -53,7 +53,11 @@ export function HomeNavbar() {
 
                     {!authMember ? (
                         <Box className={"hover-line"}>
-                            <Button variant="contained" sx={{ background: "#3776CC", color: "#f8f8ff"}}>Login</Button>
+                            <Button variant="contained" 
+                                sx={{ background: "#3776CC", color: "#f8f8ff"}}
+                            >
+                                Login
+                            </Button>
                         </Box>
                     ) : (<img></img>)}
                 </Stack>
