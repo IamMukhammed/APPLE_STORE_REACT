@@ -4,22 +4,14 @@ import { NavLink } from "react-router-dom";
 export function HomeNavbar() {
     const authMember = null;
     return <div className="home-navbar">
-        <Container sx={{ mt: "55px", height: "642px" }}>
-            <Stack sx={{ height: "50px" }}
-                flexDirection={"row"} 
-                justifyContent={"space-between"}
-                alignItems={"center"}
-            >
+        <Container className="navbar-container">
+            <Stack className="menu">
                 <Box>
                     <NavLink to="/">
-                        <img style={{ width: "125px", height: "30px" }} src="/icons/burak.svg"/>                    
+                        <img className="brand-logo" src="/icons/burak.svg"/>                    
                     </NavLink>
                 </Box>
-                <Stack flexDirection={"row"}
-                    justifyContent={"space-between"}
-                    minWidth={"700px"}
-                    alignItems={"center"} 
-                >
+                <Stack className="links">
                     <Box className={"hover-line"}>
                         <NavLink to="/" activeClassName={"underline"}>
                             Home
@@ -53,13 +45,13 @@ export function HomeNavbar() {
 
                     {!authMember ? (
                         <Box className={"hover-line"}>
-                            <Button variant="contained" 
-                                sx={{ background: "#3776CC", color: "#f8f8ff"}}
-                            >
+                            <Button className="login-button" variant="contained">
                                 Login
                             </Button>
                         </Box>
-                    ) : (<img></img>)}
+                    ) : (<img className="user-avatar"
+                            src={"/icons/default-user.svg"}
+                            aria-haspopup={"true"}></img>)}
                 </Stack>
             </Stack>
             <Stack>Detail</Stack>
