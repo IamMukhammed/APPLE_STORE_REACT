@@ -255,3 +255,71 @@
     transform: scaleX(1.5);
     overflow: hidden;
 }
+
+/* ACTIVE USERS */
+
+.homepage .active-users {
+    width: 100%;
+    height: 605px;
+    background: #f8f8ff;
+    display: flex;
+  }
+  
+  .homepage .active-users .main {
+    width: 100%;
+    margin-top: 93px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .homepage .active-users .active-user-title {
+    font-family: "Dancing Script";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+  }
+  
+  .homepage .active-users .active-user-cards {
+    width: 100%;
+    margin: 47px 2px 2px 2px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .homepage .active-users .active-user-cards .card {
+    width: 305px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .homepage .active-users .active-user-cards .card .user-size {
+    text-align: center;
+    font-family: "Roboto Serif";
+    font-style: normal;
+    font-weight: 600;
+    color: #000;
+  }
+  
+  .homepage .active-users .active-user-cards .card .bottom-frame {
+    width: 100%;
+    height: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    margin: -7px;
+    margin-bottom: -7px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background: #FFF;
+  }
+  
+  .homepage .active-users .active-user-cards .card .member-nickname {
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 36%;
+  }
