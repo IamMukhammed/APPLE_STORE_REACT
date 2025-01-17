@@ -33,7 +33,7 @@ export default function NewDishes() {
                                                 <img src={ele.imagePath} alt="" />
                                             </AspectRatio>
                                         </CardOverflow>
-                                        <CardOverflow variant="soft" className="product-detail">
+                                        <CardOverflow variant="soft" className="product-details">
                                             <Stack className="info">
                                                 <Stack flexDirection={"row"}>
                                                     <Typography className={"title"}>
