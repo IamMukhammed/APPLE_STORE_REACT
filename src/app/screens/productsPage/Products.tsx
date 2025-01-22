@@ -8,6 +8,7 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const products = [
     { productName: "Cutlet", imagePath: "/img/cutlet.webp", productViews: 100, productPrice: 12 },
@@ -144,10 +145,15 @@ export default function Products() {
                                     >
                                         <div className={"product-sale"}>Normal size</div>
                                         <Button className={"shop-btn"}>
-                                            <img 
-                                                src={"/icon/shopping-cart.svg"} alt=""
-                                                style={{  display: "flex" }}
-                                            />
+                                            <ShoppingCartIcon 
+                                                className={"shopping-cart"}
+                                                sx={{ display: "flex", color: "#f8f8ff"}}
+                                            >
+                                                <img 
+                                                    src={"/icon/shopping-cart.svg"} alt=""
+                                                    style={{  display: "flex" }}
+                                                />
+                                            </ShoppingCartIcon>
                                         </Button>
                                         <Button className={"view-btn"} sx={{ right: "36px" }}>
                                             <Badge badgeContent={30} color="secondary">
