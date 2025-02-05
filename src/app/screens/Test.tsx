@@ -33,8 +33,7 @@ class Test extends Component {
 
     componentDidUpdate() {
         console.log("componentDidUpdate");
-        // 
-    }
+    };
 
     render() {
       return (

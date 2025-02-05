@@ -1,15 +1,31 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function HomeNavbar() {
     const authMember = null;
+    const [count, setCount] = useState<number>(0);
+    const [value, setValue] = useState<boolean>(true);
 
-    const [count, setCount] = useState(0);
-
-    const buttonHandler = () => {
+    useEffect(() => {
+        console.log("componentDidMount", count); // BACKEND dan ma'lumotni olib kelishda ishlatamiz (DATA FETCH)
         setCount(count + 1);
+
+        return () => {
+            console.log("componentWillUnmount");
+        };
+    }, [value]); 
+    /*  useEffect => doim bir marta ishga tushadi,
+        ya'ni bizni komponentimiz birinchi qurilganda faqat bir marta ishga tushadi.
+        Agar biz array dependisiga malum bir value ni qiymatini kiritsak 
+        aynan useEffectimiz bir marta emas ayan shu value ni qiymati ozgarganida 
+        ishga tushish mexanizmini qurib beradi. 
+    */
+
+    /* HANDLERS */
+    const buttonHandler = () => {
+        setValue(!value);
     };
 
     return <div className="home-navbar">
