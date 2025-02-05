@@ -4,6 +4,7 @@ import Basket from "./Basket";
 
 export default function HomeNavbar() {
     const authMember = null;
+    
     return <div className="home-navbar">
         <Container className="navbar-container">
             <Stack className="menu">
