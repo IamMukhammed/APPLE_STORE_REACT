@@ -17,7 +17,7 @@ export interface HomePageState {
 
 /* PRODUCTS PAGE */
 export interface ProductsPageState {
-    
+
 }
 
 /* ORDERS PAGE */
