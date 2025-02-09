@@ -15,11 +15,9 @@ const homePageSlice = createSlice({
         setPopularDishes: (state, action) => {
             state.popularDishes = action.payload;
         },
-
         setNewDishes: (state, action) => {
             state.newDishes = action.payload;
         },
-
         setTopUsers: (state, action) => {
             state.topUsers = action.payload;
         },
