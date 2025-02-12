@@ -6,9 +6,10 @@ class ProductService {
     private readonly path: string;
 
     constructor() {
-        this.path = serverApi;
+        // this.path = serverApi;
+        this.path = process.env.REACT_APP_API_URL || "http://localhost:3003";
     };
-
+    
     public async getProducts(input: ProductInquiry): Promise<Product[]> {
         try {
             let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
