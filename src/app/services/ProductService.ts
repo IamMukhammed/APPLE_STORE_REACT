@@ -17,6 +17,12 @@ class ProductService {
             if(input.productCollection) url += `&productCollection=${input.productCollection}`;
             if(input.search) url += `&search=${input.search}`;
 
+            const API_BASE_URL = "http://localhost:3003";
+
+            // axios.get(`${API_BASE_URL}/member/restaurant`)
+            // .then(response => console.log(response.data))
+            // .catch(error => console.error("Error, getRestaurant:", error));
+
             const result = await axios.get(url);
             console.log("getProduct:", result);
 
@@ -30,7 +36,7 @@ class ProductService {
     public async getProduct(productId: string): Promise<Product> {
         try {
             const url = `${this.path}/product${productId}`;
-            const result = await axios.get(url, {withCredentials: true});
+            const result = await axios.get(url, { withCredentials: true });
 
             console.log("getProduct:", result);
 

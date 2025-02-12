@@ -27,6 +27,12 @@ class MemberService {
             const url = this.path + "/member/restaurant";
             const result = await axios.get(url);
 
+            const API_BASE_URL = "http://localhost:3000";
+
+            axios.get(`${API_BASE_URL}/member/restaurant`)
+            .then(response => console.log(response.data))
+            .catch(error => console.error("Error, getRestaurant:", error));
+
             console.log("getRestaurant:", result);
             const restaurant: Member = result.data;
             return restaurant;

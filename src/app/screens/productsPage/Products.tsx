@@ -50,30 +50,30 @@ export default function Products() {
         .getProducts(productSearch)
         .then((data) => setProducts(data))
         .catch((err) => console.log(err));
-    }, [productSearch, setProducts]);
+    }, [productSearch]);
 
     useEffect(() => {
      if(searchText === "") {
         productSearch.search = "";
         setProductSearch({ ...productSearch });
      }
-    }, [productSearch, searchText])
+    }, [searchText]);
 
 /* HANDLERS */
 
     function searchProductHandler() {
-        throw new Error("Function not implemented.");
+        // throw new Error("Function not implemented.");
     };
 
     function searchCollectionHandler(DISH: any): void {
         productSearch.page = 1;
         // productSearch.productCollection = const collection;
         setProductSearch({ ...productSearch });
-        throw new Error("Function not implemented.");
+        // throw new Error("Function not implemented.");
     };
 
     function handleSort(arg0: string): void {
-        throw new Error("Function not implemented.");
+        // throw new Error("Function not implemented.");
     };
 
     const paginationHandler = (e: ChangeEvent<any>, value: number) => {
