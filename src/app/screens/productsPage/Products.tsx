@@ -9,17 +9,20 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { createSelector, Dispatch } from "@reduxjs/toolkit";
+import { Product } from "../../../lib/types/product";
+import { setProducts } from "./slice";
+import { retrieveProducts } from "./selector";
 
-const products = [
-    { productName: "Cutlet", imagePath: "/img/cutlet.webp", productViews: 100, productPrice: 12 },
-    { productName: "Kebab", imagePath: "/img/kebab.webp", productViews: 200, productPrice: 15 },
-    { productName: "Kebab", imagePath: "/img/kebab-fresh.webp", productViews: 200, productPrice: 15 },
-    { productName: "Lavash", imagePath: "/img/lavash.webp", productViews: 100, productPrice: 17 },
-    { productName: "lavash", imagePath: "/img/lavash.webp", productViews: 200, productPrice: 17 },
-    { productName: "Cutlet", imagePath: "/img/cutlet.webp", productViews: 100, productPrice: 12 },
-    { productName: "Kebab", imagePath: "/img/kebab-fresh.webp", productViews: 200, productPrice: 15 },
-    { productName: "Kebab", imagePath: "/img/kebab.webp", productViews: 100, productPrice: 15 },
-];
+/* REDUX SLICE & SELECTOR */
+const actionDispatch = (dispatch: Dispatch) => ({
+    setProducts: (data: Product[]) => dispatch(setProducts(data)),
+});
+
+const productsRetriever = createSelector(
+    retrieveProducts, 
+    ( products ) => ({ products })
+);
 
 export default function Products() {
     function setSearchText(value: string): void {
@@ -132,12 +135,12 @@ export default function Products() {
                 </Stack>
                 <Stack className={"product-wrapper"}>
                     {products.length !== 0 ? (
-                        products.map((product, index) => {
+                        products.map((products: Product) => {
                             return (
-                                <Stack key={index} className={"product-card"}>
+                                <Stack key={products._id} className={"product-card"}>
                                     <Stack
                                         className={"product-img"}
-                                        sx={{ backgroundImage: `url(${product.imagePath})`,
+                                        sx={{ backgroundImage: `url(${products.imagePath})`,
                                         backgroundRepeat: "no-repeat",
                                         backgroundPosition: "center",
                                         backgroundSize: "cover",
@@ -158,18 +161,18 @@ export default function Products() {
                                         <Button className={"view-btn"} sx={{ right: "36px" }}>
                                             <Badge badgeContent={30} color="secondary">
                                                 <RemoveRedEyeIcon 
-                                                    sx={{ color: product.productViews === 0 ? "gray" : "white" }}
+                                                    sx={{ color: products.productViews === 0 ? "gray" : "white" }}
                                                 />
                                             </Badge>
                                         </Button>
                                     </Stack>
                                     <Box className={"product-desc"}>
                                         <span className={"product-title"}>
-                                            {product.productName}
+                                            {products.productName}
                                         </span>
                                         <div className={"product-price"}>
                                             <MonetizationOnIcon />
-                                            {product.productPrice}
+                                            {products.productPrice}
                                         </div>
                                     </Box>
                                 </Stack>
