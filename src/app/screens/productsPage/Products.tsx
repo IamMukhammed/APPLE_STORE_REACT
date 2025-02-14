@@ -61,19 +61,37 @@ export default function Products() {
 
 /* HANDLERS */
 
-    function searchProductHandler() {
-        // throw new Error("Function not implemented.");
-    };
+    // function searchProductHandler() {
+    //     // throw new Error("Function not implemented.");
+    // };
 
-    function searchCollectionHandler(DISH: any): void {
+    // function searchCollectionHandler(DISH: any): void {
+    //     productSearch.page = 1;
+    //     // productSearch.productCollection = const collection;
+    //     setProductSearch({ ...productSearch });
+    //     // throw new Error("Function not implemented.");
+    // };
+    
+    // function handleSort(arg0: string): void {
+    //     // throw new Error("Function not implemented.");
+    // };
+
+
+    const searchCollectionHandler = (collection: ProductCollection) => {
         productSearch.page = 1;
-        // productSearch.productCollection = const collection;
+        productSearch.productCollection = collection;
         setProductSearch({ ...productSearch });
-        // throw new Error("Function not implemented.");
     };
 
-    function handleSort(arg0: string): void {
-        // throw new Error("Function not implemented.");
+    const searchOrderHandler = (order: string) => {
+        productSearch.page = 1;
+        productSearch.order = order;
+        setProductSearch({ ...productSearch });
+    };
+
+    const searchProductHandler = () => {
+        productSearch.search = searchText;
+        setProductSearch({ ...productSearch });
     };
 
     const paginationHandler = (e: ChangeEvent<any>, value: number) => {
@@ -84,6 +102,10 @@ export default function Products() {
     const chooseDishHandler = (id: string) => {
         history.push(`/products/${id}`);
     };
+
+    function handleSort(arg0: string): void {
+        // throw new Error("Function not implemented.");
+    }
 
     return <div className={"products"}>
         <Container>

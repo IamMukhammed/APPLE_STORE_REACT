@@ -14,8 +14,9 @@ class ProductService {
     public async getProducts(input: ProductInquiry): Promise<Product[]> {
         try {
             let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
-            if(input.productCollection) url += `&productCollection=${input.productCollection}`;
-            if(input.search) url += `&search=${input.search}`;
+            if (input.productCollection)
+                url += `&productCollection=${input.productCollection}`;
+            if (input.search) url += `&search=${input.search}`;
 
             // const API_BASE_URL = "http://localhost:3003";
 

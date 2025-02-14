@@ -6,6 +6,9 @@ const initialState: HomePageState = {
     popularDishes: [],
     newDishes: [],
     topUsers: [],
+    products: undefined,
+    chosenProduct: undefined,
+    restaurant: undefined
 };
 
 const homePageSlice = createSlice({

@@ -47,10 +47,11 @@ interface ChosenProductsProps {
 export default function ChosenProduct(props: ChosenProductsProps) {
   const {onAdd} =props;
   const { productId } = useParams<{ productId: string }>();
+  // console.log("productId:", productId);
+
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
   const { restaurant } = useSelector(retaurantRetriever);
-
 
 
   // useEffect(() => {
@@ -66,10 +67,10 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   //     .then((data) => setRestaurant(data))
   //     .catch((err) => console.log(err));
   // }, [productId]);
+  
 
   useEffect(() => {
     console.log("Fetching product with ID:", productId);
-  
     const product = new ProductService();
     product
       .getProduct(productId)
@@ -81,6 +82,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
       .getRestaurant()
       .then((data) => setRestaurant(data))
       .catch((err) => console.log("Error fetching restaurant:", err));
+      // eslint-disable-next-line
   }, [productId]);
 
   if (!chosenProduct) return null;
