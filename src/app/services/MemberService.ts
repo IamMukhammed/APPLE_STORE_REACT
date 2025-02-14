@@ -31,7 +31,7 @@ class MemberService {
 
             axios.get(`${API_BASE_URL}/member/restaurant`)
             .then(response => console.log(response.data))
-            .catch(error => console.error("Error, getRestaurant:", error));
+            .catch(err => console.error("Error, getRestaurant:", err));
 
             console.log("getRestaurant:", result);
             const restaurant: Member = result.data;
