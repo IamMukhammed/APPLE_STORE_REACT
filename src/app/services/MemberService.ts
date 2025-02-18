@@ -22,42 +22,36 @@ class MemberService {
         }
     };
 
-    // public async getRestaurant(): Promise<Member> {
-    //     try {
-    //         const url = this.path + "/member/restaurant";
-    //         const result = await axios.get(url);
-
-    //         const REACT_APP_API_URL = "http://localhost:3000";
-
-    //         axios.get(`${REACT_APP_API_URL}/member/restaurant`)
-    //         .then(response => console.log(response.data))
-    //         .catch(err => console.error("Error, getRestaurant:", err));
-
-    //         console.log("getRestaurant:", result);
-    //         const restaurant: Member = result.data;
-    //         return restaurant;
-    //     } catch (err) {
-    //         console.log("Error, getRestaurant:", err);
-    //         throw err;
-    //     }
-    // };
-
     public async getRestaurant(): Promise<Member> {
         try {
-            const REACT_APP_API_URL = "http://localhost:3000";
-            const url = `${REACT_APP_API_URL}/member/restaurant`;
-    
-            console.log("Sending request to:", url);
-            
-            const result = await axios.get(`${REACT_APP_API_URL}/member/restaurant`);
-            
-            console.log("getRestaurant response:", result.data);
-            return result.data;
+            const url = this.path + "/member/restaurant";
+            const result = await axios.get(url);
+            console.log("getRestaurant:", result);
+
+            const restaurant: Member = result.data;
+            return restaurant;
         } catch (err) {
-            console.log("Error in getRestaurant:", err);
+            console.log("Error, getRestaurant:", err);
             throw err;
         };
     };
+
+    // public async getRestaurant(): Promise<Member> {
+    //     try {
+    //         const REACT_APP_API_URL = "http://localhost:3000";
+    //         const url = `${REACT_APP_API_URL}/member/restaurant`;
+    
+    //         console.log("Sending request to:", url);
+            
+    //         const result = await axios.get(`${REACT_APP_API_URL}/member/restaurant`);
+            
+    //         console.log("getRestaurant response:", result.data);
+    //         return result.data;
+    //     } catch (err) {
+    //         console.log("Error in getRestaurant:", err);
+    //         throw err;
+    //     };
+    // };
 };
 
 export default MemberService;

@@ -36,38 +36,24 @@ const chosenProductRetriever = createSelector(
   })
 );
 
-const retaurantRetriever = createSelector(retrieveRestaurant, (restaurant) => ({
-  restaurant,
-}));
+const retaurantRetriever = createSelector(
+  retrieveRestaurant, 
+  (restaurant) => ({
+    restaurant,
+  })
+);
 
 interface ChosenProductsProps {
   onAdd: (item: CartItem) => void;
 }
 
 export default function ChosenProduct(props: ChosenProductsProps) {
-  const {onAdd} =props;
+  const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
-  // console.log("productId:", productId);
 
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
-  const { restaurant } = useSelector(retaurantRetriever);
-
-
-  // useEffect(() => {
-  //   const product = new ProductService();
-  //   product
-  //     .getProduct(productId)
-  //     .then((data) => setChosenProduct(data))
-  //     .catch((err) => console.log(err));
-
-  //   const member = new MemberService();
-  //   member
-  //     .getRestaurant()
-  //     .then((data) => setRestaurant(data))
-  //     .catch((err) => console.log(err));
-  // }, [productId]);
-  
+  const { restaurant } = useSelector(retaurantRetriever);  
 
   useEffect(() => {
     console.log("Fetching product with ID:", productId);
@@ -75,17 +61,16 @@ export default function ChosenProduct(props: ChosenProductsProps) {
     product
       .getProduct(productId)
       .then((data) => setChosenProduct(data))
-      .catch((err) => console.log("Error fetching product:", err));
+      .catch((err) => console.log(err));
   
     const member = new MemberService();
     member
       .getRestaurant()
       .then((data) => setRestaurant(data))
-      .catch((err) => console.log("Error fetching restaurant:", err));
-      // eslint-disable-next-line
+      .catch((err) => console.log(err));
   }, [productId]);
 
-  if (!chosenProduct) return null;
+  if(!chosenProduct) return null;
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>Product Detail</Box>
@@ -105,7 +90,6 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                   <img
                     className="slider-image"
                     src={imagePath}
-                    alt="imagePath"
                   />
                 </SwiperSlide>
               );

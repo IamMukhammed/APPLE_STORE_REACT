@@ -61,22 +61,6 @@ export default function Products() {
 
 /* HANDLERS */
 
-    // function searchProductHandler() {
-    //     // throw new Error("Function not implemented.");
-    // };
-
-    // function searchCollectionHandler(DISH: any): void {
-    //     productSearch.page = 1;
-    //     // productSearch.productCollection = const collection;
-    //     setProductSearch({ ...productSearch });
-    //     // throw new Error("Function not implemented.");
-    // };
-    
-    // function handleSort(arg0: string): void {
-    //     // throw new Error("Function not implemented.");
-    // };
-
-
     const searchCollectionHandler = (collection: ProductCollection) => {
         productSearch.page = 1;
         productSearch.productCollection = collection;
@@ -103,10 +87,6 @@ export default function Products() {
         history.push(`/products/${id}`);
     };
 
-    function handleSort(arg0: string): void {
-        // throw new Error("Function not implemented.");
-    }
-
     return <div className={"products"}>
         <Container>
             <Stack flexDirection="column" alignItems="center">
@@ -115,19 +95,21 @@ export default function Products() {
                         <Box className="top-text">Burak Restaurant</Box>
                         <Box className="single-search">
                             <input
+                                type={"search"}
                                 className="single-search-input"
-                                placeholder="Type here"
+                                name={"singleResearch"}
+                                placeholder={"Type here"}
                                 value={searchText}
-                                type="text"
                                 onChange={(e) => setSearchText(e.target.value)}
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") searchProductHandler();
                                 }}
                             />
                             <Button
+                                className="single-button-search"
                                 variant="contained"
                                 color="primary"
-                                className="single-button-search"
+                                endIcon={<SearchIcon />}
                                 onClick={searchProductHandler}
                             >
                                 Search
@@ -140,25 +122,25 @@ export default function Products() {
                     <Stack className={"dishes-filter-box"}>
                         <Button
                             variant={"contained"}
-                            color={productSearch.order === "createdAt" ? "primary" : "secondary"}
                             className={"order"}
-                            onClick={() => handleSort("new")}
+                            color={productSearch.order === "createdAt" ? "primary" : "secondary"}
+                            onClick={() => searchOrderHandler("createdAt")}
                         >
                             New
                         </Button>
                         <Button
                             variant={"contained"}
-                            color={productSearch.order === "productPrice" ? "primary" : "secondary"}
                             className={"order"}
-                            onClick={() => handleSort("price")}
+                            color={productSearch.order === "productPrice" ? "primary" : "secondary"}
+                            onClick={() => searchOrderHandler("productPrice")}
                         >
                             Price
                         </Button>
                         <Button
                             variant={"contained"}
-                            color={productSearch.order === "productViews" ? "primary" : "secondary"}
                             className={"order"}
-                            onClick={() => handleSort("views")}
+                            color={productSearch.order === "productViews" ? "primary" : "secondary"}
+                            onClick={() => searchOrderHandler("productViews")}
                         >
                             Views
                         </Button>
@@ -167,7 +149,7 @@ export default function Products() {
                 <Stack className={"list-category-section"}>
                     <Stack className="product-category">
                         <Button
-                            variant="contained"
+                            variant={"contained"}
                             color={productSearch.productCollection === ProductCollection.DISH 
                                 ? "primary" 
                                 : "secondary"
@@ -177,7 +159,7 @@ export default function Products() {
                             Dish
                         </Button>
                         <Button
-                            variant="contained"
+                            variant={"contained"}
                             color={productSearch.productCollection === ProductCollection.SALAD 
                                 ? "primary" 
                                 : "secondary"
@@ -187,7 +169,7 @@ export default function Products() {
                             Salads
                         </Button>
                         <Button
-                            variant="contained"
+                            variant={"contained"}
                             color={productSearch.productCollection === ProductCollection.DRINK 
                                 ? "primary" 
                                 : "secondary"
@@ -197,17 +179,17 @@ export default function Products() {
                             Drink
                         </Button>
                         <Button
-                            variant="contained"
+                            variant={"contained"}
                             color={productSearch.productCollection === ProductCollection.DESSERT 
                                 ? "primary" 
                                 : "secondary"
                             }
                             onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}
                         >
-                            Desert
+                            Dessert
                         </Button>
                         <Button
-                            variant="contained"
+                            variant={"contained"}
                             color={productSearch.productCollection === ProductCollection.OTHER 
                                 ? "primary" 
                                 : "secondary"
@@ -256,7 +238,7 @@ export default function Products() {
                                         <Button className={"view-btn"} sx={{ right: "36px" }}>
                                             <Badge badgeContent={product.productViews} color="secondary">
                                                 <RemoveRedEyeIcon 
-                                                    sx={{ color: product.productViews === 0 ? "gray" : "white" }}
+                                                    sx={{ color: product.productViews === 0 ? "gray" : "white", }}
                                                 />
                                             </Badge>
                                         </Button>
@@ -284,16 +266,16 @@ export default function Products() {
                             ? productSearch.page + 1 
                             : productSearch.page
                         }
-                        color="secondary"
+                        // color="secondary"
                         page={productSearch.page}
                         renderItem={(item) => (
                             <PaginationItem 
-                                slots={{
+                                components={{
                                     previous: ArrowBackIcon,
                                     next: ArrowForwardIcon,
                                 }}
                                 {...item}
-                                color="secondary"   
+                                color={"secondary"}
                             />
                         )}
                         onChange={paginationHandler}
