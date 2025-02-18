@@ -9,17 +9,25 @@ import UserPage from "./screens/userPage";
 import HomeNavbar from "./components/headers/HomeNavbar";
 import OtherNavbar from "./components/headers/OtherNavbar";
 import Footer from "./components/footer";
-import "../css/app.css";
-import "../css/navbar.css";
-import "../css/footer.css";
 import HelpPage from "./screens/helpPage";
 import Test from "./screens/Test";
 import { CartItem } from "../lib/types/search";
 import useBasket from "./hooks/useBasket";
+import AuthenticationModal from "./components/auth";
+import "../css/app.css";
+import "../css/navbar.css";
+import "../css/footer.css";
 
 function App() {
   const location = useLocation();
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
+  const [signupOpen, setSignupOpenn] = useState<boolean>(false);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
+
+  /* HANDLERS */
+
+  const handleSignupClose = () => setSignupOpenn(false);
+  const handleLoginClose = () => setLoginOpen(false);
 
   return (
     <>
@@ -54,11 +62,17 @@ function App() {
             <HelpPage />
           </Route>
           <Route path="/">
-          {/* <Test /> */}
             <HomePage />
           </Route>
         </Switch>
         <Footer />
+
+        <AuthenticationModal 
+          signupOpen={signupOpen}
+          loginOpen={loginOpen}
+          handleSignupClose={handleSignupClose}
+          handleLoginClose={handleLoginClose}
+        />
       </>
   );
 }
