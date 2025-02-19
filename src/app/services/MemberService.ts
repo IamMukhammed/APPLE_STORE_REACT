@@ -1,6 +1,8 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
-import { Member } from "../../lib/types/member";
+import { Member, MemberInput } from "../../lib/types/member";
+import { CookieSharp } from "@mui/icons-material";
+import { stringify } from "querystring";
 
 class MemberService {
     private readonly path: string;
@@ -33,25 +35,25 @@ class MemberService {
         } catch (err) {
             console.log("Error, getRestaurant:", err);
             throw err;
-        };
+        }
     };
 
-    // public async getRestaurant(): Promise<Member> {
-    //     try {
-    //         const REACT_APP_API_URL = "http://localhost:3000";
-    //         const url = `${REACT_APP_API_URL}/member/restaurant`;
-    
-    //         console.log("Sending request to:", url);
-            
-    //         const result = await axios.get(`${REACT_APP_API_URL}/member/restaurant`);
-            
-    //         console.log("getRestaurant response:", result.data);
-    //         return result.data;
-    //     } catch (err) {
-    //         console.log("Error in getRestaurant:", err);
-    //         throw err;
-    //     };
-    // };
+    public async signup(input: MemberInput): Promise<Member> {
+        try {
+            const url = this.path + "/member/signup";
+            const result = await axios.post(url, input, { withCredentials: true });
+            console.log("signup:", result);
+
+            const member: Member = result.data.member;
+            console.log("member:", member);
+            localStorage.setItem("memberData", JSON.stringify(member));
+
+            return member;
+        } catch (err) {
+            console.log("signup, signup:", err);
+            throw err;
+        }
+    }
 };
 
 export default MemberService;
