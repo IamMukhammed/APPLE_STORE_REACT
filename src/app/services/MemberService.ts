@@ -1,6 +1,6 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
-import { LoginInput, Member, MemberInput } from "../../lib/types/member";
+import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
 
 
 class MemberService {
@@ -8,34 +8,36 @@ class MemberService {
 
     constructor() {
         this.path = serverApi;
-    };
+    }
 
-    public async getTopUsers(): Promise<Member[]> {
+    public async getTopUsers(): Promise<[]> {
         try {
             const url = this.path + "/member/top-users";
             const result = await axios.get(url);
-            console.log("getTopUsers:", result);
+            // console.log("getTopUsers:", result);
 
             return result.data;
         } catch (err) {
             console.log("Error, getTopUsers:", err);
             throw err; 
         }
-    };
+    }
 
     public async getRestaurant(): Promise<Member> {
         try {
             const url = this.path + "/member/restaurant";
             const result = await axios.get(url);
-            console.log("getRestaurant:", result);
+            // console.log("getRestaurant:", result);
 
-            const restaurant: Member = result.data;
-            return restaurant;
+            // const restaurant: Member = result.data;
+            // return restaurant;
+
+            return result.data;
         } catch (err) {
             console.log("Error, getRestaurant:", err);
             throw err;
         }
-    };
+    }
 
     public async signup(input: MemberInput): Promise<Member> {
         try {
@@ -44,12 +46,12 @@ class MemberService {
             console.log("signup:", result);
 
             const member: Member = result.data.member;
-            console.log("member:", member);
+            // console.log("member:", member);
             localStorage.setItem("memberData", JSON.stringify(member));
 
             return member;
         } catch (err) {
-            console.log("signup, signup:", err);
+            console.log("Error signup !", err);
             throw err;
         }
     }
@@ -61,12 +63,12 @@ class MemberService {
             console.log("login:", result);
 
             const member: Member = result.data.member;
-            console.log("member:", member);
+            // console.log("member:", member);
             localStorage.setItem("memberData", JSON.stringify(member));
 
             return member;
         } catch (err) {
-            console.log("signup, login:", err);
+            console.log("Error login !", err);
             throw err;
         }
     }
@@ -79,11 +81,39 @@ class MemberService {
 
             localStorage.removeItem("memberData");
         } catch (err) {
-            console.log("signup, logout:", err);
+            console.log("Error logout !", err);
             throw err;
         }
     }
 
+    // public async updateMember(input: MemberUpdateInput): Promise<Member>  {
+    //     try {
+    //      const formData = new FormData();
+    //      formData.append("memberNick", input.memberNick || "");
+    //      formData.append("memberPhone", input.memberPhone || "");
+    //      formData.append("memberAddress", input.memberAdress || "");
+    //      formData.append("memberDesc", input.memberDesc || "");
+    //      formData.append("memberDescImage", input.memberImage || "");
+    
+    //       const result = await axios(`${serverApi}/member/update`, {
+    //         method: "POST",
+    //         data: formData,
+    //         withCredentials: true,
+    //         headers: {
+    //           "Content- Type": "multipart/form-data",
+    //         },
+    //       });
+    
+    //       console.log("updateMember:", result);
+    //       const member: Member = result.data;
+    
+    //       localStorage.setItem("memberData", JSON.stringify(member));
+    //       return member;
+    //     }catch (err) {
+    //       console.log("Error signup ! ", err);
+    //       throw err;
+    //     }
+    //   };
 
 };
 

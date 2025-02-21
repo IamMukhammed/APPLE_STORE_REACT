@@ -118,6 +118,22 @@
     text-align: center;
     height: auto;;
 }
+
+.products-page .products .product-wrapper .no-data {
+    width: 100%;
+    height: 300px;
+    display: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    color: #e3c08d;
+}
   
 .products-page .products .product-card .product-sale {
     width: 90px;

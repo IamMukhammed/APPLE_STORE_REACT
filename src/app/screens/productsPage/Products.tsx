@@ -211,7 +211,7 @@ export default function Products(props: ProductsProps) {
                         products.map((product: Product) => {
                             const imagePath = `${serverApi}/${product.productImages[0]}`;
                             const sizeVolume = 
-                            product.productCollection === ProductCollection.DRINK 
+                                product.productCollection === ProductCollection.DRINK 
                                 ? product.productVolume + " litre" 
                                 : product.productSize + " size";
                             return (
@@ -271,12 +271,11 @@ export default function Products(props: ProductsProps) {
                                         </div>
                                     </Box>
                                 </Stack>
-                            )
+                            );
                         })
-                    ) : (
+                            ) : (
                         <Box className="no-data">Products are not available !</Box>
-                    )
-                    }
+                    )}
                 </Stack>
                 <Stack className={"pagination-section"} spacing={2}>
                     <Pagination 

@@ -38,7 +38,7 @@ export default function ActiveUsers() {
                                         <Card key={member._id} variant="outlined" className={"card"}>
                                             <CardOverflow className={"user-size"}>
                                                 <AspectRatio ratio="1">
-                                                    <img src={imagePath} alt="" />
+                                                    <img src={imagePath} />
                                                 </AspectRatio>
                                             </CardOverflow>
                                             <CardOverflow variant="soft" className={"bottom-frame"}>
@@ -56,7 +56,6 @@ export default function ActiveUsers() {
                             ) : (
                                 <Box className={"no-data"}>No Active Users !</Box>
                             )}
-
                         </CssVarsProvider>
                     </Stack>
                 </Stack>

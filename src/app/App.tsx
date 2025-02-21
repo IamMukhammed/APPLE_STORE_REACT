@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../css/app.css";
-import { Box, Container, Stack, Typography, Button } from "@mui/material";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import HomePage from "./screens/homePage";
 import ProductsPage from "./screens/productsPage";
@@ -115,7 +114,3 @@ function App() {
 }
 
 export default App;
-function setCartItems(cartUpdate: any[]) {
-  throw new Error("Function not implemented.");
-}
-
