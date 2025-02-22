@@ -16,6 +16,8 @@ const pausedORdersRetriever = createSelector(
     (pausedOrders) => ({ pausedOrders })
 );
 
+/* HANDLERS */
+
 export default function PausedOrders() {
     const { pausedOrders } = useSelector(pausedORdersRetriever);
 
@@ -33,7 +35,7 @@ export default function PausedOrders() {
                                     const imagePath = `${serverApi}/${product.productImages[0]}`;
                                     return (
                                         <Box key={item._id} className={"orders-name-price"}>
-                                            <img src={"/img/lavash.webp"} alt=""
+                                            <img src={ imagePath } alt=""
                                                 className={"order-dish-img"}
                                             />
                                             <p className={"title-dish"}>{product.productName}</p>
