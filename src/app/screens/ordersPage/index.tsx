@@ -13,8 +13,11 @@ import { Order, OrderInquiry } from "../../../lib/types/order";
 import { useDispatch } from "react-redux";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderService";
-import "../../../css/order.css"
 import { useGlobals } from "../../hooks/useGlobals";
+import { useHistory } from "react-router-dom";
+import "../../../css/order.css"
+import { serverApi } from "../../../lib/config";
+import { MemberType } from "../../../lib/enums/member.enum";
 
 /* REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -31,7 +34,8 @@ export default function OrdersPage() {
     } = 
         actionDispatch(useDispatch()
     );
-    const { orderBuilder } = useGlobals();
+    const { orderBuilder, authMember } = useGlobals();
+    const history = useHistory();
     const [value, setValue] = useState("1");
     const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
         page: 1,
@@ -66,6 +70,7 @@ export default function OrdersPage() {
         setValue(newValue);
     };
     
+    if (!authMember) history.push("/");
     return ( 
         <div className={"order-page"}>
             <Container className={"order-container"}>
@@ -97,28 +102,81 @@ export default function OrdersPage() {
                         <Box className={"member-box"}>
                             <div className={"order-user-img"}>
                                 <img
-                                    src={"/icons/default-user.svg"} alt=""
+                                    src={authMember?.memberImage 
+                                        ? `${serverApi}/${authMember.memberImage}` 
+                                        : "/icons/default-user.svg"
+                                    } alt=""
                                     className={"order-user-avatar"}
                                 />
                                 <div className={"order-user-icon-box"}>
                                     <img
-                                        src={"/icons/user-badge.svg"} alt=""
+                                        src={
+                                            authMember?.memberType === MemberType.RESTAURANT 
+                                                ? "/icons/restaurant.svg" 
+                                                : "/icons/user-badge.svg"
+                                            } alt=""
                                         className={"order-user-prof-img"}
                                     />
                                 </div>
                             </div>
-                            <span className={"order-user-name"}>Martin</span>
-                            <span className={"order-user-prof"}>User</span>
+                            <span className={"order-user-name"}>
+                                {" "}
+                                {authMember?.memberNick}
+                            </span>
+                            <span className={"order-user-prof"}>{authMember?.memberType}</span>
                         </Box>
-                        <Box className={"liner"}>
-                            <Stack
-                                flexDirection={"row"}
-                                gap={"10px"}
-                                marginLeft={"10px"}
-                                sx={{ marginTop: "5px" }}
-                            >
-                            </Stack>
+                        <Box className={"liner"}></Box>
+                        <Box className={"order-user-address"}>
+                            <div style={{ display: "flex"}}>
+                                <LocationOnIcon />
+                            </div>
+                            <div className={"spec-address-txt"}>
+                                {authMember?.memberAddress
+                                    ? authMember.memberAddress
+                                    : "Do not exist"
+                                }
+                            </div>
                         </Box>
+                    </Box>
+                    <Box className={"order-info-box"} sx={{ mt: "15px" }}>
+                        <input 
+                            type={"text"}
+                            name={"cardNumber"}
+                            placeholder={"Card number : **** 4090 2002 7495"}
+                            className={"card-input"}
+                        />
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <input 
+                                type={"text"}
+                                name={"cardPeriod"}
+                                placeholder={"07/24"}
+                                className={"card-half-input"} 
+                            />
+                            <input 
+                                type={"text"}
+                                name={"cardCVV"}
+                                placeholder={"CVV: 010"}
+                                className={"card-half-input"} 
+                            />
+                        </div>
+                        <input 
+                            type={"text"}
+                            name={"cardCreator"}
+                            placeholder={"Justin Robertson"}
+                            className={"card-input"}
+                        />
+                        <div className={"cards-box"}>
+                            <img src={"/icons/western-card.svg"} alt="" />
+                            <img src={"/icons/master-card.svg"} alt="" />
+                            <img src={"/icons/paypal-card.svg"} alt="" />
+                            <img src={"/icons/visa-card.svg"} alt="" />
+                        </div>
                     </Box>
                 </Stack>
             </Container>

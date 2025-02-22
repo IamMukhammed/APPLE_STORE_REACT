@@ -1,6 +1,7 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
+import { MenuItemPropsColorOverrides } from "@mui/joy";
 
 
 class MemberService {
@@ -14,7 +15,7 @@ class MemberService {
         try {
             const url = this.path + "/member/top-users";
             const result = await axios.get(url);
-            // console.log("getTopUsers:", result);
+            console.log("getTopUsers:", result);
 
             return result.data;
         } catch (err) {
@@ -27,7 +28,7 @@ class MemberService {
         try {
             const url = this.path + "/member/restaurant";
             const result = await axios.get(url);
-            // console.log("getRestaurant:", result);
+            console.log("getRestaurant:", result);
 
             // const restaurant: Member = result.data;
             // return restaurant;
@@ -46,7 +47,7 @@ class MemberService {
             console.log("signup:", result);
 
             const member: Member = result.data.member;
-            // console.log("member:", member);
+            console.log("member:", member);
             localStorage.setItem("memberData", JSON.stringify(member));
 
             return member;
@@ -63,7 +64,7 @@ class MemberService {
             console.log("login:", result);
 
             const member: Member = result.data.member;
-            // console.log("member:", member);
+            console.log("member:", member);
             localStorage.setItem("memberData", JSON.stringify(member));
 
             return member;
@@ -86,35 +87,33 @@ class MemberService {
         }
     }
 
-    // public async updateMember(input: MemberUpdateInput): Promise<Member>  {
-    //     try {
-    //      const formData = new FormData();
-    //      formData.append("memberNick", input.memberNick || "");
-    //      formData.append("memberPhone", input.memberPhone || "");
-    //      formData.append("memberAddress", input.memberAdress || "");
-    //      formData.append("memberDesc", input.memberDesc || "");
-    //      formData.append("memberDescImage", input.memberImage || "");
-    
-    //       const result = await axios(`${serverApi}/member/update`, {
-    //         method: "POST",
-    //         data: formData,
-    //         withCredentials: true,
-    //         headers: {
-    //           "Content- Type": "multipart/form-data",
-    //         },
-    //       });
-    
-    //       console.log("updateMember:", result);
-    //       const member: Member = result.data;
-    
-    //       localStorage.setItem("memberData", JSON.stringify(member));
-    //       return member;
-    //     }catch (err) {
-    //       console.log("Error signup ! ", err);
-    //       throw err;
-    //     }
-    //   };
+    public async updateMember(input: MemberUpdateInput): Promise<Member> {
+        try {
+            const formData = new FormData();
+            formData.append("memberNick", input.memberNick || "");
+            formData.append("memberPhone", input.memberPhone || "");
+            formData.append("memberAddress", input.memberAddress || "");
+            formData.append("memberDesc", input.memberDesc || "");
+            formData.append("memberImage", input.memberImage || "");
 
+            const result = await axios(`${serverApi}/member/update`, {
+                method: "POST",
+                data: formData,
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            // console.log("updateMember:" result);
+
+            const member: Member = result.data;
+            localStorage.setItem("memberData", JSON.stringify(member));
+            return member;
+        } catch (err) {
+            console.log("Error updateMember !", err);
+            throw err;
+        }
+    }
 };
 
 export default MemberService;
