@@ -1,6 +1,6 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
-import { Order, OrderInquiry, OrderItemInput } from "../../lib/types/order";
+import { Order, OrderInquiry, OrderItemInput, OrderUpdateInput } from "../../lib/types/order";
 import { CartItem } from "../../lib/types/search";
 import { ConstructionOutlined } from "@mui/icons-material";
 import { resourceUsage } from "process";
@@ -24,7 +24,7 @@ class OrderService {
                 }
             });
 
-            const url = this.path + "/order/create";
+            const url = `${this.path}/order/create`;
             const result = await axios.post(url, orderItem, { withCredentials: true });
             console.log("createOrder:", result);
 
@@ -37,7 +37,7 @@ class OrderService {
 
     public async getMyOrders(input: OrderInquiry): Promise<Order[]> {
         try {
-            axios.defaults.withCredentials = true;
+            // axios.defaults.withCredentials = true;
             const url = `${this.path}/ordder/all`;
             const query = `?page=${input.page}&limit=${input.limit}&orderStatus=${input.orderStatus}`;
 
@@ -47,6 +47,19 @@ class OrderService {
             return result.data;
         } catch (err) {
             console.log("Error, getMyOrders:", err);
+            throw err;
+        }
+    }
+
+    public async updateOrder(input: OrderUpdateInput): Promise<Order[]> {
+        try {
+            const url = `${this.path}/order/update`;
+            const result = await axios.post(url, input, { withCredentials: true });
+            console.log("updateORder:", result);
+
+            return result.data;
+        } catch (err) {
+            console.log("Error, updateOrder:", err);
             throw err;
         }
     }
