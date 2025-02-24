@@ -9,7 +9,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import { Messages, serverApi } from "../../../lib/config";
-import { DeleteForever } from "@mui/icons-material";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
@@ -168,7 +167,9 @@ export default function Basket(props: BasketProps) {
           </Box>
           {cartItems.length !== 0 ? (
             <Box className={"basket-order"}>
-              <span className={"price"}>Total: ${totalPrice} ({itemsPrice} + {shippingCost})</span>
+              <span className={"price"}>
+                Total: ${totalPrice} ({itemsPrice} + {shippingCost})
+              </span>
               <Button
                 onClick={proceedOrderHandler} 
                 startIcon={<ShoppingCartIcon />}

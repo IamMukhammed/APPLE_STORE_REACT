@@ -47,7 +47,6 @@ export default function PausedOrders(props: PausedOrdersProps) {
                 // ORDER REBUILD
                 setOrderBuilder(new Date());
             }
-
         } catch (err) {
             console.log(err);
             sweetErrorHandling(err).then();

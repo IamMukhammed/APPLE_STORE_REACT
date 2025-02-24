@@ -4,24 +4,19 @@
     background: #f8f8ff;
     display: flex;
 }
-
-/* */
-
+  
 .order-page .order-container {
     margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
     flex-direction: row;
 }
-
-/* */
-
+  
 .order-page .order-left {
     width: 860px;
     height: auto;
 }
-
-/* */
+  
 .order-page .order-right {
     width: 360px;
     height: auto;
@@ -30,8 +25,8 @@
     display: flex;
     flex-direction: column;
 }
-
-.order-right .order-right .order-info-box {
+  
+.order-page .order-right .order-info-box {
     width: 360px;
     height: 308px;
     display: flex;
@@ -40,36 +35,47 @@
     align-items: center;
     border-radius: 16px;
     background: #f8f8fe;
-    box-shadow: 14px 14px 5px 0px #bbbbbf, 0px 1px 11px 12px #d3d3e7 inset, 0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
-    margin-bottom: 24px;
+    box-shadow: 14px 14px 5px 0px #bbbbbf, 0px 1px 11px 12px #d3d3e7 inset,
+        0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
-
-/*  */
-
+  
+.order-page .order-right .order-info-pay {
+    width: 360px;
+    margin-top: 23px;
+    height: 282px;
+    padding: 30px 20px 30px 20px;
+    border-radius: 16px;
+    background: #f8f8fe;
+    box-shadow: 14px 14px 5px 0px #bbbbbf, 0px 1px 11px 12px #d3d3e7 inset,
+        0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
+}
+  
+.order-page .order-right .order-info-pay .pay-cards {
+    width: 243px;
+    height: 26px;
+    margin: auto;
+    margin: 28px auto 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 30px;
+}
+  
 .order-page .order-main-box {
     width: 812px;
     padding: 21px 32px 0px 40px;
     border-radius: 16px;
     background: #f8f8fe;
     margin-bottom: 30px;
-    box-shadow: -8px 8px 4px 0px #bababf, 0px 4px 10px 9px #d3d3e7 inset, 0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
+    box-shadow: -12px 12px 4px 0px #bababf, 0px 4px 10px 9px #d3d3e7 inset,
+        0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
   
 .order-page .order-main-box .order-box-scroll .orders-name-price {
     display: flex;
     justify-content: space-between;
     height: 55px;
-}
-
-.order-page .order-main-box .order-box-scroll .orders-name-price .order-dish-img {
-    width: 50px;
-    height: 47px;
-    flex-shrink: 0;
-    border-radius: 29px;
-    background: lightgray 50% / cover no-repeat;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 20px;
-    margin-bottom: 37px;
 }
   
 .order-page .order-main-box .order-box-scroll .orders-name-price .title-dish {
@@ -101,17 +107,7 @@
     align-items: center;
 }
   
-.order-page .order-main-box .total-price-box .pay-button {
-    width: 90px;
-    height: 36px;
-    font-family: "Commissioner";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
+.order-page .order-main-box .total-price-box .pay-button,
 .order-page .order-main-box .total-price-box .cancel-button {
     width: 90px;
     height: 36px;
@@ -128,8 +124,6 @@
     color: #fff;
     margin: 0 6px 0 50px;
 }
-
-/* */
   
 .order-page .order-main-box .total-price-box .verify-button {
     width: 138.939px;
@@ -145,12 +139,9 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
   
+.order-page .order-main-box .total-price-box .box-total p,
 .order-page .order-main-box .total-price-box .box-total img {
-    margin-left: 30px;
-}
-
-.order-page .order-main-box .total-price-box .box-total p {
-    margin-left: 10px;
+    margin-left: 15px;
 }
   
 .order-page .order-right .order-info-pay .pay-input {
@@ -184,7 +175,7 @@
     justify-content: space-between;
 }
   
-/* */
+  
   
 .order-page .order-right .order-info-pay .pay-input input {
     height: 40px;
@@ -193,8 +184,6 @@
     background: #f5f5f5;
 }
   
-/* */ 
-
 .order-page .order-right .order-info-box .member-box {
     display: flex;
     flex-direction: column;
@@ -224,22 +213,22 @@
     background: rgba(0, 0, 0, 0.33);
 }
   
-.order-page .order-right .order-info-box .member-box .oerder-user-name {
+.order-page .order-right .order-info-box .member-box .order-user-name {
+    color: #08090d;
     font-family: "Commissioner";
     font-size: 28px;
     font-style: normal;
     font-weight: 500;
     line-height: 36px;
-    color: #08090d;
 }
   
-.order-page .order-right .order-info-box .member-box .oerder-user-prof {
+.order-page .order-right .order-info-box .member-box .order-user-prof {
+    color: #a1a1a1;
     font-family: "Commissioner";
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 36px;
-    color: #a1a1a1;
 }
   
 .order-page .order-right .order-info-box .liner {
