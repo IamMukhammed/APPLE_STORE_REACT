@@ -1,10 +1,9 @@
-
 import { Member } from "./member";
 import { Order } from "./order";
 import { Product } from "./product";
 
 /** REACT APP STATE  */
-    export interface AppRootState {
+export interface AppRootState {
     homePage: HomePageState;
     productsPage: ProductsPageState;
     ordersPage: OrdersPageState;
@@ -12,19 +11,23 @@ import { Product } from "./product";
 
 /** HOMEPAGE  */
 export interface HomePageState {
-    products: any;
-    chosenProduct: any;
-    restaurant: any;
-    popularDishes: Product[];
-    newDishes: Product[];
-    topUsers: Member[];
+    popularProducts: any;
+    newProducts: any;
+    topUsers: any;
+    featuredProducts: Product[];
+    newArrivals: Product[];
+    topCustomers: Member[];
+    promotions?: Product[];
 }
 
 /** PRODUCTS PAGE  */
 export  interface ProductsPageState {
-    restaurant: Member | null;
+    [x: string]: any;
+    // seller: Member | null;
     chosenProduct: Product | null;
     products: Product[];
+    searchKeyword?: string;
+    selectedCategory?: string;
 }
 
 

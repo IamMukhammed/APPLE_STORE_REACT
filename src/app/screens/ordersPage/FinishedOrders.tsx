@@ -9,16 +9,15 @@ import { retrieveFinishedOrders } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Order, OrderItem } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
-import { finished } from "stream";
 
 /* REDUX SLICE & SELECTOR */
-const finishedORdersRetriever = createSelector(
+const finishedOrdersRetriever = createSelector(
     retrieveFinishedOrders, 
     (finishedOrders) => ({ finishedOrders})
 );
 
 export default function FinishedOrders() {
-    const { finishedOrders } = useSelector(finishedORdersRetriever);
+    const { finishedOrders } = useSelector(finishedOrdersRetriever);
 
     return (
         <TabPanel value={"3"}>
@@ -31,7 +30,9 @@ export default function FinishedOrders() {
                                     const product: Product = order.productData
                                         .filter((ele: Product) => item.productId === ele._id
                                     )[0];
-                                    const imagePath = `${serverApi}/${product.productImages[0]}`;
+                                    const imagePath = product.productImages?.[0]
+                                        ? `${serverApi}/${product.productImages[0]}`
+                                        : "/img/default-product.webp";
                                     return (
                                         <Box key={item._id} className={"orders-name-price"}>
                                             <img src={ imagePath} alt=""
@@ -53,13 +54,13 @@ export default function FinishedOrders() {
                             </Box>
                             <Box className={"total-price-box"}>
                                 <Box className={"box-total"}>
-                                    <p>Product price</p>
+                                    <p>Subtotal</p>
                                     <p>${order.orderTotal - order.orderDelivery}</p>
                                     <img
                                         src={"/icons/plus.svg"} alt=""
                                         style={{ marginLeft: "20px" }}
                                     />
-                                    <p>Delivery cost</p>
+                                    <p>Shipping</p>
                                     <p>${order.orderDelivery}</p>
                                     <img 
                                         src={"/icons/pause.svg"} alt="" 
@@ -80,7 +81,7 @@ export default function FinishedOrders() {
                         justifyContent={"center"}
                     >
                         <img
-                            src={"/icons/noimage-list.svg"} alt=""
+                            src={"/icons/noimage-list.svg"} alt="No finished orders"
                             style={{ width: 300, height: 300 }}
                         />
                     </Box>

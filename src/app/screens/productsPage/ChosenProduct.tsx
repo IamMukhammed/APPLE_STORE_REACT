@@ -13,9 +13,9 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setChosenProduct, setRestaurant } from "./slice";
+import { setChosenProduct, setSeller } from "./slice";
 import { createSelector } from "reselect";
-import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
+import { retrieveChosenProduct, retrieveSeller } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { useParams } from "react-router-dom";
 import ProductService from "../../services/ProductService";
@@ -25,22 +25,18 @@ import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
+  setSeller: (data: Member) => dispatch(setSeller(data)),
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
 });
 
 const chosenProductRetriever = createSelector(
   retrieveChosenProduct,
-  (chosenProduct) => ({
-    chosenProduct,
-  })
+  (chosenProduct) => ({ chosenProduct })
 );
 
-const retaurantRetriever = createSelector(
-  retrieveRestaurant, 
-  (restaurant) => ({
-    restaurant,
-  })
+const sellerRetriever = createSelector(
+  retrieveSeller, 
+  (seller) => ({ seller })
 );
 
 interface ChosenProductsProps {
@@ -50,13 +46,11 @@ interface ChosenProductsProps {
 export default function ChosenProduct(props: ChosenProductsProps) {
   const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
-
-  const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
+  const { setSeller, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
-  const { restaurant } = useSelector(retaurantRetriever);  
+  const { seller } = useSelector(sellerRetriever);  
 
   useEffect(() => {
-    console.log("Fetching product with ID:", productId);
     const product = new ProductService();
     product
       .getProduct(productId)
@@ -65,12 +59,13 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   
     const member = new MemberService();
     member
-      .getRestaurant()
-      .then((data) => setRestaurant(data))
-      .catch((err) => console.log(err));
+      .getSeller()
+      .then((data: Member) => setSeller(data))
+      .catch((err: any) => console.log(err));
   }, [productId]);
 
-  if(!chosenProduct) return null;
+  if (!chosenProduct) return null;
+
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>Product Detail</Box>
@@ -83,26 +78,30 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             modules={[FreeMode, Navigation, Thumbs]}
             className="swiper-area"
           >
-            {chosenProduct?.productImages.map((ele: string, index: number) => {
-              const imagePath = `${serverApi}/${ele}`;
-              return (
-                <SwiperSlide key={index}>
-                  <img
-                    className="slider-image"
-                    src={imagePath}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {chosenProduct?.productImages?.length ? (
+              chosenProduct.productImages.map((ele: string, index: number) => {
+                const imagePath = `${serverApi}/${ele}`;
+                return (
+                  <SwiperSlide key={index}>
+                    <img className="slider-image" src={imagePath} />
+                  </SwiperSlide>
+                );
+              })
+            ) : (
+              <SwiperSlide>
+                <img className="slider-image" src="/img/default-product.webp" />
+              </SwiperSlide>
+            )}
           </Swiper>
         </Stack>
+        
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
             <strong className={"product-name"}>
               {chosenProduct?.productName}
             </strong>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
-            <span className={"resto-name"}>{restaurant?.memberPhone}</span>
+            <span className={"seller-name"}>{seller?.memberNick}</span>
+            <span className={"seller-name"}>{seller?.memberPhone}</span>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
               <div className={"evaluation-box"}>
@@ -113,9 +112,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
               </div>
             </Box>
             <p className={"product-desc"}>
-              {chosenProduct?.productDesc
-                ? chosenProduct?.productDesc
-                : "No Description"}
+              {chosenProduct?.productDesc || "No Description"}
             </p>
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
@@ -123,18 +120,26 @@ export default function ChosenProduct(props: ChosenProductsProps) {
               <span>${chosenProduct?.productPrice}</span>
             </div>
             <div className={"button-box"}>
-              <Button variant="contained"
-               onClick={(e) => {
-                onAdd({
-                  _id: chosenProduct._id,
-                  quantity: 1,
-                  name: chosenProduct.productName,
-                  price: chosenProduct.productPrice,
-                  image: chosenProduct.productImages[0],
-                });
-                e.stopPropagation();
-              }}>
-                Add To Basket</Button>
+              <Button
+                variant="contained"
+                onClick={(e) => {
+                  if (chosenProduct.productLeftCount > 0) {
+                    onAdd({
+                      _id: chosenProduct._id,
+                      quantity: 1,
+                      name: chosenProduct.productName,
+                      price: chosenProduct.productPrice,
+                      image: chosenProduct.productImages?.[0] || "/img/default-product.webp",
+                      countInStock: chosenProduct.productLeftCount || 0,
+                    });
+                  } else {
+                    alert("Out of stock!");
+                  }
+                  e.stopPropagation();
+                }}
+              >
+                Add To Basket
+              </Button>
             </div>
           </Box>
         </Stack>

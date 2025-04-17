@@ -10,44 +10,41 @@ import Divider from "../../components/divider"
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveNewDishes } from "./selector";
+import { retrieveNewProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
-import { ProductCollection } from "../../../lib/enums/product.enum";
+import { ProductCategory } from "../../../lib/enums/product.enum";
 
 /* REDUX SLICE & SELECTOR */
-const NewDishesRetriever = createSelector(
-    retrieveNewDishes, 
-    (newDishes) => ({ newDishes })
+const NewProductsRetriever = createSelector(
+    retrieveNewProducts, 
+    (newProducts) => ({ newProducts })
 );
 
-export default function NewDishes() {
-    const { newDishes } = useSelector(NewDishesRetriever);
+export default function NewProducts() {
+    const { newProducts } = useSelector(NewProductsRetriever);
 
-    console.log("newDishes:", newDishes);
+    console.log("newProducts:", newProducts);
 
     return (
-        <div className={"new-dishes-frame"}>
+        <div className={"new-awwivals-frame"}>
             <Container>
                 <Stack className={"main"}>
-                    <Box className={"category-title"}>Fresh Menu</Box>
+                    <Box className={"category-title"}>New Arrivals</Box>
                     <Stack className={"cards-frame"}>
                         <CssVarsProvider>
-                            {newDishes.length !== 0 ? (
-                            newDishes.map((product: Product) => {
+                            {newProducts.length !== 0 ? (
+                            newProducts.map((product: Product) => {
                                 const imagePath = `${serverApi}/${product.productImages[0]}`;
-                                const sizeVolume = 
-                                    product.productCollection === ProductCollection.DRINK 
-                                    ? product.productVolume + "l" 
-                                    : product.productSize + " size"
+                                const specs = product.productDesc || "Latest generation tech";
                                 return (
                                     <Card key={product._id} variant="outlined" className={"card"}>
                                         <CardOverflow>
-                                            <div className="product-sale">
-                                                {sizeVolume}
+                                            <div className="product-spec">
+                                                {specs.slice(0, 24)}...
                                             </div>
                                             <AspectRatio ratio="1">
-                                                <img src={imagePath} alt="" />
+                                                <img src={imagePath} alt={product.productName} />
                                             </AspectRatio>
                                         </CardOverflow>
                                         <CardOverflow variant="soft" className="product-details">
@@ -58,7 +55,7 @@ export default function NewDishes() {
                                                     </Typography>
                                                     <Divider width="2" height="24" bg="#d9d9d9" />
                                                     <Typography className={"price"}>
-                                                        $${product.productPrice}
+                                                        ${product.productPrice}
                                                     </Typography>
                                                 </Stack>
                                                 <Stack>
@@ -75,7 +72,7 @@ export default function NewDishes() {
                                 );
                             })
                             ) : (
-                                <Box className="no-data">New products are not avialable !</Box>
+                                <Box className="no-data">No new products available!</Box>
                             )}
                         </CssVarsProvider>
                     </Stack>

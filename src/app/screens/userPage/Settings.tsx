@@ -21,7 +21,8 @@ export function Settings() {
   );
   const [memberUpdateInput, setMemberUpdateInput] = useState<MemberUpdateInput>(
     {
-      memberNick: authMember?.memberNick,
+      memberName: authMember?.memberName,
+      memberEmail: authMember?.memberEmail,
       memberPhone: authMember?.memberPhone,
       memberAddress: authMember?.memberAddress,
       memberDesc: authMember?.memberDesc,
@@ -32,7 +33,12 @@ export function Settings() {
   /* HANDLERS */
 
   const memberNickHandler = (e: T) => {
-    memberUpdateInput.memberNick = e.target.value;
+    memberUpdateInput.memberName = e.target.value;
+    setMemberUpdateInput({ ...memberUpdateInput });
+  };
+
+  const memberEmailHhandler = (e: T) => {
+    memberUpdateInput.memberEmail = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
 
@@ -55,8 +61,9 @@ export function Settings() {
     try {
       if (!authMember) throw new Error(Messages.error2);
       if (
-        memberUpdateInput.memberNick === "" || 
-        memberUpdateInput.memberPhone === "" || 
+        memberUpdateInput.memberName === "" || 
+        memberUpdateInput.memberEmail === "" ||
+        memberUpdateInput.memberPhone === undefined || 
         memberUpdateInput.memberAddress === "" || 
         memberUpdateInput.memberDesc === "" 
       ) {
@@ -112,8 +119,8 @@ export function Settings() {
           <input
             className={"spec-input mb-nick"}
             type="text"
-            placeholder={authMember?.memberNick}
-            value={memberUpdateInput.memberNick}
+            placeholder={authMember?.memberName}
+            value={memberUpdateInput.memberName}
             name="memberNick"
             onChange={memberNickHandler}
           />
@@ -125,10 +132,21 @@ export function Settings() {
           <input
             className={"spec-input mb-phone"}
             type="text"
-            placeholder={authMember?.memberPhone ?? "no phone"}
+            placeholder={String(authMember?.memberPhone ?? "no phone")}
             value={memberUpdateInput.memberPhone}
             name="memberPhone"
             onChange={memberPhoneHhandler}
+          />
+        </div>
+        <div className={"short-input"}>
+          <label className={"spec-label"}>Email</label>
+          <input
+            className={"spec-input mb-email"}
+            type="text"
+            placeholder={authMember?.memberEmail ?? "no email"}
+            value={memberUpdateInput.memberEmail}
+            name="memberEmail"
+            onChange={memberEmailHhandler}
           />
         </div>
         <div className={"short-input"}>

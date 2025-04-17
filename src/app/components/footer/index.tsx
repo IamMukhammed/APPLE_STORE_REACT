@@ -1,89 +1,97 @@
 import React from "react";
 import { Box, Container, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Footers = styled.div`
+const FooterWrapper = styled.div`
   width: 100%;
-  height: 590px;
+  background: #1a1a1a;
+  padding: 80px 0;
+  color: #fff;
+`;
+
+const Logo = styled.img`
+  width: 120px;
+  margin-bottom: 20px;
+`;
+
+const SocialIcons = styled.div`
   display: flex;
-  background: #343434;
-  background-size: cover;
+  gap: 15px;
+  margin-top: 20px;
+
+  img {
+    width: 24px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 export default function Footer() {
-  const authMember = null;
+  const authUser = null; // later from context
 
   return (
-    <Footers>
+    <FooterWrapper>
       <Container>
-        <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
-          <Stack flexDirection={"column"} style={{ width: "340px" }}>
-            <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+        <Stack direction="row" justifyContent="space-between" flexWrap="wrap">
+          {/* Brand Info */}
+          <Box sx={{ maxWidth: "320px" }}>
+            <Logo src="/icons/apple-store-tech-logo.svg" alt="logo" />
+            <Box sx={{ mt: 2, fontSize: "14px", lineHeight: "1.8" }}>
+              Apple Store delivers premium electronics from global brands.
+              Fast shipping, trusted warranty, and top-tier customer support.
             </Box>
-            <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
-            </Box>
-            <Box className="sns-context">
-              <img src={"/icons/facebook.svg"} />
-              <img src={"/icons/twitter.svg"} />
-              <img src={"/icons/instagram.svg"} />
-              <img src={"/icons/youtube.svg"} />
-            </Box>
-          </Stack>
-          <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
-            <Stack>
-              <Box>
-                <Box className={"foot-category-title"}>Bo'limlar</Box>
-                <Box className={"foot-category-link"}>
-                  <Link to="/">Home</Link>
-                  <Link to="/products">Products</Link>
-                  {authMember && <Link to="/orders">Orders</Link>}
-                  <Link to="/help">Help</Link>
-                </Box>
-              </Box>
+            <SocialIcons>
+              <img src="/icons/facebook.svg" alt="facebook" />
+              <img src="/icons/twitter.svg" alt="twitter" />
+              <img src="/icons/instagram.svg" alt="instagram" />
+              <img src="/icons/youtube.svg" alt="youtube" />
+            </SocialIcons>
+          </Box>
+
+          {/* Quick Links */}
+          <Box>
+            <Box sx={{ fontWeight: "bold", mb: 2 }}>Quick Links</Box>
+            <Stack spacing={1}>
+              <Link to="/">Home</Link>
+              <Link to="/products">Products</Link>
+              {authUser && <Link to="/orders">Orders</Link>}
+              <Link to="/contact">Contact Us</Link>
+              <Link to="/help">Help</Link>
             </Stack>
-            <Stack sx={{ ml: "100px" }}>
-              <Box>
-                <Box className={"foot-category-title"}>Find us</Box>
-                <Box
-                  flexDirection={"column"}
-                  sx={{ mt: "20px" }}
-                  className={"foot-category-link"}
-                  justifyContent={"space-between"}
-                >
-                  <Box flexDirection={"row"} className={"find-us"}>
-                    <span>L.</span>
-                    <div>Downtown, Dubai</div>
-                  </Box>
-                  <Box className={"find-us"}>
-                    <span>P.</span>
-                    <div>+971 4 554 7777</div>
-                  </Box>
-                  <Box className={"find-us"}>
-                    <span>E.</span>
-                    <div>devexuz@gmail.com</div>
-                  </Box>
-                  <Box className={"find-us"}>
-                    <span>H.</span>
-                    <div>Visit 24 hours</div>
-                  </Box>
-                </Box>
-              </Box>
+          </Box>
+
+          {/* Contact Info */}
+          <Box>
+            <Box sx={{ fontWeight: "bold", mb: 2 }}>Contact Us</Box>
+            <Stack spacing={1} sx={{ fontSize: "14px" }}>
+              <div>📍 123 Tech Street, Silicon Valley, CA</div>
+              <div>📞 +1 (555) 123-4567</div>
+              <div>✉️ support@appletech.com</div>
+              <div>🕒 Mon - Fri: 9am - 6pm</div>
             </Stack>
-          </Stack>
+          </Box>
         </Stack>
-        <Stack
-          style={{ border: "1px solid #C5C8C9", width: "100%", opacity: "0.2" }}
-          sx={{ mt: "80px" }}
-        ></Stack>
-        <Stack className={"copyright-txt"}>
-          © Copyright Devex Global, All rights reserved.
-        </Stack>
+
+        {/* Divider */}
+        <Box
+          sx={{
+            borderTop: "1px solid #666",
+            mt: 6,
+            pt: 3,
+            fontSize: "13px",
+            textAlign: "center",
+            color: "#999",
+          }}
+        >
+          © {new Date().getFullYear()} Apple Tech Store. All rights reserved.
+        </Box>
       </Container>
-    </Footers>
+    </FooterWrapper>
   );
-}
+};

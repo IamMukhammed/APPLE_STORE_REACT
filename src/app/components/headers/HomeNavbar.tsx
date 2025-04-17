@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
@@ -48,7 +48,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 <Stack className="menu">
                     <Box>
                         <NavLink to="/">
-                            <img className="brand-logo" src="/icons/burak.svg"/>                    
+                            <img className="brand-logo" src="/icons/apple.svg"/>                    
                         </NavLink>
                     </Box>
                     <Stack className="links">
@@ -156,13 +156,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 <Stack className={"header-frame"}>
                     <Stack className={"detail"}>
                         <Box className={"head-main-txt"}>
-                            World's Most Delicious Cousine
+                            Your Gateway to Premium Tech
                         </Box>
                         <Box className={"wel-txt"}>
-                            The Choise, not just a choise
+                            Explore the latest devices with unbeatable deals
                         </Box>
                         <Box className={"service-txt"}>
-                            24 hours service
+                            Fast delivery & 24/7 customer support
                         </Box>
                         <Box className={"signup"}>
                             {!authMember ? ( 

@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-import { plans } from "../../../lib/data/plans";
+import { storeHighlights } from "../../../lib/data/plans";
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -31,33 +31,33 @@ export default function Events() {
             disableOnInteraction: true,
           }}
         >
-          {plans.map((value, number) => {
+          {storeHighlights.map((plan, idx) => {
             return (
-              <SwiperSlide key={number} className={"events-info-frame"}>
+              <SwiperSlide key={idx} className={"events-info-frame"}>
                 <div className={"events-img"}>
-                  <img src={value.img} className={"events-img"} />
+                  <img src={plan.img} alt={plan.title} className={"events-img"} />
                 </div>
                 <Box className={"events-desc"}>
                   <Box className={"events-bott"}>
                     <Box className={"bott-left"}>
                       <div className={"event-title-speaker"}>
-                        <strong>{value.title}</strong>
+                        <strong>{plan.title}</strong>
                         <div className={"event-organizator"}>
                           <img src={"/icons/speaker.svg"} />
-                          <p className={"spec-text-author"}>{value.author}</p>
+                          <p className={"spec-text-author"}>{plan.author}</p>
                         </div>
                       </div>
 
-                      <p className={"text-desc"}> {value.desc} </p>
+                      <p className={"text-desc"}> {plan.desc} </p>
 
                       <div className={"bott-info"}>
                         <div className={"bott-info-main"}>
                           <img src={"/icons/calendar.svg"} />
-                          {value.date}
+                          {plan.date}
                         </div>
                         <div className={"bott-info-main"}>
                           <img src={"/icons/location.svg"} />
-                          {value.location}
+                          {plan.location}
                         </div>
                       </div>
                     </Box>
@@ -82,4 +82,4 @@ export default function Events() {
       </Stack>
     </div>
   );
-}
+};

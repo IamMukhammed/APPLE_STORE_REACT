@@ -67,10 +67,14 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                         <Box key={order._id} className={"order-main-box"}>
                             <Box className={"order-box-scroll"}>
                                 {order?.orderItems?.map((item: OrderItem) => {
-                                    const product: Product = order.productData
-                                        .filter((ele: Product) => item.productId === ele._id
-                                    )[0];
-                                    const imagePath = `${serverApi}/${product.productImages[0]}`;
+                                    const product = order.productData.find(
+                                        (ele: Product) => item.productId === ele._id
+                                    );
+
+                                    if (!product) return null;
+                                    const imagePath = product.productImages?.[0]
+                                        ? `${serverApi}/${product.productImages[0]}`
+                                        : "/img/default-product.webp";
                                     return (
                                         <Box key={item._id} className={"orders-name-price"}>
                                             <img src={ imagePath }
@@ -108,7 +112,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                                     <p>${order.orderTotal}</p>
                                 </Box>
                                 <p className={"data-compl"}>
-                                    {moment().format("YY-MM-DD HH:mm")}
+                                    {moment(order.createdAt).format("MM-DD-YY HH:mm")}
                                 </p>
                                 <Button
                                     value={order._id}
@@ -116,7 +120,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                                     variant="contained"
                                     onClick={finishOrderHandler}
                                 >
-                                    Verify to fulfil
+                                    Confirm Delivery
                                 </Button>
                             </Box>
                         </Box>

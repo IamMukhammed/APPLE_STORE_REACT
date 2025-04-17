@@ -1,27 +1,29 @@
-import { ProductCollection, ProductSize, ProductStatus } from "../enums/product.enum";
-
-
+import { ProductStatus, ProductCategory, ProductStorage, ProductColor } from '../enums/product.enum';
+  
 export interface Product {
-    _id: string;
-    productStatus: ProductStatus;
-    productCollection: ProductCollection;
-    productName: string;
-    productPrice: number;
     productLeftCount: number;
-    productSize: ProductSize;
-    productVolume: number;
+    _id: string;
+    productName: string;
+    productBrand: string;
+    productCategory: ProductCategory;
+    productPrice: number;
+    productCountInStock: number;
+    productStatus: ProductStatus;
+    productStorage: ProductStorage;
+    productColor: ProductColor;
     productDesc?: string;
-    productImages: string[];
-    productViews: number;
-    createdAt : Date;
+    productImages: string[];       // Mahsulot rasmlari
+    productViews?: number;         // Optional
+    createdAt: Date;
     updatedAt: Date;
 }
 
 export interface ProductInquiry {
-    order: string;
-    page: number;
-    limit: number;
-    productCollection?: ProductCollection;
-    search?: string;
-
+    search: string;
+    order?: string;                  // "asc" | "desc" yoki field nomi
+    page?: number;
+    limit?: number;
+    productCategory?: ProductCategory;
+    productSearch?: string;
+    countInStock?: number;
 }

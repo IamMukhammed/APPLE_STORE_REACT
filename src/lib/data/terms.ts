@@ -1,6 +1,6 @@
-export const terms = [
-	'Making orders from the site is complete, live register to use communications you must pass.',
-	'This is why you cannot cancel your orders once you have paid for them check before making payments.',
-	'It is not possible to write and distribute personal ads without the permission of the admin.',
-	'All your actions are under the control of our restaurant administration, so please follow the general rules.',
+export const storeTerms = [
+	'To place orders and track shipments, users must create an account and log in.',
+	'Once an order is paid, it cannot be canceled. Please review your cart before confirming payment.',
+	'Promotional content or third-party ads are not allowed without prior admin approval.',
+	'Your activity is monitored by Apple Store’s administration to ensure fair and secure usage.',
 ];

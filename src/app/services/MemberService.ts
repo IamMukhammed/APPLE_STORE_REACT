@@ -5,6 +5,7 @@ import { MenuItemPropsColorOverrides } from "@mui/joy";
 
 
 class MemberService {
+    [x: string]: any;
     private readonly path: string;
 
     constructor() {
@@ -24,18 +25,18 @@ class MemberService {
         }
     }
 
-    public async getRestaurant(): Promise<Member> {
+    public async getSeller(): Promise<Member> {
         try {
-            const url = this.path + "/member/restaurant";
+            const url = this.path + "/member/seller";
             const result = await axios.get(url);
-            console.log("getRestaurant:", result);
+            console.log("getSeller:", result);
 
-            // const restaurant: Member = result.data;
-            // return restaurant;
+            // const seller: Member = result.data;
+            // return seller;
 
             return result.data;
         } catch (err) {
-            console.log("Error, getRestaurant:", err);
+            console.log("Error, getSeller:", err);
             throw err;
         }
     }
@@ -90,8 +91,9 @@ class MemberService {
     public async updateMember(input: MemberUpdateInput): Promise<Member> {
         try {
             const formData = new FormData();
-            formData.append("memberNick", input.memberNick || "");
-            formData.append("memberPhone", input.memberPhone || "");
+            formData.append("memberNick", input.memberName || "");
+            formData.append("memberPhone", input.memberEmail || "");
+            // formData.append("memberPhone", input.memberPhone || "");
             formData.append("memberAddress", input.memberAddress || "");
             formData.append("memberDesc", input.memberDesc || "");
             formData.append("memberImage", input.memberImage || "");

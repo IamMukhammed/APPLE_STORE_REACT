@@ -8,8 +8,7 @@ import Typography from "@mui/joy/Typography";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePopularDishes, retrieveTopUsers } from "./selector";
-import { Product } from "../../../lib/types/product";
+import { retrieveTopUsers } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
 
@@ -45,7 +44,7 @@ export default function ActiveUsers() {
                                                 <Stack className="info">
                                                     <Stack flexDirection={"column"}>
                                                         <Typography className={"member-nickname"}>
-                                                            {member.memberNick}
+                                                            {member.memberName}
                                                         </Typography>
                                                     </Stack>
                                                 </Stack>
@@ -54,7 +53,7 @@ export default function ActiveUsers() {
                                     );
                                 })
                             ) : (
-                                <Box className={"no-data"}>No Active Users !</Box>
+                                <Box className={"no-data"}>No Top Customers Found!</Box>
                             )}
                         </CssVarsProvider>
                     </Stack>
@@ -62,4 +61,4 @@ export default function ActiveUsers() {
             </Container>
         </div>
     );
-}
+};

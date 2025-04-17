@@ -43,23 +43,49 @@ export default function Basket(props: BasketProps) {
     setAnchorEl(null);
   };
 
+  // const proceedOrderHandler = async () => {
+  //   try {
+  //     handleClose();
+  //     if(!authMember) throw new Error(Messages.error2);
+
+  //     const order = new OrderService();
+  //     await order.createOrder(cartItems);
+
+  //     onDeleteAll();
+
+  //     // REFRESH VIA CONTEXT
+  //     setOrderBuilder(new Date());
+  //     history.push("/orders");
+
+  //   } catch (err) {
+  //     console.log(err);
+  //     sweetErrorHandling(err).then();
+  //   }
+  // };
+
   const proceedOrderHandler = async () => {
     try {
       handleClose();
-      if(!authMember) throw new Error(Messages.error2);
-
+      if (!authMember) throw new Error(Messages.error2);
+  
+      const orderPayload = {
+        items: cartItems.map(({ _id, quantity, price }) => ({
+          productId: _id,
+          qty: quantity,
+          price,
+        })),
+        totalPrice: Number(totalPrice),
+      };
+  
       const order = new OrderService();
-      await order.createOrder(cartItems);
-
+      await order.createOrder(cartItems); // ✅ orderPayload yuboriladi
+  
       onDeleteAll();
-
-      // REFRESH VIA CONTEXT
       setOrderBuilder(new Date());
       history.push("/orders");
-
+  
     } catch (err) {
-      console.log(err);
-      sweetErrorHandling(err).then();
+      sweetErrorHandling(err);
     }
   };
 
@@ -131,7 +157,9 @@ export default function Basket(props: BasketProps) {
           <Box className={"orders-main-wrapper"}>
             <Box className={"orders-wrapper"}>
               {cartItems.map((item: CartItem) => {
-                const imagePath = `${serverApi}/${item.image}`;
+                const imagePath = item.image
+                ? `${serverApi}/${item.image}`
+                : "/img/default-product.webp";
                 return (
                   <Box className={"basket-info-box"} key={item._id}>
                     <div className={"cancel-btn"}>
@@ -152,7 +180,7 @@ export default function Basket(props: BasketProps) {
                           -
                         </button>{" "}
                         <button 
-                          onClick={() => onAdd(item)} 
+                          onClick={(e) => { e.stopPropagation(); onAdd(item); }} 
                           className="add"
                         >
                           +

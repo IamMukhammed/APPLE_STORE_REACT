@@ -11,7 +11,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import "../../../css/help.css";
 import { faq } from "../../../lib/data/faq";
-import { terms } from "../../../lib/data/terms";
+import { storeTerms } from "../../../lib/data/terms";
 
 export default function HelpPage() {
   const [value, setValue] = React.useState("1");
@@ -19,6 +19,22 @@ export default function HelpPage() {
   /** HANDLERS **/
   const handleChange = (e: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const email = form.get("email");
+    const message = form.get("message");
+  
+    console.log({ name, email, message });
+  
+    // ✅ Formani tozalash:
+    e.currentTarget.reset();
+  
+    // Optional: alert yoki success message ham qo‘shish mumkin
   };
 
   return (
@@ -44,7 +60,7 @@ export default function HelpPage() {
               <TabPanel value={"1"}>
                 <Stack className={"rules-box"}>
                   <Box className={"rules-frame"}>
-                    {terms.map((value, number) => {
+                    {storeTerms .map((value, number) => {
                       return <p key={number}>{value}</p>;
                     })}
                   </Box>
@@ -78,16 +94,23 @@ export default function HelpPage() {
                       <p>Fill out below form to send a message!</p>
                     </Box>
                     <form
-                      action={"#"}
-                      method={"POST"}
+                      onSubmit={handleSubmit}
                       className={"admin-letter-frame"}
                     >
                       <div className={"admin-input-box"}>
-                        <label>Your name</label>
+                        <label>Your full name</label>
                         <input
                           type={"text"}
-                          name={"memberNick"}
+                          name={"memberName"}
                           placeholder={"Type your name here"}
+                        />
+                      </div>
+                      <div className={"admin-input-box"}>
+                        <label>Phone number</label>
+                        <input
+                          type={"text"}
+                          name={"memberPhone"}
+                          placeholder={"Type your phone here"}
                         />
                       </div>
                       <div className={"admin-input-box"}>

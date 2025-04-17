@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartItem } from "../../lib/types/search";
 
 
 const useBasket = () => {
     const cartJson: string | null = localStorage.getItem("cartData");
-    const currentCart = cartJson ? JSON.parse(cartJson) : [];
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const initialCart: CartItem[] = cartJson ? JSON.parse(cartJson) : [];
+
+    const [cartItems, setCartItems] = useState<CartItem[]>(initialCart);
+
 
     /* HANDLERS */
+    const updateCart = (updatedCart: CartItem[]) => {
+        setCartItems(updatedCart);
+        localStorage.setItem("cartData", JSON.stringify(updatedCart));
+    };
+
+    /* cartItems o'zgarganda localStorage ga avtomatik yozish uchun */
+    useEffect(() => {
+        localStorage.setItem("cartData", JSON.stringify(cartItems));
+    }, [cartItems]);
     
-    const onAdd = ( input: CartItem ) => {
+
+    const onAdd = (input: CartItem) => {
         const exist: any = cartItems.find(
             (item: CartItem) => item._id === input._id
         );
+
         if(exist) {
             const cartUpdate = cartItems.map((item: CartItem) => 
                 item._id === input._id 

@@ -1,28 +1,41 @@
-export enum ProductSize {
-    SMALL = "SMALL",
-    NORMAL = "NORMAL",
-    LARGE = "LARGE",
-    SET = "SET",
-}
-
-export enum ProductVolume {
-    HALF = 0.5,
-    ONE = 1.,
-    ONE_POINT_TWO = 1.2,
-    ONE_POINT_FIVE = 1.5,
-    TWO = 2,
-}
-
-export enum ProductStatus {
-    PAUSE = "PAUSE",
-    PROCESS = "PROCESS",
-    DELETE = "DELETE",
-}
-
-export enum ProductCollection {
-    DISH = "DISH",
-    SALAD = "SALAD",
-    DESSERT = "DESSERT",
-    DRINK = "DRINK",
+// ProductColors (o‘rniga ishlatiladi: ProductVolume)
+export enum ProductColor {
+    BLACK = "BLACK",
+    WHITE = "WHITE",
+    SILVER = "SILVER",
+    GOLD = "GOLD",
+    BLUE = "BLUE",
+    RED = "RED",
+    YELLOW = "YELLOW",
+    PURPLE = "PURPLE",
     OTHER = "OTHER",
 }
+  
+// ProductStorage (gigabaytlar uchun)
+export enum ProductStorage {
+    GB_64 = "64GB",
+    GB_128 = "128GB",
+    GB_256 = "256GB",
+    GB_512 = "512GB",
+    TB_1 = "1TB",
+    TB_2 = "2TB",
+    OTHER = "OTHER",
+}
+  
+// ProductStatus – mahsulot holati
+export enum ProductStatus {
+    AVAILABLE = "AVAILABLE",       
+    OUT_OF_STOCK = "OUT_OF_STOCK",
+    DISCONTINUED = "DISCONTINUED",
+}
+  
+// ProductCategory – eski ProductCollection o‘rniga
+export enum ProductCategory {
+    SMARTPHONE = "SMARTPHONE",
+    LAPTOP = "LAPTOP",
+    TABLET = "TABLET",
+    ACCESSORY = "ACCESSORY",
+    OTHER = "OTHER",
+}
+
+// ProductColor, ProductStorage, ProductCategory,

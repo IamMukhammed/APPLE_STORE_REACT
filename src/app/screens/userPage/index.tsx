@@ -8,11 +8,18 @@ import { useHistory } from "react-router-dom";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
+import { useEffect } from "react";
 import "../../../css/userPage.css";
 
 export default function UserPage() {
   const history = useHistory();
   const { authMember } = useGlobals();
+
+  useEffect(() => {
+    if (!authMember) {
+      history.push("/")
+    }
+  }, [authMember]);
 
   if (!authMember) history.push("/");
   return (
@@ -43,26 +50,27 @@ export default function UserPage() {
                       : "/icons/default-user.svg"
                     }
                     className={"order-user-avatar"}
+                    alt="User Avatar"
                   />
                   <div className={"order-user-icon-box"}>
                     <img 
                       src={
-                        authMember?.memberType === MemberType.RESTAURANT 
-                        ? "/icons/restaurant.svg" 
+                        authMember?.memberType === MemberType.SELLER 
+                        ? "/icons/apple-store.svg" 
                         : "/icons/user-badge.svg"
                       } 
                     />
                   </div>
                 </div>
-                <span className={"order-user-name"}>{authMember?.memberNick}</span>
+                <span className={"order-user-name"}>{authMember?.memberName}</span>
                 <span className={"order-user-prof"}>{authMember?.memberType}</span>
                 <span className={"order-user-prof"}>{authMember?.memberAddress ? authMember.memberAddress : "No address"}</span>
               </Box>
               <Box className={"user-media-box"}>
-                <FacebookIcon />
-                <InstagramIcon />
-                <TelegramIcon />
-                <YouTubeIcon />
+                <FacebookIcon aria-label="Facebook" />
+                <InstagramIcon aria-label="Instagram" />
+                <TelegramIcon aria-label="Telegram" />
+                <YouTubeIcon aria-label="YouTube" />
               </Box>
               <p className={"user-desc"}>
                 {authMember?.memberDesc 

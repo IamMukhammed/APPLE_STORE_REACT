@@ -63,7 +63,7 @@ export default function OrdersPage() {
       setValue(newValue);
     };
   
-    if(!authMember) history.push("/")
+    if (!authMember) history.push("/");
   
     return (
       <div className="order-page">
@@ -85,9 +85,9 @@ export default function OrdersPage() {
                     aria-label="basic tabs example"
                     className="table_list"
                   >
-                    <Tab label="PAUSED ORDERS" value={"1"} />
-                    <Tab label="PROCESS ORDERS" value={"2"} />
-                    <Tab label="FINISHED ORDERS" value={"3"} />
+                    <Tab label="PAUSED ORDERS" value="1" className={value === "1" ? "active-tab" : ""} />
+                    <Tab label="PROCESS ORDERS" value="2" className={value === "2" ? "active-tab" : ""} />
+                    <Tab label="FINISHED ORDERS" value="3" className={value === "3" ? "active-tab" : ""} />
                   </Tabs>
                 </Box>
               </Box>
@@ -110,13 +110,13 @@ export default function OrdersPage() {
                   />
                   <div className="order-user-icon-box">
                     <img
-                      src={authMember?.memberType === MemberType.RESTAURANT ? "/icons/restaurant.svg" : "/icons/user-badge.svg"}
+                      src={authMember?.memberType === MemberType.SELLER ? "/icons/apple-store.svg" : "/icons/user-badge.svg"}
                       alt=""
                       className="order-user-prof-img"
                     />
                   </div>
                 </div>
-                <span className="order-user-name">{authMember?.memberNick}</span>
+                <span className="order-user-name">{authMember?.memberName || "No specified"}</span>
                 <span className="order-user-prof">{authMember?.memberType}</span>
               </Box>
               <Box className="liner">
@@ -134,23 +134,66 @@ export default function OrdersPage() {
               </Box>
             </Box>
             <Box className="order-info-pay">
-              <Box className="pay-input">
-                <input
-                  type="text"
-                  placeholder="Card number : 5243 4090 2002 7495" style={{ width: "100%" }}
-                  className={"card-input"}
-                />
-                <div className="pay-input2">
-                  <input type="text" placeholder="07 / 24" style={{ width: "100%" }} />
-                  <input type="text" placeholder="CVV : 010" style={{ width: "100%" }} />
-                </div>
-                <input type="text" placeholder="Justin Robertson" style={{ width: "100%" }} />
-              </Box>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const cardNumber = formData.get("cardNumber");
+                  const expiry = formData.get("expiry");
+                  const cvv = formData.get("cvv");
+                  const fullName = formData.get("fullName");
+
+                  console.log("Card Data:", {
+                    cardNumber,
+                    expiry,
+                    cvv,
+                    fullName,
+                  });
+
+                  alert("Payment info saved successfully!");
+                }}
+              >
+                <Box className="pay-input">
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    placeholder="Card number : 5243 4090 2002 7495"
+                    className="card-input"
+                    required
+                  />
+                    <div className="pay-input2">
+                      <input
+                        type="text"
+                        name="expiry"
+                        placeholder="07 / 24"
+                        required
+                      />
+                      <input
+                        type="text"
+                        name="cvv"
+                        placeholder="CVV : 010"
+                        required
+                      />
+                    </div>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Cardholder name"
+                    required
+                  />
+                </Box>
+                <Box mt={2} display="flex" justifyContent="flex-end">
+                  <button type="submit" className="save-button">
+                    Save Payment Info
+                  </button>
+                </Box>
+              </form>
+
               <Box className="pay-cards">
-                <img src="/icons/western-card.svg" alt="" />
-                <img src="/icons/master-card.svg" alt="" />
-                <img src="/icons/paypal-card.svg" alt="" />
-                <img src="/icons/visa-card.svg" alt="" />
+                <img src="/icons/western-card.svg" alt="Western Union" />
+                <img src="/icons/master-card.svg" alt="Master Card" />
+                <img src="/icons/paypal-card.svg" alt="PayPal" />
+                <img src="/icons/visa-card.svg" alt="Visa" />
               </Box>
             </Box>
           </Stack>
