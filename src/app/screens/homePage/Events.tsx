@@ -43,7 +43,7 @@ export default function Events() {
                       <div className={"event-title-speaker"}>
                         <strong>{plan.title}</strong>
                         <div className={"event-organizator"}>
-                          <img src="/icons/apple-day.svg" />
+                          <img src="/icons/apple.svg" />
                           <p className={"spec-text-author"}>{plan.author}</p>
                         </div>
                       </div>
@@ -69,12 +69,12 @@ export default function Events() {
         </Swiper>
         <Box className={"prev-next-frame"}>
           <img
-            src={"/icons/socials.svg"}
+            src={"/icons/left-arrow.svg"}
             className={"swiper-button-prev"}
           />
           <div className={"dot-frame-pagination swiper-pagination"}></div>
           <img
-            src={"/icons/socials.svg"}
+            src={"/icons/left-arrow.svg"}
             className={"swiper-button-next"}
             style={{ transform: "rotate(-180deg)" }}
           />
