@@ -48,9 +48,10 @@ export default function Footer() {
             </Box>
             <SocialIcons>
               <img src="/icons/facebook.svg" alt="Facebook" />
-              <img src="/icons/twitter.svg" alt="Twitter" />
+              <img src="/icons/x.svg" alt="X" />
               <img src="/icons/instagram.svg" alt="Instagram" />
               <img src="/icons/youtube.svg" alt="Youtube" />
+              <img src="/icons/telegram.svg" alt="Telegram" />
             </SocialIcons>
           </Box>
 
