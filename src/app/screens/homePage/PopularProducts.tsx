@@ -36,7 +36,7 @@ export default function PopularProducts() {
                             popularProducts.map((product: Product) => {
                             const imagePath = product.productImages?.[0]
                               ? `${serverApi}/${product.productImages[0]}`
-                              : "/img/default-product.webp";
+                              : "/icons/default-product.svg";
 
                             return (
                                 console.log("productName ====>", product),
@@ -45,55 +45,55 @@ export default function PopularProducts() {
                                         <CardCover>
                                             <img src={imagePath} alt={product.productName} />
                                         </CardCover>
-                                            <CardCover className={"card-cover"} />
-                                            <CardContent sx={{ justifyContent: 'flex-end' }}>
-                                                <Stack
-                                                    flexDirection={"row"}
-                                                    justifyContent={"space-between"}
-                                                    alignItems={"center"}
-                                                >
-                                                    <Typography
-                                                        level="h2"
-                                                        fontSize="lg"
-                                                        textColor="#fff"
-                                                        mb={1}
-                                                    >
-                                                        {product.productName}
-                                                    </Typography>
-                                                    <Typography
-                                                        sx={{
-                                                            fontWeight: "md",
-                                                            color: "neutral.300",
-                                                            alignItems: "center",
-                                                            display: "flex",
-                                                        }}
-                                                    >
-                                                        {product.productViews}
-                                                        <Visibility sx={{ fontSize: 20, marginLeft: "5px" }} />
-                                                    </Typography>
-                                                </Stack>
-                                            </CardContent>
-                                            <CardOverflow
-                                                sx={{
-                                                    display: "flex",
-                                                    gap: 1.5,
-                                                    py: 1.5,
-                                                    px: "var(--Card-padding)",
-                                                    borderTop: "1px solid",
-                                                    borderColor: "divider",
-                                                    height: "60px",
-                                                    overflow: "hidden",
-                                                }}
+                                        <CardCover className={"card-cover"} />
+                                        <CardContent sx={{ justifyContent: 'flex-end' }}>
+                                            <Stack
+                                                flexDirection={"row"}
+                                                justifyContent={"space-between"}
+                                                alignItems={"center"}
                                             >
                                                 <Typography
-                                                    startDecorator={<DescriptionOutlinedIcon />}
-                                                    textColor="neutral.300"
-                                                    fontSize={"sm"}
+                                                    level="h2"
+                                                    fontSize="lg"
+                                                    textColor="#fff"
+                                                    mb={1}
                                                 >
-                                                    {product.productDesc?.slice(0, 50) || "No description"}
+                                                    {product.productName}
                                                 </Typography>
-                                            </CardOverflow>
-                                        </Card>
+                                                <Typography
+                                                    sx={{
+                                                        fontWeight: "md",
+                                                        color: "neutral.300",
+                                                        alignItems: "center",
+                                                        display: "flex",
+                                                    }}
+                                                >
+                                                    {product.productViews}
+                                                    <Visibility sx={{ fontSize: 20, marginLeft: "5px" }} />
+                                                </Typography>
+                                            </Stack>
+                                        </CardContent>
+                                        <CardOverflow
+                                            sx={{
+                                                display: "flex",
+                                                gap: 1.5,
+                                                py: 1.5,
+                                                px: "var(--Card-padding)",
+                                                borderTop: "1px solid",
+                                                borderColor: "divider",
+                                                height: "60px",
+                                                overflow: "hidden",
+                                            }}
+                                        >
+                                            <Typography
+                                                startDecorator={<DescriptionOutlinedIcon />}
+                                                textColor="neutral.300"
+                                                fontSize={"sm"}
+                                            >
+                                                {product.productDesc?.slice(0, 50) || "No description"}
+                                            </Typography>
+                                        </CardOverflow>
+                                    </Card>
                                 </CssVarsProvider>
                             );
                         })

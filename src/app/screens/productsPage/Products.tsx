@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Box, Button, Checkbox, Container, FormControlLabel, Stack } from "@mui/material";
+import { Box, Button, Checkbox, Container, FormControlLabel, Stack, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -109,7 +109,7 @@ export default function Products(props: ProductsProps) {
             <Stack flexDirection="column" alignItems="center">
                 <Stack className="avatar-big-box">
                     <Stack className="top-title">
-                        <Box className="top-text">Apple Store</Box>
+                        <Box className="top-text">Shop Apple Devices</Box>
                             <Box className="single-search">
                                 <input
                                     type={"search"}
@@ -131,25 +131,32 @@ export default function Products(props: ProductsProps) {
                                     Search
                                 </Button>
                             </Box>
-
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={productSearch.countInStock === 1}
-                                        onChange={(e) =>
-                                            setProductSearch({
-                                                ...productSearch,
-                                                countInStock: e.target.checked ? 1 : undefined,
-                                            })
-                                        }
-                                    />
-                                }
-                                    label={"Show only in-stock products"}
-                            />
+                            <div className="filter-bar">
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            className="show-btn"
+                                            checked={productSearch.countInStock === 1}
+                                            onChange={(e) =>
+                                                setProductSearch({
+                                                    ...productSearch,
+                                                    countInStock: e.target.checked ? 1 : undefined,
+                                                })
+                                            }
+                                        />
+                                    }
+                                        label={<span 
+                                            className="in-stock-label"
+                                            color="secondary"
+                                        >
+                                            Show only in-stock products</span>}
+                                        labelPlacement="end"
+                                />
+                            </div>
                     </Stack>
                 </Stack>
-                <Stack className={"dishes-filter-section"}>
-                    <Stack className={"dishes-filter-box"}>
+                <Stack className={"product-filter-section"}>
+                    <Stack className={"products-filter-box"}>
                         <Button
                             variant={"contained"}
                             className={"order"}
@@ -238,7 +245,7 @@ export default function Products(props: ProductsProps) {
                             const sizeVolume = 
                                 product.productCategory === ProductCategory.SMARTPHONE 
                                 ? product.productStorage + "GB" 
-                                : product.productColor + "white";
+                                : product.productColor + "WHITE";
                             return (
                                 <Stack 
                                     key={product._id} 
@@ -342,19 +349,22 @@ export default function Products(props: ProductsProps) {
             </Stack>
         </Container>
         <div className={"brands-logo"}>
-            <Box className="brand-text">Our Family Brands</Box>
+            <Box className="brand-text">Top Products</Box>
             <Stack className="brand-cards">
                 <Box className="brand-card">
-                    <img src="/img/gurme.webp" alt="" />
+                    <img src="/img/macbook.jpg" alt="MacBook Pro" />
                 </Box>
                 <Box className="brand-card">
-                    <img src="/img/seafood.webp" alt="" />
+                    <img src="/img/ipad.jpg" alt="iPad Pro" />
                 </Box>
                 <Box className="brand-card">
-                    <img src="/img/sweets.webp" alt="" />
+                    <img src="/img/16max.jpg" alt="iPhone 16 Pro Max" />
                 </Box>
                 <Box className="brand-card">
-                    <img src="/img/doner.webp" alt="" />
+                    <img src="/img/visionpro.jpg" alt="Apple Vision Pro" />
+                </Box>
+                <Box className="brand-card">
+                    <img src="/img/watch.jpg" alt="Apple Watch Ultra 2" />
                 </Box>
             </Stack>
         </div>
@@ -362,15 +372,20 @@ export default function Products(props: ProductsProps) {
             <Box className={"title"}>Our address</Box>
             <Container>
                 <Box className="address-area">
-                <iframe
-                    title="Google Maps - Wonju City Central Library"
-                    style={{ marginTop: "60px" }}
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6919.797538763219!2d127.94381393396152!3d37.32495849246551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356375bf121c3f79%3A0x1eac894dee1c07c6!2sWonju%20City%20Central%20Library!5e0!3m2!1sen!2skr!4v1712350784388!5m2!1sen!2skr"
-                    width="1300"
-                    height="568"
-                    referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                    <iframe
+                        title="Apple Woodfield Location"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.936796938176!2d-88.0401159!3d42.045953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faf96c7f69451%3A0xa81c0f988d4f6cde!2sApple%20Woodfield!5e0!3m2!1sen!2sus!4v1713387000000"
+                        width="1300"
+                        height="658"
+                        style={{ border: "35px" }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                 </Box>
+                <Typography variant="h5" align="center" sx={{ mt: 4, mb: 2 }}>
+                    Visit Our Store Location
+                </Typography>
             </Container>
         </div>
     </div>;

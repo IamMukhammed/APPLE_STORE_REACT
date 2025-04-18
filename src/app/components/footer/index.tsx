@@ -41,16 +41,16 @@ export default function Footer() {
         <Stack direction="row" justifyContent="space-between" flexWrap="wrap">
           {/* Brand Info */}
           <Box sx={{ maxWidth: "320px" }}>
-            <Logo src="/icons/apple-store-tech-logo.svg" alt="logo" />
-            <Box sx={{ mt: 2, fontSize: "14px", lineHeight: "1.8" }}>
+            <Logo src="/icons/apple-store.svg" alt="" />
+            <Box sx={{ mt: 2, fontSize: "14px", lineHeight: "2" }}>
               Apple Store delivers premium electronics from global brands.
               Fast shipping, trusted warranty, and top-tier customer support.
             </Box>
             <SocialIcons>
-              <img src="/icons/facebook.svg" alt="facebook" />
-              <img src="/icons/twitter.svg" alt="twitter" />
-              <img src="/icons/instagram.svg" alt="instagram" />
-              <img src="/icons/youtube.svg" alt="youtube" />
+              <img src="/icons/facebook.svg" alt="Facebook" />
+              <img src="/icons/twitter.svg" alt="Twitter" />
+              <img src="/icons/instagram.svg" alt="Instagram" />
+              <img src="/icons/youtube.svg" alt="Youtube" />
             </SocialIcons>
           </Box>
 

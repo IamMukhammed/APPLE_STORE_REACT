@@ -89,7 +89,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
               })
             ) : (
               <SwiperSlide>
-                <img className="slider-image" src="/img/default-product.webp" />
+                <img className="slider-image" src="/icons/default-product.svg" />
               </SwiperSlide>
             )}
           </Swiper>
@@ -129,7 +129,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                       quantity: 1,
                       name: chosenProduct.productName,
                       price: chosenProduct.productPrice,
-                      image: chosenProduct.productImages?.[0] || "/img/default-product.webp",
+                      image: chosenProduct.productImages?.[0] || "/icons/default-product.svgp",
                       countInStock: chosenProduct.productLeftCount || 0,
                     });
                   } else {

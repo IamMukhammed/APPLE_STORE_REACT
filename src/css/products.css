@@ -43,13 +43,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 80%;
+    margin-left: 105%;
 }
 
 .products-page .products .avatar-big-box .top-title .single-search .single-button-search {
     position: absolute;
     right: 0;
-    border-radius: 18.5px;
+    border-radius: 18.4px;
     background: #343434;
 }
 
@@ -59,14 +59,14 @@
     background: #fffcfc;
     box-shadow: 0px 4px 4px 0px rgba(212, 212, 212, 0.25);
     width: 360px;
-    height: 28.541px;
-    flex-shrink: 0;
+    height: 38px;
     padding-left: 20px;
 }
 
-  /*  */
+
+/*  */
   
-.products-page .products .dishes-filter-section {
+.products-page .products .product-filter-section {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -74,10 +74,10 @@
     margin-top: 60px;
 }
 
-.products-page .products .dishes-filter-section .dishes-filter-box {
+.products-page .products .product-filter-section .products-filter-box {
     display: flex;
     gap: 20px;
-    padding-right: 15%;
+    padding-right: 10px;
     flex-direction: row;
 }
   
@@ -87,18 +87,19 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
+    /* margin-bottom: 20px; */
 }
   
 .products-page .products .list-category-section .product-category {
     display: flex;
-    gap: 50px;
-    padding-top: 7%;
-    width: 78px;
+    gap: 80px;
+    padding-bottom: 270px;
+    width: 98px;
+    padding-top: 75px;
 }
   
 .products-page .products .list-category-section .product-category button {
-    height: 36px;
+    height: 34px;
     font-weight: 600;
     font-size: 12px;
     transform: rotate(-90deg);
@@ -107,11 +108,11 @@
 /* */
 
 .products-page .products .product-wrapper {
-    width: 85%;
+    width: 85px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 34px;
-    margin-top: -37%;
+    gap: 35px;
+    margin-top: -40%;
 }
   
 .products-page .products .product-wrapper .product-card {
@@ -296,6 +297,12 @@
     /* margin-top: 20px; */
     display: flex;
     margin-bottom: 89px;
+}
+
+.products-page .products .address-area iframe {
+  max-width: 1300px;
+  width: 100%;
+  border-radius: 8px;
 }
 
 .products-page .products .title {

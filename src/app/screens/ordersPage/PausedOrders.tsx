@@ -72,7 +72,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
                             )!;
                             const imagePath = product.productImages?.[0]
                                 ? `${serverApi}/${product.productImages[0]}`
-                                : "/img/default-product.webp";
+                                : "/icons/default-product.svg";
 
                             return (
                                 <Box key={item._id} className="orders-name-price">

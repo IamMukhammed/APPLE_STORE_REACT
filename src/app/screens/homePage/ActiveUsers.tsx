@@ -43,7 +43,7 @@ export default function ActiveUsers() {
                                             <CardOverflow variant="soft" className={"bottom-frame"}>
                                                 <Stack className="info">
                                                     <Stack flexDirection={"column"}>
-                                                        <Typography className={"member-nickname"}>
+                                                        <Typography className={"member-name"}>
                                                             {member.memberName}
                                                         </Typography>
                                                     </Stack>
@@ -53,7 +53,7 @@ export default function ActiveUsers() {
                                     );
                                 })
                             ) : (
-                                <Box className={"no-data"}>No Top Customers Found!</Box>
+                                <Box className={"no-data"}>No Top Users Found!</Box>
                             )}
                         </CssVarsProvider>
                     </Stack>

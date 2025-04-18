@@ -5,7 +5,7 @@ export const storeHighlights = [
 	  author: 'Apple Deals Team',
 	  date: '30 min ago',
 	  location: 'Online / Global',
-	  img: '/img/apple-deal.webp',
+	  img: '/icons/apple-day.svg',
 	},
 	{
 	  title: 'Coming Next Week',
@@ -13,7 +13,7 @@ export const storeHighlights = [
 	  author: 'Apple Store Insider',
 	  date: '2 days ago',
 	  location: 'USA, Apple HQ',
-	  img: '/img/apple-launch.webp',
+	  img: '/icons/cooming.svg',
 	},
 	{
 	  title: 'MacBook Air M4 Arrives',
@@ -21,7 +21,7 @@ export const storeHighlights = [
 	  author: 'Tech Review Hub',
 	  date: '5 days ago',
 	  location: 'USA, California',
-	  img: '/img/macbook-air.webp',
+	  img: '/icons/macbook.svg',
 	},
 	{
 	  title: 'Follow Us on Socials',
@@ -29,6 +29,6 @@ export const storeHighlights = [
 	  author: 'Apple Store Media',
 	  date: 'A week ago',
 	  location: 'Europe, France',
-	  img: '/img/social-banner.webp',
+	  img: '/icons/socials.svg',
 	},
 ];

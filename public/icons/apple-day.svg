@@ -1,0 +1,15 @@
+<svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" rx="20" fill="#f5f5f7"/>
+
+  <!-- Apple Logo (Minimal) -->
+  <path d="M80 60C84 60 88 56 89.5 53C87 51 84 50 80 50C77 50 74 51 72.5 53C74 56 77 60 80 60ZM89 75C87.5 77 85.5 79 83 79C80.5 79 79 77.5 77 77.5C75 77.5 73 79 71 79C68 79 64.5 75.5 63 72C60 65 64 59 68 57C70 56 72.5 56.5 74.5 58C75.5 58.5 77 59 78 59C79 59 80.5 58.5 81.5 58C82.5 57.5 84 57 85.5 58C87 59 88 60.5 88.5 62C90.5 67 91 72.5 89 75Z" fill="black"/>
+
+  <!-- Text -->
+  <text x="120" y="60" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#000" font-weight="bold">
+    Apple Days
+  </text>
+  <text x="120" y="100" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#444">
+    Up to <tspan font-weight="bold" fill="#D70015">30% Off</tspan> on select products
+  </text>
+</svg>

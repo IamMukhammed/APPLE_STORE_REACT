@@ -48,31 +48,31 @@
     color: #D7B586;
 }
 
-/* POPULAR DISHES */
+/* POPULAR PRODUCTS */
 
-.homepage .popular-dishes-frame {
+.homepage .popular-products-frame {
     width: 100%;
     height: 580px;
     display: flex;
     background: #f8f8ff;
 }
 
-.homepage .popular-dishes-frame .popular-section {
+.homepage .popular-products-frame .popular-section {
     margin-top: 45px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.homepage .popular-dishes-frame .popular-section .title {
+.homepage .popular-products-frame .popular-section .title {
     width: 291px;
-    margin-top: 41px;
+    /* margin-top: 5px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-family: "Roboto Serif";
-    font-size: 36px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -80,7 +80,7 @@
     color: #000;
 }
 
-.homepage .popular-dishes-frame .popular-section .cards-frame {
+.homepage .popular-products-frame .popular-section .cards-frame {
     width: 100%;
     margin-top: 43px;
     display: flex;
@@ -88,13 +88,13 @@
     justify-content: space-between;
 }
 
-.homepage .popular-dishes-frame .cards-frame .card {
+.homepage .popular-products-frame .cards-frame .card {
     min-height: 430px;
     min-width: 300px;
     cursor: pointer;
 }
 
-.homepage .popular-dishes-frame .cards-frame .card .card-cover {
+.homepage .popular-products-frame .cards-frame .card .card-cover {
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.4),
@@ -107,7 +107,7 @@
     )
 }
 
-.homepage .popular-dishes-frame .no-data {
+.homepage .popular-products-frame .no-data {
     width: 100%;
     height: 300px;
     display: flex;
@@ -122,9 +122,9 @@
     color: #e3c08d;
 }
 
-/* NEW DISHES */
+/* NEW PRODUCTS */
 
-.homepage .new-dishes-frame {
+.homepage .new-arrivals-frame {
     width: 100%;
     height: 580px;
     display: flex;
@@ -138,28 +138,30 @@
     align-items: center;
 }
 
-.homepage .new-dishes-frame .category-title {
-   font-family: "Dancing Script";
-   font-style: normal;
-   font-weight: 700;
-   font-size: 36px;
-   line-height: 43px;
+.homepage .new-arrivals-frame .category-title {
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 43px;
+  margin-top: 5px;
+
 }
 
-.homepage .new-dishes-frame .main .cards-frame {
+.homepage .new-arrivals-frame .main .cards-frame {
     width: 100%;
     margin: 47px 2px 2px 2px;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.homepage .new-dishes-frame .main .card {
+.homepage .new-arrivals-frame .main .card {
     height: 335px;
     width: 290px;
     cursor: pointer;
 }
 
-.homepage .new-dishes-frame .product-sale {
+.homepage .new-arrivals-frame .product-spec {
     position: absolute;
     margin-top: 10px;
     z-index: 100;
@@ -179,7 +181,7 @@
     color: #f8f8ff;
 }
 
-.homepage .new-dishes-frame .product-details {
+.homepage .new-arrivals-frame .product-details {
     width: auto;
     height: 49px;
     display: flex;
@@ -190,7 +192,7 @@
     background-color: #fafbfb;
 }
 
-.homepage .new-dishes-frame .product-details .info {
+.homepage .new-arrivals-frame .product-details .info {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -198,30 +200,30 @@
     align-items: center;
 }
 
-.homepage .new-dishes-frame .product-details .title {
+.homepage .new-arrivasl-frame .product-details .title {
     width: 65px;
     font-weight: 500;
 }
 
-.homepage .new-dishes-frame .product-details .price {
+.homepage .new-arrivals-frame .product-details .price {
     margin-left: 10px;
     width: 20px;
     font-weight: 500;
 }
 
-.homepage .new-dishes-frame .product-details .divider {
+.homepage .new-arrivals-frame .product-details .divider {
     margin: 0 10px 0 10px;
     width: 2px;
     background-color: #d9d9d9;
 }
 
-.homepage .new-dishes-frame .product-details .views {
+.homepage .new-arrivlas-frame .product-details .views {
     display: flex;
     align-items: center;
     font-weight: 500;
 }
 
-.homepage .new-dishes-frame .no-data {
+.homepage .new-arrivals-frame .no-data {
     width: 100%;
     height: 300px;
     display: flex;
@@ -317,17 +319,30 @@
     background: #FFF;
   }
   
-  .homepage .active-users .active-user-cards .card .member-nickname {
+  .homepage .active-users .active-user-cards .card .member-name {
     width: 100%;
     font-weight: 500;
     font-size: 20px;
     margin-left: 36%;
   }
 
-/* EVENTS */
+  .homepage .active-users .no-data {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    color: #e3c08d;
+}
+
 
 /** EVENTS **/
-
 .homepage .events-frame {
     width: 100%;
     height: 745px;

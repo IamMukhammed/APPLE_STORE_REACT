@@ -13,7 +13,7 @@ import { createSelector } from "reselect";
 import { retrieveNewProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
-import { ProductCategory } from "../../../lib/enums/product.enum";
+
 
 /* REDUX SLICE & SELECTOR */
 const NewProductsRetriever = createSelector(
@@ -27,7 +27,7 @@ export default function NewProducts() {
     console.log("newProducts:", newProducts);
 
     return (
-        <div className={"new-awwivals-frame"}>
+        <div className={"new-arrivals-frame"}>
             <Container>
                 <Stack className={"main"}>
                     <Box className={"category-title"}>New Arrivals</Box>
