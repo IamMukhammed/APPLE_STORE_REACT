@@ -44,7 +44,7 @@ export default function ActiveUsers() {
                                                 <Stack className="info">
                                                     <Stack flexDirection={"column"}>
                                                         <Typography className={"member-name"}>
-                                                            {member.memberName}
+                                                            {member.memberNick}
                                                         </Typography>
                                                     </Stack>
                                                 </Stack>

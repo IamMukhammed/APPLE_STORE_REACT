@@ -26,10 +26,9 @@ export default function HelpPage() {
   
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
-    const email = form.get("email");
     const message = form.get("message");
   
-    console.log({ name, email, message });
+    console.log({ name, message });
   
     // ✅ Formani tozalash:
     e.currentTarget.reset();
@@ -101,16 +100,8 @@ export default function HelpPage() {
                         <label>Your full name</label>
                         <input
                           type={"text"}
-                          name={"memberName"}
+                          name={"memberNick"}
                           placeholder={"Type your name here"}
-                        />
-                      </div>
-                      <div className={"admin-input-box"}>
-                        <label>Phone number</label>
-                        <input
-                          type={"text"}
-                          name={"memberPhone"}
-                          placeholder={"Type your phone here"}
                         />
                       </div>
                       <div className={"admin-input-box"}>

@@ -40,24 +40,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 
     /* HANDLERS */
     
-
-
     return (
         <div className="home-navbar">
-            
-                <div className="navigation-menu">
-                    <ul className="nav justify-content-end">
-                        ...
-                        <li className="nav-item" style={{ cursor: "pointer"}}>
-                        <button id="toggle-theme" title="Toggle Theme">🌙</button>
-                        </li>
-                    </ul>
-                </div>
             <Container className="navbar-container">
                 <Stack className="menu">
                     <Box>
                         <NavLink to="/">
-                            <img className="brand-logo" src="/icons/apple.svg"/>                    
+                            {/* <img className="brand-logo" src="/icons/apple.svg"/>                     */}
                         </NavLink>
                     </Box>
                     <Stack className="links">

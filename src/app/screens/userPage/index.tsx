@@ -56,13 +56,13 @@ export default function UserPage() {
                     <img 
                       src={
                         authMember?.memberType === MemberType.SELLER 
-                        ? "/icons/apple-store.svg" 
+                        ? "/icons/user-badge.svg" 
                         : "/icons/user-badge.svg"
                       } 
                     />
                   </div>
                 </div>
-                <span className={"order-user-name"}>{authMember?.memberName}</span>
+                <span className={"order-user-name"}>{authMember?.memberNick}</span>
                 <span className={"order-user-prof"}>{authMember?.memberType}</span>
                 <span className={"order-user-prof"}>{authMember?.memberAddress ? authMember.memberAddress : "No address"}</span>
               </Box>

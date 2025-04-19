@@ -110,13 +110,13 @@ export default function OrdersPage() {
                   />
                   <div className="order-user-icon-box">
                     <img
-                      src={authMember?.memberType === MemberType.SELLER ? "/icons/apple-store.svg" : "/icons/user-badge.svg"}
+                      src={authMember?.memberType === MemberType.SELLER ? "/icons/user-badge.svg" : "/icons/user-badge.svg"}
                       alt=""
                       className="order-user-prof-img"
                     />
                   </div>
                 </div>
-                <span className="order-user-name">{authMember?.memberName || "No specified"}</span>
+                <span className="order-user-name">{authMember?.memberNick || "No specified"}</span>
                 <span className="order-user-prof">{authMember?.memberType}</span>
               </Box>
               <Box className="liner">

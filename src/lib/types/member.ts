@@ -2,45 +2,42 @@ import { MemberStatus, MemberType } from "../enums/member.enum";
 
 export interface Member {
     _id: string;
-    memberName: string;
-    memberEmail: string;
-    memberPhone: number;
     memberType: MemberType;
     memberStatus: MemberStatus;
-    memberImage?: string;
+    memberNick: string;
+    memberPhone: string;
+    memberPassword?: string;
     memberAddress?: string;
     memberDesc?: string;
+    memberImage?: string;
     memberPoints?: number;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export interface MemberInput {
-    memberName: string;
-    memberEmail: string;
-    memberPhone: number;
-    memberPassword: string;
     memberType?: MemberType;
     memberStatus?: MemberStatus;
-    memberImage?: string;
+    memberNick: string;
+    memberPhone: string;
+    memberPassword: string;
     memberAddress?: string;
     memberDesc?: string;
+    memberImage?: string;
     memberPoints?: number;
 }
 
 export interface LoginInput {
-    memberPhone: number;
-    memberEmail: string;
+    memberNick: string;
     memberPassword: string;
 }
 
 export interface MemberUpdateInput {
-    memberName?: string;
-    memberEmail?: string;
-    memberPhone?: number;
-    memberPassword?: string;
     memberType?: MemberType;
-    memberImage?: string;
+    memberNick?: string;
+    memberPhone?: string;
+    memberPassword?: string;
     memberAddress?: string;
     memberDesc?: string;
+    memberImage?: string;
 }

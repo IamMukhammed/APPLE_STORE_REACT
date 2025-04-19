@@ -1,7 +1,6 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
-import { MenuItemPropsColorOverrides } from "@mui/joy";
 
 
 class MemberService {
@@ -91,9 +90,8 @@ class MemberService {
     public async updateMember(input: MemberUpdateInput): Promise<Member> {
         try {
             const formData = new FormData();
-            formData.append("memberNick", input.memberName || "");
-            formData.append("memberPhone", input.memberEmail || "");
-            // formData.append("memberPhone", input.memberPhone || "");
+            formData.append("memberNick", input.memberNick || "");
+            formData.append("memberPhone", input.memberPhone || "");
             formData.append("memberAddress", input.memberAddress || "");
             formData.append("memberDesc", input.memberDesc || "");
             formData.append("memberImage", input.memberImage || "");

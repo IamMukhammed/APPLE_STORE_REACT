@@ -38,15 +38,6 @@ export default function Products(props: ProductsProps) {
     const { onAdd } = props;
     const { setProducts } = actionDispatch(useDispatch());
     const { products } = useSelector(productsRetriever);
-    
-    // const [ productSearch, setProductSearch ] = useState<ProductInquiry>({
-    //     page: 1,
-    //     limit: 8,
-    //     order: "createdAt",
-    //     productCategory: ProductCategory.SMARTPHONE,
-    //     productSearch: "",
-    //     countInStock: 1,
-    // });
 
     const [ productSearch, setProductSearch ] = useState<ProductInquiry>({
         search: "",
@@ -131,7 +122,7 @@ export default function Products(props: ProductsProps) {
                                     Search
                                 </Button>
                             </Box>
-                            <div className="filter-bar">
+                            {/* <div className="filter-bar">
                                 <FormControlLabel
                                     control={
                                         <Checkbox
@@ -152,7 +143,7 @@ export default function Products(props: ProductsProps) {
                                             Show only in-stock products</span>}
                                         labelPlacement="end"
                                 />
-                            </div>
+                            </div> */}
                     </Stack>
                 </Stack>
                 <Stack className={"product-filter-section"}>
@@ -244,7 +235,7 @@ export default function Products(props: ProductsProps) {
                             const imagePath = `${serverApi}/${product.productImages[0]}`;
                             const sizeVolume = 
                                 product.productCategory === ProductCategory.SMARTPHONE 
-                                ? product.productStorage + "GB" 
+                                ? product.productStorage + "" 
                                 : product.productColor + "WHITE";
                             return (
                                 <Stack 
@@ -314,25 +305,6 @@ export default function Products(props: ProductsProps) {
                     )}
                 </Stack>
                 <Stack className={"pagination-section"} spacing={2}>
-                    {/* <Pagination 
-                        count={products.length !== 0 
-                            ? productSearch.page + 1 
-                            : productSearch.page
-                        }
-                        // color="secondary"
-                        page={productSearch.page}
-                        renderItem={(item) => (
-                            <PaginationItem 
-                                components={{
-                                    previous: ArrowBackIcon,
-                                    next: ArrowForwardIcon,
-                                }}
-                                {...item}
-                                color={"secondary"}
-                            />
-                        )}
-                        onChange={paginationHandler}
-                    /> */}
                     <Pagination
                         count={10} // vaqtincha test uchun
                         page={productSearch.page}
