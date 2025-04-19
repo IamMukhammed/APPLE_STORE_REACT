@@ -47,11 +47,25 @@ export default function Footer() {
               Fast shipping, trusted warranty, and top-tier customer support.
             </Box>
             <SocialIcons>
-              <img src="/icons/facebook.svg" alt="Facebook" />
-              <img src="/icons/x.svg" alt="X" />
-              <img src="/icons/instagram.svg" alt="Instagram" />
-              <img src="/icons/youtube.svg" alt="Youtube" />
-              <img src="/icons/telegram.svg" alt="Telegram" />
+              <a href="https://www.facebook.com/apple/" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/facebook.svg" alt="Facebook" />
+              </a>
+
+              <a href="https://twitter.com/Apple" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/x.svg" alt="X" />
+              </a>
+
+              <a href="https://www.instagram.com/apple/" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/instagram.svg" alt="Instagram" />
+              </a>
+
+              <a href="https://www.youtube.com/@Apple" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/youtube.svg" alt="YouTube" />
+              </a>
+
+              <a href="https://t.me/apple" target="_blank" rel="noopener noreferrer">
+                <img src="/icons/telegram.svg" alt="Telegram" />
+              </a>
             </SocialIcons>
           </Box>
 
@@ -75,6 +89,7 @@ export default function Footer() {
               <div>📞 +1 (555) 123-4567</div>
               <div>✉️ support@appletech.com</div>
               <div>🕒 Mon - Fri: 9am - 6pm</div>
+              {/* <div>🕒 Sat - Sun: 10am - 5pm</div> */}
             </Stack>
           </Box>
         </Stack>

@@ -44,6 +44,15 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 
     return (
         <div className="home-navbar">
+            
+                <div className="navigation-menu">
+                    <ul className="nav justify-content-end">
+                        ...
+                        <li className="nav-item" style={{ cursor: "pointer"}}>
+                        <button id="toggle-theme" title="Toggle Theme">🌙</button>
+                        </li>
+                    </ul>
+                </div>
             <Container className="navbar-container">
                 <Stack className="menu">
                     <Box>

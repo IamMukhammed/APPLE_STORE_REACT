@@ -203,24 +203,24 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
               <h2>Login Form</h2>
               <TextField
                 id="outlined-basic"
-                label="FUll Name"
+                label="Full Name"
                 variant="outlined"
                 sx={{ my: "10px" }}
                 onChange={handleName}
               />
               <TextField
                 id={"outlined-basic"}
-                label={"password"}
+                label={"Password"}
                 variant={"outlined"}
                 type={"password"}
                 onChange={handlePassword}
                 onKeyDown={hadnlePasswordKeyDown}
               />
               <Fab
-                // sx={{ marginTop: "27px", width: "120px" }}
-                // variant={"extended"}
-                // color={"primary"}
-                // onClick={handeLoginRequest}
+                sx={{ marginTop: "27px", width: "120px" }}
+                variant={"extended"}
+                color={"primary"}
+                onClick={handleLoginRequest}
               >
                 <LoginIcon sx={{ mr: 1 }} />
                 Login
