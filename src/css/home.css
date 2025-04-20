@@ -295,9 +295,49 @@ color: var(--text-color);
 }
 
 .homepage .active-users .active-user-cards .card {
-  width: 305px;
-  height: auto;
+  width: 260px;
+  height: 260px;
+  margin-top: 35px;
+  position: relative;
+  background: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.homepage .active-users .active-user-cards .card:hover {
+  transform: scale(1.05);
+}
+
+.homepage .active-users .active-user-cards .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.homepage .active-users .active-user-cards .card .user-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins";
+  text-align: center;
+  line-height: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.homepage .active-users .active-user-cards .card:hover .user-overlay {
+  opacity: 1;
 }
 
 .homepage .active-users .active-user-cards .card .user-size {
@@ -305,6 +345,7 @@ color: var(--text-color);
   font-family: "Roboto Serif";
   font-style: normal;
   font-weight: 600;
+  font-size: 18px;
   color: var(--text-color);
 }
 
@@ -326,8 +367,9 @@ color: var(--text-color);
 .homepage .active-users .active-user-cards .card .member-name {
   width: 100%;
   font-weight: 500;
-  font-size: 20px;
-  margin-left: 36%;
+  font-size: 16px;
+  color: var(--text-color);
+  margin-top: 8px;
 }
 
 .homepage .active-users .no-data {

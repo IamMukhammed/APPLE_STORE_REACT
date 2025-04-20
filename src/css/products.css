@@ -45,7 +45,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-left: 80%;
+  margin-left: 75%;
 }
 
 .products-page .products .avatar-big-box .top-title .single-search .single-button-search {
@@ -57,14 +57,47 @@
 
 .products-page .products .avatar-big-box .top-title .single-search-input {
   border-radius: 18.5px;
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  background: var(--card-bg);
+  border: 1px solid #fff;
+  background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(212, 212, 212, 0.25);
   width: 360px;
-  height: 38px;
+  height: 35px;
   flex-shrink: 0;
   padding-left: 20px;
+  /* margin-top: 5%; */
+}
+
+/* */
+
+/* FILTER SORT MENU */
+.filter-sort-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 25px;
+  margin-right: 65%;
+  margin-top: -5%;
+}
+
+.filter-sort-menu .filter-select {
+  min-width: 200px;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.filter-sort-menu .filter-select .MuiInputBase-root {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.filter-sort-menu .MuiOutlinedInput-notchedOutline {
+  border-color: var(--text-color);
+}
+
+.filter-sort-menu .MuiInputLabel-root {
+  color: var(--text-color);
 }
 
 /*  */
@@ -77,20 +110,12 @@
   margin-top: 60px;
 }
 
-.products-page .products .product-filter-section .products-filter-box {
-  display: flex;
-  gap: 20px;
-  padding-right: 15%;
-  flex-direction: row;
-}
-
 /*  */
 
 .products-page .products .list-category-section {
   width: 100%;
   display: flex;
   flex-direction: row;
-  /* margin-top: 40px; */
 }
 
 .products-page .products .list-category-section .product-category {
@@ -115,7 +140,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 34px;
-  margin-top: -65%;
   margin-bottom: 1%;
 }
 
@@ -196,7 +220,7 @@
   height: 275px;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 0px 50px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   position: relative;
 }
 
@@ -217,7 +241,8 @@
 
 .products-page .products .product-desc .product-title {
   display: block;
-  margin-top: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   font-family: Poppins;
   font-size: 20px;
   font-style: normal;
@@ -229,6 +254,7 @@
 .products-page .products .product-desc .product-price {
   display: flex;
   justify-content: center;
+  margin-bottom: 5px;
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;

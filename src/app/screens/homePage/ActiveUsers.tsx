@@ -18,6 +18,7 @@ const topUserRetriever = createSelector(
     (topUsers) => ({ topUsers })
 );
 
+
 export default function ActiveUsers() {
     const { topUsers } = useSelector(topUserRetriever);
 
@@ -38,6 +39,7 @@ export default function ActiveUsers() {
                                             <CardOverflow className={"user-size"}>
                                                 <AspectRatio ratio="1">
                                                     <img src={imagePath} />
+                                                    <div className={"user-overlay"}>{member.memberNick}</div>
                                                 </AspectRatio>
                                             </CardOverflow>
                                             <CardOverflow variant="soft" className={"bottom-frame"}>

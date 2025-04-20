@@ -18,12 +18,23 @@ export interface Product {
     updatedAt: Date;
 }
 
+// export interface ProductInquiry {
+//     search: string;
+//     order?: string;
+//     page?: number;
+//     limit?: number;
+//     productCategory?: ProductCategory;
+//     productSearch?: string;
+//     countInStock?: number;
+// }
+
 export interface ProductInquiry {
     search: string;
-    order?: string;                  // "asc" | "desc" yoki field nomi
-    page?: number;
+    page: number;
     limit?: number;
+    order: string;
     productCategory?: ProductCategory;
     productSearch?: string;
     countInStock?: number;
-}
+    productBrands?: string[];
+  }
