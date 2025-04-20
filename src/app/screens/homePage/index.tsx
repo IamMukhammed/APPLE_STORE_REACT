@@ -3,6 +3,7 @@ import Statistics from "./Statistics";
 import PopularProducts from "./PopularProducts";
 import NewProducts from "./NewProducts";
 import Advertisement from "./Advertisement";
+import ServiceBar from "./ServiceBar";
 import ActiveUsers from "./ActiveUsers";
 import Events from "./Events";
 import { useDispatch } from "react-redux";
@@ -75,6 +76,7 @@ export default function HomePage() {
       <PopularProducts />
       <NewProducts />
       <Advertisement />
+      <ServiceBar />
       <ActiveUsers />
       <Events />
     </div>

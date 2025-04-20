@@ -8,7 +8,8 @@
 .homepage .static-frame {
   width: 100%;
   height: 236px;
-  background: #343434;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .homepage .static-frame .info {
@@ -35,7 +36,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 80px;
-  color: #d7b686;
+  color: var(--highlight-color, #d7b686);
 }
 
 .homepage .static-frame .info .static-box .static-txt {
@@ -45,7 +46,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
-  color: #D7B586;
+  color: var(--highlight-color, #d7b586);
 }
 
 /* POPULAR PRODUCTS */
@@ -54,7 +55,7 @@
   width: 100%;
   height: 580px;
   display: flex;
-  background: #f8f8ff;
+  background: var(--card-bg);
 }
 
 .homepage .popular-products-frame .popular-section {
@@ -77,7 +78,7 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: 1.44px;
-  color: #000;
+  color: var(--text-color);
 }
 
 .homepage .popular-products-frame .popular-section .cards-frame {
@@ -119,7 +120,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 34px;
-  color: #e3c08d;
+  color: var(--highlight-color, #e3c08d);
 }
 
 /* NEW PRODUCTS */
@@ -128,7 +129,7 @@
   width: 100%;
   height: 580px;
   display: flex;
-  background: #f8f8ff;
+  background: var(--card-bg);
 }
 
 .homepage .main {
@@ -145,19 +146,20 @@ font-weight: 700;
 font-size: 35px;
 line-height: 43px;
 margin-top: 5px;
-
+color: var(--text-color);
 }
 
 .homepage .new-arrivals-frame .main .cards-frame {
   width: 100%;
   margin: 47px 2px 2px 2px;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .homepage .new-arrivals-frame .main .card {
-  height: 335px;
   width: 290px;
+  height: 335px;
   cursor: pointer;
 }
 
@@ -178,7 +180,7 @@ margin-top: 5px;
   font-weight: 600;
   font-size: 12px;
   line-height: 21px;
-  color: #f8f8ff;
+  color: var(--card-bg);
 }
 
 .homepage .new-arrivals-frame .product-details {
@@ -187,9 +189,10 @@ margin-top: 5px;
   display: flex;
   justify-content: center;
   margin-top: -12px;
-  border-top: 1px solid;
+  border-top: 1px solid var(--card-bg);
   border-color: #f8f8ff;
-  background-color: #fafbfb;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .homepage .new-arrivals-frame .product-details .info {
@@ -238,8 +241,8 @@ margin-top: 5px;
   color: #e3c08d;
 }
 
-/* ADVERTISEMENT */
 
+/* ADVERTISEMENT */
 .homepage .ads-apple-store-frame {
   width: 100%;
   height: 693px;
@@ -258,12 +261,12 @@ margin-top: 5px;
   overflow: hidden;
 }
 
-/* ACTIVE USERS */
 
+/* ACTIVE USERS */
 .homepage .active-users {
   width: 100%;
   height: 605px;
-  background: #f8f8ff;
+  background: var(--card-bg);
   display: flex;
 }
 
@@ -281,6 +284,7 @@ margin-top: 5px;
   font-weight: 700;
   font-size: 36px;
   line-height: 43px;
+  color: var(--text-color);
 }
 
 .homepage .active-users .active-user-cards {
@@ -301,7 +305,7 @@ margin-top: 5px;
   font-family: "Roboto Serif";
   font-style: normal;
   font-weight: 600;
-  color: #000;
+  color: var(--text-color);
 }
 
 .homepage .active-users .active-user-cards .card .bottom-frame {
@@ -346,7 +350,7 @@ margin-top: 5px;
 .homepage .events-frame {
   width: 100%;
   height: 745px;
-  background: #f8f8ff;
+  background: var(--card-bg);
   display: flex;
 }
 
@@ -357,6 +361,8 @@ margin-top: 5px;
   font-size: 36px;
   line-height: 43px;
   padding-top: 20px;
+  color: var(--text-color);
+
 }
 
 .homepage .events-frame .events-main {
@@ -427,9 +433,10 @@ margin-top: 5px;
   width: 90%;
   height: auto;
   bottom: 5px;
-  background: #f8f8ff;
+  background: var(--card-bg);
   box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
   border-radius: 8px;
+  color: var(--text-color);
 }
 
 .homepage .events-frame .events-desc .events-bott {
@@ -468,7 +475,7 @@ margin-top: 5px;
   font-family: "GT Walsheim Pro";
   font-style: normal;
   line-height: 34px;
-  color: #140342;
+  color: var(--text-color);
 }
 
 .homepage .events-frame .bott-left .text-desc {
@@ -478,7 +485,7 @@ margin-top: 5px;
   font-weight: 400;
   font-size: 17px;
   line-height: 26px;
-  color: #4f547b;
+  color: var(--text-color);
 }
 
 .homepage .events-frame .bott-left .bott-info {
@@ -502,7 +509,7 @@ margin-top: 5px;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #4f547b;
+  color: var(--text-color);
 }
 
 .homepage .events-frame .bott-info .bott-info-main img {
@@ -520,11 +527,11 @@ margin-top: 5px;
   height: 8px;
   text-align: center;
   opacity: 1;
-  background: #f8f8ff;
+  background: var(--bg-color);
   border-radius: 50%;
 }
 
 .homepage .events-frame .swiper-pagination-bullet-active {
-  background: #343434;
+  background: var(--text-color);
   border-radius: 50%;
 }
