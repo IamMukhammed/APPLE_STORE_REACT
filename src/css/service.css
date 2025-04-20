@@ -1,77 +1,69 @@
-/* LIGHT MODE UCHUN ISHLATILADI */
+/* === THEME VARIABLES === */
+/* index.css yoki main.css faylida bo'lishi kerak */
+
+/* 🌞 Light Mode */
 :root {
-    --navbar-bg: #f9f9f9;
-    --navbar-text: #111;
-    --scroll-thumb-color: #aaa;
+    --service-bg: #f8f8f8;
+    --service-text: #111;
 }
   
+  /* 🌙 Dark Mode */
 html.dark-theme {
-    --navbar-bg: #111;
-    --navbar-text: #f9f9f9;
-    --scroll-thumb-color: #555;
+    --service-bg: #1a1a1a;
+    --service-text: #f9f9f9;
 }
-
-.service-bar {
+  
+@media (prefers-color-scheme: dark) {
+    :root {
+        --navbar-bg: #111;
+        --navbar-text: #f9f9f9;
+        --scroll-thumb-color: #555;
+    }
+}
+  
+  
+  /* === SERVICE BAR STYLES === */
+  .service-bar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     padding: 24px 16px;
-    background-color: var(--navbar-bg, #eee);
-    color: var(--navbar-text, #111);
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
     gap: 32px;
     overflow-x: auto;
     border-top: 1px solid #ccc;
     scrollbar-width: thin;
-}
+  }
   
-.service-bar::-webkit-scrollbar {
+  .service-bar::-webkit-scrollbar {
     height: 6px;
-}
+  }
   
-.service-bar::-webkit-scrollbar-thumb {
+  .service-bar::-webkit-scrollbar-thumb {
     background-color: var(--scroll-thumb-color);
     border-radius: 10px;
-}
+  }
   
-.service-bar-item {
+  .service-bar-item {
     min-width: 160px;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
+  }
   
-.service-bar-item h4 {
+  .service-bar-item h4 {
     font-size: 15px;
     font-weight: 600;
     margin: 0;
-}
+    color: var(--navbar-text);
+  }
   
-.service-bar-item p {
+  .service-bar-item p {
     font-size: 13px;
     margin: 0;
-}
-
-
-/* DARK MODE UCHUN ISHLATILADI */
-:root {
-    --navbar-bg: #f9f9f9;
-    --navbar-text: #111;
-    --scroll-thumb-color: #aaa;
-}
-  
-html.dark-theme {
-    --navbar-bg: #111;
-    --navbar-text: #f9f9f9;
-    --scroll-thumb-color: #555;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-      --navbar-bg: #111;
-      --navbar-text: #f9f9f9;
-      --scroll-thumb-color: #555;
-    }
-}
+    color: var(--navbar-text);
+  }

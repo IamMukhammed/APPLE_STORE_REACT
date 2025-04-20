@@ -40,9 +40,9 @@ export default function NewProducts() {
                                 return (
                                     <Card key={product._id} variant="outlined" className={"card"}>
                                         <CardOverflow>
-                                            <div className="product-spec">
+                                            {/* <div className="product-spec">
                                                 {specs.slice(0, 24)}...
-                                            </div>
+                                            </div> */}
                                             <AspectRatio ratio="1">
                                                 <img src={imagePath} alt={product.productName} />
                                             </AspectRatio>

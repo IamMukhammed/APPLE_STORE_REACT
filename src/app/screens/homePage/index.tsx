@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Statistics from "./Statistics";
+// import Statistics from "./Statistics";
 import PopularProducts from "./PopularProducts";
 import NewProducts from "./NewProducts";
 import Advertisement from "./Advertisement";
@@ -51,7 +51,7 @@ export default function HomePage() {
       page: 1,
       limit: 4,
       order: "createdAt",
-      productCategory: ProductCategory.SMARTPHONE,
+      productCategory: ProductCategory.LAPTOP,
       search: ""
     })
     .then((data) => {
@@ -72,7 +72,7 @@ export default function HomePage() {
 
   return (
     <div className={"homepage"}>
-      <Statistics />
+      {/* <Statistics /> */}
       <PopularProducts />
       <NewProducts />
       <Advertisement />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
@@ -36,6 +36,23 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         handleLogoutRequest
     } = props;
     const { authMember } = useGlobals();
+
+    const [theme, setTheme] = useState<"light" | "dark">("light");
+
+    useEffect(() => {
+        const saved = localStorage.getItem("theme");
+        if (saved === "dark") {
+            document.documentElement.classList.add("dark-theme");
+            setTheme("dark");
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === "light" ? "dark" : "light";
+        document.documentElement.classList.toggle("dark-theme");
+        setTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+    };
     
 
     /* HANDLERS */
@@ -50,6 +67,15 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                         </NavLink>
                     </Box>
                     <Stack className="links">
+                        <Box className="hover-line">
+                            <button
+                                className="theme-toggle"
+                                onClick={toggleTheme}
+                                aria-label="Toggle Dark/Light Mode"
+                            >
+                                {theme === "light" ? "🌙" : "☀️"}
+                            </button>
+                        </Box>
                         <Box className={"hover-line"}>
                             <NavLink to="/" activeClassName={"underline"}>
                                 Home

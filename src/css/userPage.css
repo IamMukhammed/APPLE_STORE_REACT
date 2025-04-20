@@ -2,20 +2,8 @@
 	width: 100%;
 	height: auto;
 	display: flex;
-	background: #f8f8ff;
-}
-
-.user-page .css-heg063-MuiTabs-flexContainer {
-	flex-direction: column;
-}
-
-.user-page .css-mn3ro6-MuiTabs-indicator {
-	height: 0px;
-	width: 0px;
-}
-
-.user-page .css-1ujnqem-MuiTabs-root {
-	width: 100%;
+	background: var(--bg-color);
+	color: var(--text-color);
 }
 
 .user-page .my-page-frame {
@@ -38,12 +26,12 @@
 	height: 70px;
 	display: flex;
 	justify-content: center;
-	border-bottom: 1px solid #f8f8ff;
 	font-family: 'Poppins';
 	font-style: normal;
 	font-weight: 600;
 	font-size: 45px;
-	color: #f8f8ff;
+	/* color: var(--button-text); */
+	/* border-bottom: 1px solid var(--border-color); */
 }
 
 .my-page-left .menu-content {
@@ -86,8 +74,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #f6f2ff;
-	box-shadow: 15px 14px 4px rgba(0, 0, 0, 0.25), inset -1px 0px 16px 13px rgb(24 23 112 / 20%);
+	background: var(--card-bg);
+	color: var(--text-color);
+	box-shadow: 10px 10px 4px var(--shadow-color-1), inset -1px 0px 10px;
 	border-radius: 16px;
 }
 
@@ -131,7 +120,7 @@
 	font-weight: 500;
 	font-size: 28px;
 	line-height: 36px;
-	color: #08090d;
+	color: var(--text-color);
 }
 
 .user-page .order-info-box .order-user-prof {
@@ -140,7 +129,7 @@
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 36px;
-	color: #a1a1a1;
+	color: var(--muted-text);
 }
 
 .user-page .order-info-box .user-media-box {
@@ -161,7 +150,7 @@
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
-	color: #616164;
+	color: var(--muted-text);
 }
 
 .user-page .order-info-box .css-1e3kzd4-MuiButtonBase-root-MuiButton-root {
@@ -224,7 +213,7 @@
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 25px;
-	color: #f8f8ff;
+	color: var(--text-color);
 }
 
 .user-page .settings .spec-input {
@@ -234,15 +223,15 @@
 	width: 100%;
 	height: 54px;
 	border: none;
-	background: #f7f7f7;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background: var(--input-bg);
+	box-shadow: 0px 4px 4px var(--shadow-color-2);
 	border-radius: 5px;
 	font-family: 'GT Walsheim Pro';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 26px;
-	color: #4f547b;
+	color: var(--text-color);
 }
 
 .user-page .settings .spec-textarea {
@@ -252,15 +241,15 @@
 	width: 100%;
 	height: 200px;
 	border: none;
-	background: #f7f7f7;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background: var(--input-bg);
+	box-shadow: 0px 4px 4px var(--shadow-color-2);
 	border-radius: 5px;
 	font-family: 'GT Walsheim Pro';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 26px;
-	color: #4f547b;
+	color: var(--text-color);
 }
 
 .user-page .settings .member-media-frame {
@@ -294,7 +283,7 @@
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 18px;
-	color: #140342;
+	color: var(--text-color);
 }
 
 .user-page .settings .media-change-box p {
@@ -304,7 +293,7 @@
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 16px;
-	color: #4f547b;
+	color: var(--muted-text);
 }
 
 .user-page .settings .up-del-box {
@@ -312,7 +301,7 @@
 	width: 37px;
 	height: 37px;
 	display: flex;
-	background: #cbcbcb;
+	background: var(--input-bg);
 	border-radius: 8px;
 	justify-content: center;
 	align-items: center;
@@ -334,4 +323,8 @@
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 25px;
+}
+
+.user-page .orders-wrapper::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-thumb-color);
 }

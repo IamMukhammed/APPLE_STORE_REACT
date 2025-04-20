@@ -1,7 +1,7 @@
 .order-page {
     width: 100%;
     height: auto;
-    background: #f8f8ff;
+    background: var(--card-bg);
     display: flex;
 }
   
@@ -34,8 +34,11 @@
     flex-direction: column;
     align-items: center;
     border-radius: 16px;
-    background: #f8f8fe;
-    box-shadow: 14px 14px 5px 0px #bbbbbf, 0px 1px 11px 12px #d3d3e7 inset,
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow:
+        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
   
@@ -45,8 +48,11 @@
     height: 282px;
     padding: 30px 20px 30px 20px;
     border-radius: 16px;
-    background: #f8f8fe;
-    box-shadow: 14px 14px 5px 0px #bbbbbf, 0px 1px 11px 12px #d3d3e7 inset,
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow:
+        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
   
@@ -66,9 +72,12 @@
     width: 812px;
     padding: 21px 32px 0px 40px;
     border-radius: 16px;
-    background: #f8f8fe;
     margin-bottom: 30px;
-    box-shadow: -12px 12px 4px 0px #bababf, 0px 4px 10px 9px #d3d3e7 inset,
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow:
+        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
   
@@ -78,13 +87,13 @@
     height: 55px;
 }
   
-.order-page .order-main-box .order-box-scroll .orders-name-price .title-dish {
-    color: #000;
+.order-page .order-main-box .order-box-scroll .orders-name-price .title-product {
     font-family: "Commissioner";
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
     line-height: 36px;
+    color: var(--text-color);
 }
   
 .order-page .order-main-box .order-box-scroll .price-box {
@@ -117,11 +126,12 @@
     font-weight: 600;
     line-height: normal;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: var(--text-color);
 }
   
 .order-page .order-main-box .total-price-box .pay-button {
     background: #70b45b;
-    color: #fff;
+    color: var(--button-text);
     margin: 0 6px 0 50px;
 }
   
@@ -130,7 +140,7 @@
     height: 36px;
     border-radius: 10px;
     background: #3a87cb;
-    color: #fff;
+    color: var(--button-text);
     font-family: "Commissioner";
     font-size: 12px;
     font-style: normal;
@@ -156,7 +166,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 36px;
-    color: #777;
+    color: var(--placeholder-color, #777);
 }
   
 .order-page .order-right .order-info-pay .pay-input input:focus {
@@ -179,9 +189,11 @@
   
 .order-page .order-right .order-info-pay .pay-input input {
     height: 40px;
+    padding: 7px;
+    border: 1px solid var(--input-border, #b4aaaa);
+    background: var(--input-bg, #f5f5f5);
+    color: var(--text-color);
     border-radius: 5px;
-    border: 1px solid #b4aaaa;
-    background: #f5f5f5;
 }
   
 .order-page .order-right .order-info-box .member-box {
@@ -214,7 +226,7 @@
 }
   
 .order-page .order-right .order-info-box .member-box .order-user-name {
-    color: #08090d;
+    color: var(--text-color);
     font-family: "Commissioner";
     font-size: 28px;
     font-style: normal;
@@ -223,7 +235,7 @@
 }
   
 .order-page .order-right .order-info-box .member-box .order-user-prof {
-    color: #a1a1a1;
+    color: var(--muted-text, #a1a1a1);
     font-family: "Commissioner";
     font-size: 20px;
     font-style: normal;
@@ -234,7 +246,7 @@
 .order-page .order-right .order-info-box .liner {
     width: 332.59px;
     height: 2px;
-    background: #a1a1a1;
+    background: var(--divider-color, #a1a1a1);
     margin-top: 35px;
     display: flex;
     gap: 10px;

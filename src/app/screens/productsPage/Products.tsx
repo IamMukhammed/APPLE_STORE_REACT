@@ -122,28 +122,6 @@ export default function Products(props: ProductsProps) {
                                     Search
                                 </Button>
                             </Box>
-                            {/* <div className="filter-bar">
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            className="show-btn"
-                                            checked={productSearch.countInStock === 1}
-                                            onChange={(e) =>
-                                                setProductSearch({
-                                                    ...productSearch,
-                                                    countInStock: e.target.checked ? 1 : undefined,
-                                                })
-                                            }
-                                        />
-                                    }
-                                        label={<span 
-                                            className="in-stock-label"
-                                            color="secondary"
-                                        >
-                                            Show only in-stock products</span>}
-                                        labelPlacement="end"
-                                />
-                            </div> */}
                     </Stack>
                 </Stack>
                 <Stack className={"product-filter-section"}>
@@ -320,7 +298,7 @@ export default function Products(props: ProductsProps) {
                 </Stack>
             </Stack>
         </Container>
-        <div className={"brands-logo"}>
+        {/* <div className={"brands-logo"}>
             <Box className="brand-text">Top Products</Box>
             <Stack className="brand-cards">
                 <Box className="brand-card">
@@ -339,7 +317,7 @@ export default function Products(props: ProductsProps) {
                     <img src="/img/watch.jpg" alt="Apple Watch Ultra 2" />
                 </Box>
             </Stack>
-        </div>
+        </div> */}
         <div className={"address"}>
             <Box className={"title"}>Our address</Box>
             <Container>
