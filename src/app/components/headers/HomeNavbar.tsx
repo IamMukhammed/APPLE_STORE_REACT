@@ -195,6 +195,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                         <Box className={"service-txt"}>
                             Fast delivery & 24/7 customer support
                         </Box>
+                        {/* <div className="hero-section">
+                            <h1 className="head-main-txt">
+                                Your Gateway to Premium Tech
+                            </h1>
+                            <p className="wel-txt">Explore the latest devices with unbeatable deals</p>
+                            <small className="service-txt">Fast delivery & 24/7 customer support</small>
+                        </div> */}
                         <Box className={"signup"}>
                             {!authMember ? ( 
                                 <Button variant={"contained"} 

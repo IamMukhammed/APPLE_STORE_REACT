@@ -2,7 +2,7 @@
     width: 100%;
     height: 773px;
     display: flex;
-    background: url("/public/img/banner1.jpeg");
+    background: var(--hero-bg);
     background-size: cover;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .home-navbar .hover-line a {
-    color: var(--button-text); /* previously #f8f8f8 */
+    color: var(--hero-text);
     z-index: 100;
 }
 
@@ -96,8 +96,8 @@
     font-style: normal;
     font-weight: 500px;
     line-height: normal;
-    /* letter-spacing: -0.75px; */
-    color: var(--button-text);
+    color: var(--hero-text);
+    margin-top: -18%;
 }
 
 .home-navbar .navbar-container .header-frame .detail .wel-txt {
@@ -122,7 +122,7 @@
     font-weight: 400px;
     line-height: normal;
     /* letter-spacing: -0.3px; */
-    color: var(--button-text);
+    color: var(--hero-text);
 }
 
 .home-navbar .navbar-container .detail .signup {
@@ -164,7 +164,7 @@
     width: 100%;
     height: 400px;
     display: flex;
-    background: url("/public/img/banner2.jpeg");
+    background: var(--hero-bg);
     background-size: cover;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .other-navbar .hover-line a {
-    color: var(--button-text);
+    color: var(--hero-text);
     z-index: 100;
 }
 
