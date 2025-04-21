@@ -49,7 +49,6 @@ export default function Products(props: ProductsProps) {
         page: 1,
         limit: 8,
         order: "createdAt",
-        productCategory: ProductCategory.SMARTPHONE,
         countInStock: 1,
     });
 
