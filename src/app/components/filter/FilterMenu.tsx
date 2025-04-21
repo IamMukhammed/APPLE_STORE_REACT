@@ -16,20 +16,20 @@ import {
 } from "@mui/material";
 
 const sortOptions = ["Newest", "Price", "Most Viewed"];
-const brandOptions = ["Smartphone", "Tablet", "Laptop", "Watch", "Accessories", "All"];
+const categoryOptions = ["Smartphone", "Tablet", "Laptop", "Watch", "Accessories", "All"];
 
 interface FilterSortMenuProps {
     selectedSort: string;
-    selectedBrands: string[];
+    selectedCategory: string[];
     onSortChange: (sort: string) => void;
-    onBrandChange: (brands: string[]) => void;
+    onCategoryChange: (category: string[]) => void;
   }
   
   export default function FilterSortMenu({
     selectedSort,
-    selectedBrands,
+    selectedCategory,
     onSortChange,
-    onBrandChange
+    onCategoryChange
   }: FilterSortMenuProps) {
     return (
       <Box className="filter-sort-menu">
@@ -49,18 +49,18 @@ interface FilterSortMenuProps {
         </FormControl>
   
         <FormControl className="filter-select">
-          <InputLabel>Brands</InputLabel>
+          <InputLabel>Category</InputLabel>
           <Select
             multiple
-            value={selectedBrands}
-            onChange={(e) => onBrandChange(e.target.value as string[])}
-            input={<OutlinedInput label="Brands" />}
+            value={selectedCategory}
+            onChange={(e) => onCategoryChange(e.target.value as string[])}
+            input={<OutlinedInput label="Category" />}
             renderValue={(selected) => selected.join(", ")}
           >
-            {brandOptions.map((brand) => (
-              <MenuItem key={brand} value={brand}>
-                <Checkbox checked={selectedBrands.indexOf(brand) > -1} />
-                <ListItemText primary={brand} />
+            {categoryOptions.map((category) => (
+              <MenuItem key={category} value={category}>
+                <Checkbox checked={selectedCategory.indexOf(category) > -1} />
+                <ListItemText primary={category} />
               </MenuItem>
             ))}
           </Select>

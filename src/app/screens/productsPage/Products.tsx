@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState, } from "react";
 import {
-  Box, Button, Container, Stack, Typography, Badge, Pagination, PaginationItem
+  Box, Button, Container, Stack, Badge, Pagination, PaginationItem
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
@@ -19,6 +19,7 @@ import { Product, ProductInquiry } from "../../../lib/types/product";
 import { CartItem } from "../../../lib/types/search";
 import { ProductCategory } from "../../../lib/enums/product.enum";
 import FilterSortMenu from "../../components/filter/FilterMenu"; // ✅ import qilinadi
+import { strict } from "assert";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
@@ -41,7 +42,7 @@ export default function Products(props: ProductsProps) {
 
     const [searchText, setSearchText] = useState<string>("");
     const [selectedSort, setSelectedSort] = useState<string>("Newest");
-    const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
 
     const [productSearch, setProductSearch] = useState<ProductInquiry>({
         search: "",
@@ -50,17 +51,17 @@ export default function Products(props: ProductsProps) {
         order: "createdAt",
         productCategory: ProductCategory.SMARTPHONE,
         countInStock: 1,
-        productBrands: [],
     });
 
     useEffect(() => {
+        console.log("🔎 Product search state =>", productSearch);
         const service = new ProductService();
         service.getProducts(productSearch).then(setProducts).catch(console.log);
     }, [productSearch]);
 
     useEffect(() => {
         if (searchText === "") {
-            setProductSearch(prev => ({ ...prev, productSearch: "" }));
+            setProductSearch((prev: any) => ({ ...prev, productSearch: "" }));
         }
     }, [searchText]);
 
@@ -69,16 +70,16 @@ export default function Products(props: ProductsProps) {
     };
 
     const searchProductHandler = () => {
-        setProductSearch(prev => ({ ...prev, productSearch: searchText }));
+        setProductSearch((prev: any) => ({ ...prev, productSearch: searchText }));
     };
 
     const paginationHandler = (e: ChangeEvent<any>, value: number) => {
-        setProductSearch(prev => ({ ...prev, page: value }));
+        setProductSearch((prev: any) => ({ ...prev, page: value }));
     };
 
     const handleSortChange = (sort: string) => {
         setSelectedSort(sort);
-        setProductSearch(prev => ({
+        setProductSearch((prev: any) => ({
             ...prev,
             page: 1,
             order: sort === "Price" ? "productPrice" :
@@ -86,12 +87,17 @@ export default function Products(props: ProductsProps) {
         }));
     };
 
-    const handleBrandChange = (brands: string[]) => {
-        setSelectedBrands(brands);
-        setProductSearch(prev => ({
-            ...prev,
-            page: 1,
-            productBrands: brands,
+    const handleCategoryChange = (category: string[]) => {
+        setSelectedCategory(category);
+      
+        setProductSearch((prev) => ({
+          ...prev,
+          page: 1,
+          // category tanlanmasa yoki "All" bo‘lsa — undefined qilib yuboramiz
+          productCategory:
+            category.length === 0 || category.includes("All")
+              ? undefined
+              : category[0].toUpperCase() as ProductCategory,
         }));
     };
 
@@ -126,9 +132,9 @@ export default function Products(props: ProductsProps) {
                     <Box width="100%" display="flex" justifyContent="flex-end" mb={2}>
                         <FilterSortMenu
                             selectedSort={selectedSort}
-                            selectedBrands={selectedBrands}
+                            selectedCategory={selectedCategory}
                             onSortChange={handleSortChange}
-                            onBrandChange={handleBrandChange}
+                            onCategoryChange={handleCategoryChange} // <-- aynan shu yerda ishlatiladi
                         />
                     </Box>
                     <Stack className="product-wrapper">
@@ -136,7 +142,7 @@ export default function Products(props: ProductsProps) {
                             const imagePath = `${serverApi}/${product.productImages[0]}`;
                             const sizeVolume = product.productCategory === ProductCategory.SMARTPHONE
                             ? product.productStorage + ""
-                            : product.productColor + "WHITE";
+                            : product.productColor + "";
 
                         return (
                             <Stack key={product._id} className="product-card" onClick={() => chooseProductHandler(product._id)}>

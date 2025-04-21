@@ -18,23 +18,13 @@ export interface Product {
     updatedAt: Date;
 }
 
-// export interface ProductInquiry {
-//     search: string;
-//     order?: string;
-//     page?: number;
-//     limit?: number;
-//     productCategory?: ProductCategory;
-//     productSearch?: string;
-//     countInStock?: number;
-// }
-
 export interface ProductInquiry {
-    search: string;
-    page: number;
+    search?: string;
+    page?: number;
     limit?: number;
-    order: string;
-    productCategory?: ProductCategory;
+    order?: string;
+    productCategory?: ProductCategory; // ✅ Shunday bo‘lsa, "ALL" enumga kiritilishi kerak
+    productBrands?: string[];
     productSearch?: string;
     countInStock?: number;
-    productBrands?: string[];
-  }
+}
