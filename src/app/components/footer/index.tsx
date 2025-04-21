@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const FooterWrapper = styled.div`
   width: 100%;
-  background: var(--bg-color);
+  background: var(--card-bg);
   padding: 30px 0;
   color: var(--text-color);
 `;

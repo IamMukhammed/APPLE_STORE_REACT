@@ -47,7 +47,7 @@ export default function Products(props: ProductsProps) {
     const [productSearch, setProductSearch] = useState<ProductInquiry>({
         search: "",
         page: 1,
-        limit: 8,
+        limit: 10,
         order: "createdAt",
         countInStock: 1,
     });

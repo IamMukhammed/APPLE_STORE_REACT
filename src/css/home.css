@@ -151,6 +151,7 @@ color: var(--text-color);
 
 .homepage .new-arrivals-frame .main .cards-frame {
   width: 100%;
+  height: auto;
   margin: 47px 2px 2px 2px;
   display: flex;
   flex-direction: row;
@@ -269,7 +270,7 @@ color: var(--text-color);
 .homepage .active-users {
   width: 100%;
   height: 605px;
-  background: var(--card-bg);
+  background: var(--bg-color);
   display: flex;
 }
 
@@ -395,7 +396,7 @@ color: var(--text-color);
 .homepage .events-frame {
   width: 100%;
   height: 745px;
-  background: var(--card-bg);
+  background: var(--bg-color);
   display: flex;
 }
 
@@ -469,7 +470,7 @@ color: var(--text-color);
   border-radius: 10px;
   background-size: cover;
   border-radius: 12px;
-  background-color: var(--bg-color);
+  background-color: var(--card-bg);
   box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
 }
 
@@ -481,7 +482,7 @@ color: var(--text-color);
   width: 93%;
   height: auto;
   bottom: 5px;
-  background: var(--card-bg);
+  background: var(--bg-color);
   box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
   border-radius: 8px;
   color: var(--text-color);
