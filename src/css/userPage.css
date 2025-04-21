@@ -30,8 +30,6 @@
 	font-style: normal;
 	font-weight: 600;
 	font-size: 45px;
-	/* color: var(--button-text); */
-	/* border-bottom: 1px solid var(--border-color); */
 }
 
 .my-page-left .menu-content {
@@ -74,9 +72,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: var(--card-bg);
+	background: var(--bg-color);
 	color: var(--text-color);
-	box-shadow: 10px 10px 4px var(--shadow-color-1), inset -1px 0px 10px;
+	box-shadow: 10px 10px 4px var(--shadow-color-1), inset -1px 0px 3px;
 	border-radius: 16px;
 }
 
@@ -133,11 +131,23 @@
 }
 
 .user-page .order-info-box .user-media-box {
-	margin-top: 10px;
-	width: 60%;
+	margin-top: 20px;
+	width: 70%;
+	height: 70%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.user-page .order-info-box .user-media-box a {
+	color: var(--icon-color);
+	transition: color 0.3s ease, transform 0.2s ease;
+	font-size: 32px;
+}
+
+.user-page .order-info-box .user-media-box a:hover {
+	color: var(--icon-hover-color);
+	transform: scale(1.1);
 }
 
 .user-page .order-info-box .user-desc {

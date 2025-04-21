@@ -1,4 +1,3 @@
-/* 🌗 Dark/Light Theme Variables */
 :root {
   --bg-color: #ffffff;
   --text-color: #111;
@@ -20,7 +19,7 @@
 
   --scroll-thumb-color: #aaa;
 
-  --shadow-color-1: #bbbbbf;
+  --shadow-color-1: #dadada;
   --shadow-color-2: #d3d3e7;
 
   --chosen-bg: #f8f8ff;
@@ -57,7 +56,7 @@ html.dark-theme {
 
   --scroll-thumb-color: #555;
 
-  --shadow-color-1: #444;
+  --shadow-color-1: #383838;
   --shadow-color-2: #222;
 
   --chosen-bg: #1e1e1e;

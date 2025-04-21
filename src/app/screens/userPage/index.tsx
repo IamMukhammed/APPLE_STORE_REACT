@@ -3,6 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { Settings } from "./Settings";
 import { useHistory } from "react-router-dom";
 import { useGlobals } from "../../hooks/useGlobals";
@@ -67,10 +68,21 @@ export default function UserPage() {
                 <span className={"order-user-prof"}>{authMember?.memberAddress ? authMember.memberAddress : "No address"}</span>
               </Box>
               <Box className={"user-media-box"}>
-                <FacebookIcon aria-label="Facebook" />
-                <InstagramIcon aria-label="Instagram" />
-                <TelegramIcon aria-label="Telegram" />
-                <YouTubeIcon aria-label="YouTube" />
+                <a href="https://www.facebook.com/apple/" target="_blank" rel="noopener noreferrer">
+                  <FacebookIcon aria-label="Facebook" />
+                </a>
+                <a href="https://twitter.com/Apple" target="_blank" rel="noopener noreferrer">
+                  <TwitterIcon aria-label="Twitter" />
+                </a>
+                <a href="https://www.instagram.com/apple/" target="_blank" rel="noopener noreferrer">
+                  <InstagramIcon aria-label="Instagram" />
+                </a>
+                <a href="https://t.me/apple" target="_blank" rel="noopener noreferrer">
+                  <TelegramIcon aria-label="Telegram" />
+                </a>
+                <a href="https://www.youtube.com/@Apple" target="_blank" rel="noopener noreferrer">
+                  <YouTubeIcon aria-label="YouTube" />
+                </a>
               </Box>
               <p className={"user-desc"}>
                 {authMember?.memberDesc 
