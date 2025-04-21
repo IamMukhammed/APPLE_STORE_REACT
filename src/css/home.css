@@ -203,15 +203,18 @@ color: var(--text-color);
   align-items: center;
 }
 
-.homepage .new-arrivasl-frame .product-details .title {
-  width: 65px;
+.homepage .new-arrivals-frame .product-details .title {
+  width: 130px;
   font-weight: 500;
+  font-family: "Poppins";
+  color: var(--text-color);
 }
 
 .homepage .new-arrivals-frame .product-details .price {
   margin-left: 10px;
   width: 20px;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 .homepage .new-arrivals-frame .product-details .divider {
@@ -465,14 +468,17 @@ color: var(--text-color);
   display: flex;
   border-radius: 10px;
   background-size: cover;
+  border-radius: 12px;
+  background-color: var(--bg-color);
+  box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
 }
 
 .homepage .events-frame .events-desc {
   position: absolute;
-  margin-bottom: 7px;
+  margin-bottom: 3px;
   padding: 10px;
   display: flex;
-  width: 90%;
+  width: 93%;
   height: auto;
   bottom: 5px;
   background: var(--card-bg);

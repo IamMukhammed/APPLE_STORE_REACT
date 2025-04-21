@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 const FooterWrapper = styled.div`
   width: 100%;
-  background: #1a1a1a;
-  padding: 80px 0;
-  color: #fff;
+  background: var(--bg-color);
+  padding: 30px 0;
+  color: var(--text-color);
 `;
 
 const Logo = styled.img`
   width: 120px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const SocialIcons = styled.div`
@@ -68,8 +68,6 @@ export default function Footer() {
               </a>
             </SocialIcons>
           </Box>
-
-          {/* Quick Links */}
           <Box>
             <Box sx={{ fontWeight: "bold", mb: 2 }}>Quick Links</Box>
             <Stack spacing={1}>
@@ -80,8 +78,6 @@ export default function Footer() {
               <Link to="/help">Help</Link>
             </Stack>
           </Box>
-
-          {/* Contact Info */}
           <Box>
             <Box sx={{ fontWeight: "bold", mb: 2 }}>Contact Us</Box>
             <Stack spacing={1} sx={{ fontSize: "14px" }}>
@@ -93,8 +89,6 @@ export default function Footer() {
             </Stack>
           </Box>
         </Stack>
-
-        {/* Divider */}
         <Box
           sx={{
             borderTop: "1px solid #666",

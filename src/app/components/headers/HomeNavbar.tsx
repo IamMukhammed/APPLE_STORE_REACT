@@ -100,13 +100,13 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                                 </NavLink>
                             </Box>
                         ) : null }
-                        { authMember ? (
+                        {/* { authMember ? (
                             <Box className={"hover-line"}>
                                 <NavLink to="/about" activeClassName={"underline"}>
                                     About
                                 </NavLink>
                             </Box>
-                        ) : null }
+                        ) : null } */}
                         <Box className={"hover-line"}>
                             <NavLink to="/help" activeClassName={"underline"}>
                                 Help
