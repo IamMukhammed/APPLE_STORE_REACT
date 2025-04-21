@@ -22,10 +22,22 @@
 
   --shadow-color-1: #bbbbbf;
   --shadow-color-2: #d3d3e7;
+
+  --chosen-bg: #f8f8ff;
+  --chosen-text: #000;
+
+  --chosen-card-bg: #ffffff;
+  --chosen-border: #000000;
+
+  --chosen-price: #222;
+  --chosen-button-bg: #343434;
+
+  --chosen-button-text: #fff;
+  --chosen-rating-star: #ffc107;
 }
 
 html.dark-theme {
-  --bg-color: #111;
+  --bg-color: #232323;
   --text-color: #f8f8f8;
   --card-bg: #1a1a1a;
 
@@ -47,6 +59,18 @@ html.dark-theme {
 
   --shadow-color-1: #444;
   --shadow-color-2: #222;
+
+  --chosen-bg: #1e1e1e;
+  --chosen-text: #f0f0f0;
+
+  --chosen-card-bg: #2c2c2c;
+  --chosen-border: #888;
+  
+  --chosen-price: #e3c08d;
+  --chosen-button-bg: #e3c08d;
+
+  --chosen-button-text: #000;
+  --chosen-rating-star: #e3c08d;
 }
 
 body {

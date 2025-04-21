@@ -1,7 +1,7 @@
 .order-page {
     width: 100%;
     height: auto;
-    background: var(--card-bg);
+    background: var(--bg-color);
     display: flex;
 }
   
@@ -34,10 +34,10 @@
     flex-direction: column;
     align-items: center;
     border-radius: 16px;
-    background: var(--bg-color);
+    background: var(--card-bg);
     color: var(--text-color);
     box-shadow:
-        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        8px 8px 5px 0px var(--shadow-color-1, #bbbbbf),
         0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
@@ -48,10 +48,10 @@
     height: 282px;
     padding: 30px 20px 30px 20px;
     border-radius: 16px;
-    background: var(--bg-color);
+    background: var(--card-bg);
     color: var(--text-color);
     box-shadow:
-        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        8px 8px 5px 0px var(--shadow-color-1, #bbbbbf),
         0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
@@ -73,10 +73,10 @@
     padding: 21px 32px 0px 40px;
     border-radius: 16px;
     margin-bottom: 30px;
-    background: var(--bg-color);
+    background: var(--card-bg);
     color: var(--text-color);
     box-shadow:
-        14px 14px 5px 0px var(--shadow-color-1, #bbbbbf),
+        8px 8px 5px 0px var(--shadow-color-1, #bbbbbf),
         0px 1px 11px 12px var(--shadow-color-2, #d3d3e7) inset,
         0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset;
 }
@@ -157,7 +157,7 @@
 .order-page .order-right .order-info-pay .pay-input {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    margin-left: 5px;
 }
   
 .order-page .order-right .order-info-pay .pay-input input::placeholder {
@@ -210,6 +210,9 @@
     width: 117px;
     height: 112px;
     border-radius: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
   
 .order-page .order-right .order-info-box .member-box .order-user-icon-box {

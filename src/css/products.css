@@ -222,6 +222,7 @@
   background-size: cover;
   border-radius: 10px 10px 0px 0px;
   position: relative;
+  border-radius: 12px;
 }
 
 .products-page .products .product-img:hover .shop-btn {
@@ -356,32 +357,38 @@
   margin-left: 42%;
 }
 
-/** ChosenProduct **/
 
+/** ChosenProduct **/
 .products-page .chosen-product {
   position: relative;
   width: 100%;
   height: auto;
-  background: #f8f8ff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .products-page .chosen-product .product-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 80px;
-  margin-bottom: 150px;
+  width: 100%;
+  gap: 40px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  /* background-color: var(--chosen-card-bg); */
+  /* box-shadow: 0px 4px 20px rgba(0,0,0,0.2); */
+  border-radius: 16px;
 }
 
 .products-page .chosen-product .chosen-product-slider {
   width: 48%;
   height: 480px;
-  background: #ffffff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
-    inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
+  /* padding: 20px; */
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 10px var(--shadow-color-1);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -393,24 +400,23 @@
   height: 1020px;
 }
 
-.products-page
-  .chosen-product
-  .chosen-product-slider
-  .swiper-area
-  .slider-image {
+.products-page .chosen-product .chosen-product-slider .swiper-area .slider-image {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .products-page .chosen-product .chosen-product-info {
-  padding: 30px 40px;
-  width: 49%;
+  padding: 30px;
+  width: 48%;
   height: 480px;
   display: flex;
-  background: #ffffff;
-  box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
-    inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px var(--shadow-color-1);
   border-radius: 16px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
 }
 
 .products-page .chosen-product .chosen-product-info .info-box {
@@ -424,9 +430,15 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 36px;
-  color: #000000;
+  color: var(--text-secondary-color);
+}
+
+.products-page .chosen-product .info-box .seller-name {
+  font-size: 16px;
+  color: var(--chosen-text);
+  margin-top: 4px;
 }
 
 .products-page .chosen-product .info-box .resto-name {
@@ -440,7 +452,7 @@
 }
 
 .products-page .chosen-product .info-box .rating-box {
-  margin-top: 20px;
+  margin-top: 16px;
   width: 100%;
   height: auto;
   display: flex;
@@ -463,6 +475,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 8px;
 }
 
 .products-page .chosen-product .rating-box .evaluation-box .product-view {
@@ -474,16 +487,17 @@
   height: 112px;
   margin-top: 30px;
   margin-bottom: 30px;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
-  color: #000000;
+  color: var(--text-color);
+  line-height: 1.5;
 }
 
 .products-page .chosen-product .info-box .product-price {
-  margin-top: 20px;
+  margin-top: 20px 0;
   margin-bottom: 20px;
   width: 100%;
   height: auto;
@@ -491,6 +505,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--highlight-color);
 }
 
 .products-page .chosen-product .product-price span {
@@ -499,7 +516,7 @@
   font-weight: 600;
   font-size: 25px;
   line-height: 22px;
-  color: #000000;
+  color: var(--text-color);
 }
 
 .products-page .chosen-product .button-box {
@@ -508,6 +525,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .products-page .chosen-product .button-box button {
@@ -516,9 +534,17 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 22px;
-  color: #f8f8ff;
+  background-color: var(--highlight-color);
+  color: var(--button-text-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.chosen-product .button-box button:hover {
+  background-color: var(--highlight-hover-color);
 }
 
 .products-page .chosen-product .title {
@@ -528,4 +554,5 @@
   font-size: 36px;
   line-height: 43px;
   margin-top: 40px;
+  color: var(--highlight-color);
 }

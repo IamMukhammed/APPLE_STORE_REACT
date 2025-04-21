@@ -160,26 +160,56 @@ export default function OrdersPage() {
                     placeholder="Card number : 5243 4090 2002 7495"
                     className="card-input"
                     required
+                    inputMode="numeric"
+                    maxLength={19}
+                    onInput={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      let value = target.value.replace(/\D/g, "").substring(0, 16); // Faqat raqam
+                      value = value.replace(/(\d{4})(?=\d)/g, "$1 "); // Har 4 ta raqamdan keyin bo‘sh joy
+                      target.value = value;
+                    }}
                   />
-                    <div className="pay-input2">
-                      <input
-                        type="text"
-                        name="expiry"
-                        placeholder="07 / 24"
-                        required
-                      />
-                      <input
-                        type="text"
-                        name="cvv"
-                        placeholder="CVV : 010"
-                        required
-                      />
-                    </div>
+
+                  <div className="pay-input2">
+                    <input
+                      type="text"
+                      name="expiry"
+                      placeholder="07 / 24"
+                      required
+                      inputMode="numeric"
+                      maxLength={7}
+                      onInput={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        let value = target.value.replace(/\D/g, "").substring(0, 4);
+                        if (value.length >= 3) {
+                          value = value.replace(/(\d{2})(\d{1,2})/, "$1 / $2");
+                        }
+                        target.value = value;
+                      }}
+                    />
+                    <input
+                      type="text"
+                      name="cvv"
+                      placeholder="CVV : 010"
+                      required
+                      inputMode="numeric"
+                      maxLength={4}
+                      onInput={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        target.value = target.value.replace(/\D/g, "").substring(0, 4); // Faqat raqam
+                      }}
+                    />
+                  </div>
                   <input
                     type="text"
                     name="fullName"
                     placeholder="Cardholder name"
                     required
+                    maxLength={50}
+                    onInput={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      target.value = target.value.replace(/[^a-zA-Z\s]/g, ""); // Faqat harflar va bo‘sh joy
+                    }}
                   />
                 </Box>
                 <Box mt={2} display="flex" justifyContent="flex-end">

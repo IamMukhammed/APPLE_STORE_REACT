@@ -5,7 +5,7 @@ export const storeHighlights = [
 	  author: 'Apple Deals Team',
 	  date: '30 min ago',
 	  location: 'Online / Global',
-	  img: '/img/apple-delays.jpeg',
+	  img: '/img/apple-delays.png',
 	},
 	{
 	  title: 'Coming Next Week',
@@ -13,7 +13,7 @@ export const storeHighlights = [
 	  author: 'Apple Store Insider',
 	  date: '2 days ago',
 	  location: 'USA, Apple HQ',
-	  img: '/img/16-gren.jpg',
+	  img: '/img/16-green.png',
 	},
 	{
 	  title: 'MacBook Air M4 Arrives',
@@ -21,7 +21,7 @@ export const storeHighlights = [
 	  author: 'Tech Review Hub',
 	  date: '5 days ago',
 	  location: 'USA, California',
-	  img: '/img/mac pro.jpg',
+	  img: '/img/mac pro.png',
 	},
 	{
 		title: 'Black Friday Mega Deals',
@@ -37,7 +37,7 @@ export const storeHighlights = [
 		author: 'Apple Store Media',
 		date: '2 days ago',
 		location: 'Cupertino, California',
-		img: '/img/vision.jpg',
+		img: '/img/vision.png',
 	},
 	{
 		title: 'iOS 18 Preview is Out!',
@@ -45,7 +45,7 @@ export const storeHighlights = [
 		author: 'Apple Developer News',
 		date: 'Yesterday',
 		location: 'Worldwide',
-		img: '/img/ios_18_ja.jpg',
+		img: '/img/iso18.png',
 	},
 	{
 		title: 'Apple Watch: Wellness Reimagined',
@@ -53,7 +53,7 @@ export const storeHighlights = [
 		author: 'Apple Health Team',
 		date: '3 days ago',
 		location: 'USA, Global',
-		img: '/img/apple-watch.jpg',
+		img: '/img/apple-watch.png',
 	},
 	{
 		title: 'MacBook M3 — Redefining Performance',
@@ -61,7 +61,7 @@ export const storeHighlights = [
 		author: 'Hardware Team',
 		date: 'Last week',
 		location: 'USA, California',
-		img: '/img/macbook-m3.jpg',
+		img: '/img/macbook-m3.png',
 	},
 	{
 		title: 'AirPods Pro 2 — Silence Meets Precision',
@@ -77,7 +77,7 @@ export const storeHighlights = [
 		author: 'Apple Gaming',
 		date: 'Today',
 		location: 'App Store',
-		img: '/img/apple-arcade.jpg',
+		img: '/img/apple-arcade.png',
 	},
 	{
 		title: 'AppleCare+ Now Covers More',
@@ -85,7 +85,7 @@ export const storeHighlights = [
 		author: 'Apple Support',
 		date: '2 weeks ago',
 		location: 'Available in 25+ countries',
-		img: '/img/apple-care.jpg',
+		img: '/img/apple-care.png',
 	},
 	{
 		title: 'Eco-Friendly & Iconic: Apple’s 2030 Vision',
@@ -101,7 +101,7 @@ export const storeHighlights = [
 		author: 'Apple Cloud Team',
 		date: 'Yesterday',
 		location: 'Everywhere',
-		img: '/img/icloud-plus.jpg',
+		img: '/img/icloud-plus.png',
 	},
 	{
 		title: 'Apple Fitness+: Workout Anywhere',
@@ -109,7 +109,7 @@ export const storeHighlights = [
 		author: 'Apple Fitness Team',
 		date: 'This week',
 		location: 'App Store & Apple Watch',
-		img: '/img/fitness-plus.jpg',
+		img: '/img/apple-fitnes.png',
 	},
 	{
 		title: 'Apple Intelligence is Here',
@@ -117,6 +117,6 @@ export const storeHighlights = [
 		author: 'Apple AI Lab',
 		date: 'Today',
 		location: 'Cupertino, California',
-		img: '/img/apple-intelligence.jpg',
+		img: '/img/apple-intelligence.png',
 	},
 ];

@@ -50,6 +50,11 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   const { chosenProduct } = useSelector(chosenProductRetriever);
   const { seller } = useSelector(sellerRetriever);  
 
+  const taxRate = 0.10;
+  const basePrice = Number(chosenProduct?.productPrice) || 0;
+  const tax = basePrice * taxRate;
+  const totalPrice = basePrice + tax;
+
   useEffect(() => {
     const product = new ProductService();
     product
@@ -103,7 +108,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             <span className={"seller-name"}>{seller?.memberNick}</span>
             <span className={"seller-name"}>{seller?.memberPhone}</span>
             <Box className={"rating-box"}>
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+              <Rating name="half-rating" defaultValue={5} precision={0.5} />
               <div className={"evaluation-box"}>
                 <div className={"product-view"}>
                   <RemoveRedEyeIcon sx={{ mr: "10px" }} />
@@ -117,8 +122,16 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
               <span>Price:</span>
-              <span>${chosenProduct?.productPrice}</span>
+              <span>${basePrice.toFixed(2)}</span>
             </div>
+            <div className={"product-price"}>
+              <span>Tax (10%):</span>
+              <span>${tax.toFixed(2)}</span>
+            </div>
+              <div className={"product-price"}>
+                <span>Total:</span>
+                <span>${totalPrice.toFixed(2)}</span>
+              </div>
             <div className={"button-box"}>
               <Button
                 variant="contained"

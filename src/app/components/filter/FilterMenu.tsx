@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 
 const sortOptions = ["Newest", "Price", "Most Viewed"];
-const categoryOptions = ["Smartphone", "Tablet", "Laptop", "Watch", "Accessories", "All"];
+const categoryOptions = ["Smartphone", "Tablet", "Laptop", "Watch", "Vision", "Accessories", "All"];
 
 interface FilterSortMenuProps {
     selectedSort: string;

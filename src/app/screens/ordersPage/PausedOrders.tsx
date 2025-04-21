@@ -33,6 +33,11 @@ export default function PausedOrders(props: PausedOrdersProps) {
     const [paymentModalOpen, setPaymentModalOpen] = useState(false);
     const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
+    const [cardNumber, setCardNumber] = useState("");
+    const [expiry, setExpiry] = useState("");
+    const [cvv, setCvv] = useState("");
+    const [cardHolder, setCardHolder] = useState("");
+
     const openPaymentModal = (orderId: string) => {
         setSelectedOrderId(orderId);
         setPaymentModalOpen(true);
@@ -130,7 +135,13 @@ export default function PausedOrders(props: PausedOrdersProps) {
             </Stack>
             <Modal
                 open={paymentModalOpen}
-                onClose={() => setPaymentModalOpen(false)}
+                onClose={() => {
+                    setPaymentModalOpen(false);
+                    setCardHolder("");
+                    setCardNumber("");
+                    setCvv("");
+                    setExpiry("");
+                }}
                 aria-labelledby="payment-modal-title"
             >
                 <Box
@@ -146,31 +157,126 @@ export default function PausedOrders(props: PausedOrdersProps) {
                         p: 4,
                     }}
                 >
-                    <h2 id="payment-modal-title">Payment Details</h2>
-                    <TextField fullWidth label="Card Number" margin="normal" placeholder="5243 4090 2002 7495" />
-                    <TextField fullWidth label="Expiry" margin="normal" placeholder="07 / 24" />
-                    <TextField fullWidth label="CVV" margin="normal" placeholder="123" />
-                    <TextField fullWidth label="Cardholder Name" margin="normal" placeholder="Your full name" />
-                    <Button
-                        variant="contained"
-                        sx={{ mt: 2 }}
-                        fullWidth
-                        onClick={async () => {                            
-                            if (!authMember || !selectedOrderId) return;
-                            
-                            const input: OrderUpdateInput = {
-                                orderId: selectedOrderId,
-                                orderStatus: OrderStatus.PROCESS,
-                            };
-                            const order = new OrderService();
-                            await order.updateOrder(input);
-                            setOrderBuilder(new Date());
-                            setPaymentModalOpen(false);
-                            setValue("2");
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            width: 400,
+                            bgcolor: "var(--bg-color)",
+                            color: "var(--text-color)",
+                            borderRadius: 2,
+                            boxShadow: 24,
+                            p: 4,
                         }}
                     >
-                        Confirm Payment
-                    </Button>
+                        <h2 id="payment-modal-title">Payment Details</h2>
+                        
+                        <TextField
+                            fullWidth
+                            label="Card Number"
+                            margin="normal"
+                            placeholder="5243 4090 2002 7495"
+                            value={cardNumber}
+                            onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
+                            inputProps={{ inputMode: "numeric", maxLength: 16 }}
+                            sx={{
+                                input: {
+                                    backgroundColor: "var(--input-bg)",
+                                    color: "var(--text-color)",
+                                },
+                                "& .MuiOutlinedInput-root": {
+                                    "& fieldset": {
+                                        borderColor: "var(--input-border)",
+                                    },
+                                },
+                                "& label": {
+                                    color: "var(--text-color)",
+                                },
+                            }}
+                        />
+
+                        <TextField
+                            fullWidth
+                            label="Expiry"
+                            margin="normal"
+                            placeholder="07 / 24"
+                            value={expiry}
+                            onChange={(e) => {
+                                const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 4);
+                                const formatted = onlyDigits.replace(/(\d{2})(\d{0,2})/, (_, m1, m2) => (m2 ? `${m1} / ${m2}` : m1));
+                                setExpiry(formatted);
+                            }}
+                            inputProps={{ inputMode: "numeric", maxLength: 7 }}
+                            sx={{
+                                input: { backgroundColor: "var(--input-bg)", color: "var(--text-color)" },
+                                "& fieldset": { borderColor: "var(--input-border)" },
+                                "& label": { color: "var(--text-color)" },
+                            }}
+                        />
+
+                        <TextField
+                            fullWidth
+                            label="CVV"
+                            margin="normal"
+                            placeholder="123"
+                            value={cvv}
+                            onChange={(e) => setCvv(e.target.value.replace(/\D/g, "").slice(0, 4))}
+                            inputProps={{ inputMode: "numeric", maxLength: 4 }}
+                            sx={{
+                                input: { backgroundColor: "var(--input-bg)", color: "var(--text-color)" },
+                                "& fieldset": { borderColor: "var(--input-border)" },
+                                "& label": { color: "var(--text-color)" },
+                            }}
+                        />
+
+                        <TextField
+                            fullWidth
+                            label="Cardholder Name"
+                            margin="normal"
+                            placeholder="Your full name"
+                            value={cardHolder}
+                            onChange={(e) => setCardHolder(e.target.value)}
+                            sx={{
+                                input: { backgroundColor: "var(--input-bg)", color: "var(--text-color)" },
+                                "& fieldset": { borderColor: "var(--input-border)" },
+                                "& label": { color: "var(--text-color)" },
+                            }}
+                        />
+
+                        <Button
+                            variant="contained"
+                            fullWidth
+                            sx={{
+                                mt: 2,
+                                backgroundColor: "var(--button-bg)",
+                                color: "var(--button-text)",
+                                "&:hover": {
+                                    backgroundColor: "var(--button-bg)",
+                                    opacity: 0.85,
+                                },
+                            }}
+                            onClick={async () => {
+                                if (!cardNumber || !expiry || !cvv || !cardHolder) {
+                                    alert("Please fill all payment fields.");
+                                    return;
+                                }
+                                if (!authMember || !selectedOrderId) return;
+                                const input: OrderUpdateInput = {
+                                    orderId: selectedOrderId,
+                                    orderStatus: OrderStatus.PROCESS,
+                                };
+                                const order = new OrderService();
+                                await order.updateOrder(input);
+                                setOrderBuilder(new Date());
+                                setPaymentModalOpen(false);
+                                setValue("2");
+                            }}
+                        >
+                            Confirm Payment
+                        </Button>
+                    </Box>
                 </Box>
             </Modal>
         </TabPanel>
