@@ -17,7 +17,7 @@ export default function ProductsPage(props: ProductsPageProps) {
         <div className="products-page">
             <Switch>
                 <Route exact path={`${path}/:productId`}>
-                    <ChosenProduct onAdd={onAdd} />
+                    <ChosenProduct onAdd={onAdd} cartItems={[]} />
                 </Route>
                     <Route exact path={path}>
                     <Products onAdd={onAdd} />

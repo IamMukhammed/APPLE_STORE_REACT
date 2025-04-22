@@ -24,6 +24,9 @@ import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 
+import { useMemo } from "react";
+
+
 const actionDispatch = (dispatch: Dispatch) => ({
   setSeller: (data: Member) => dispatch(setSeller(data)),
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
@@ -43,6 +46,10 @@ interface ChosenProductsProps {
   onAdd: (item: CartItem) => void;
 }
 
+interface ChosenProductsProps {
+  cartItems: CartItem[]; // ✅ bu kerak
+}
+
 export default function ChosenProduct(props: ChosenProductsProps) {
   const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
@@ -54,6 +61,22 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   const basePrice = Number(chosenProduct?.productPrice) || 0;
   const tax = basePrice * taxRate;
   const totalPrice = basePrice + tax;
+
+  const cartItems = useSelector((state: any) => state.cart.cartItems);
+
+  const totalStock = chosenProduct?.productLeftCount || 0;
+  const inCart = cartItems.find((item: { _id: string | undefined; }) => item._id === chosenProduct?._id)?.quantity || 0;
+  // const remainingStock = totalStock - inCart;
+
+  const remainingStock = useMemo(() => {
+    const totalStock = chosenProduct?.productLeftCount || 0;
+    const inCart = cartItems.find((item: { _id: string | undefined; }) => item._id === chosenProduct?._id)?.quantity || 0;
+    return totalStock - inCart;
+  }, [cartItems, chosenProduct]);
+
+  console.log("Total:", totalStock);
+  console.log("InCart:", inCart);
+  console.log("Remaining:", remainingStock);
 
   useEffect(() => {
     const product = new ProductService();
@@ -117,7 +140,13 @@ export default function ChosenProduct(props: ChosenProductsProps) {
               </div>
             </Box>
             <p className={"product-desc"}>
-              {chosenProduct?.productDesc || "No Description"}
+              {chosenProduct?.productDesc || "No Description"} <br />
+              Color: {chosenProduct?.productColor || "No Color Info"} <br />
+              Storage: {chosenProduct?.productStorage || "No Storage Info"} <br />
+              Category: {chosenProduct?.productCategory || "No Category"} <br />
+            </p>
+            <p className="stock-info">
+              <strong>Available:</strong> {remainingStock > 0 ? `${remainingStock} in stock` : "Out of stock"}
             </p>
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
@@ -135,23 +164,22 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             <div className={"button-box"}>
               <Button
                 variant="contained"
+                disabled={remainingStock <= 0}
                 onClick={(e) => {
-                  if (chosenProduct.productLeftCount > 0) {
+                  if (remainingStock > 0) {
                     onAdd({
                       _id: chosenProduct._id,
                       quantity: 1,
                       name: chosenProduct.productName,
                       price: chosenProduct.productPrice,
-                      image: chosenProduct.productImages?.[0] || "/icons/default-product.svgp",
+                      image: chosenProduct.productImages?.[0] || "/icons/default-product.svg",
                       countInStock: chosenProduct.productLeftCount || 0,
                     });
-                  } else {
-                    alert("Out of stock!");
                   }
                   e.stopPropagation();
                 }}
               >
-                Add To Basket
+                {remainingStock > 0 ? "Add To Basket" : "Out of Stock"}
               </Button>
             </div>
           </Box>
