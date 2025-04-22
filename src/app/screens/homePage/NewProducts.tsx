@@ -13,6 +13,7 @@ import { createSelector } from "reselect";
 import { retrieveNewProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
+import { useHistory } from "react-router-dom";
 
 
 /* REDUX SLICE & SELECTOR */
@@ -23,6 +24,11 @@ const NewProductsRetriever = createSelector(
 
 export default function NewProducts() {
     const { newProducts } = useSelector(NewProductsRetriever);
+    const history = useHistory();
+
+    const handleCardClick = (productId: string) => {
+        history.push(`/products/${productId}`);
+    };
 
     console.log("newProducts:", newProducts);
 
@@ -34,15 +40,25 @@ export default function NewProducts() {
                     <Stack className={"cards-frame"}>
                         <CssVarsProvider>
                             {newProducts.length !== 0 ? (
-                            newProducts.map((product: Product) => {
-                                const imagePath = `${serverApi}/${product.productImages[0]}`;
-                                const specs = product.productDesc || "Latest generation tech";
-                                return (
-                                    <Card key={product._id} variant="outlined" className={"card"}>
+                                newProducts.map((product: Product) => {
+                                    const imagePath = `${serverApi}/${product.productImages[0]}`;
+                                    const specs = product.productDesc || "Latest generation tech";
+                                    return (
+                                    <Card 
+                                        key={product._id} 
+                                        variant="outlined" 
+                                        className={"card"}
+                                        onClick={() => handleCardClick(product._id)}
+                                        sx={{
+                                            cursor: 'pointer',
+                                            transition: '0.3s',
+                                            '&:hover': {
+                                                transform: 'scale(1.03)',
+                                                boxShadow: '1g',
+                                            },
+                                        }}
+                                    >
                                         <CardOverflow>
-                                            {/* <div className="product-spec">
-                                                {specs.slice(0, 24)}...
-                                            </div> */}
                                             <AspectRatio ratio="1">
                                                 <img src={imagePath} alt={product.productName} />
                                             </AspectRatio>

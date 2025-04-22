@@ -234,33 +234,49 @@
 
 /* BASKET */
 .basket-frame {
-    position: relative;
-    padding: 10px 4px 0px 4px;
-    width: 450px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    min-width: 280px;
+    padding: 16px;
+    position: absolute;
+    top: -1%;
+    right: 0;
+    z-index: 999;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--card-bg);
     color: var(--text-color);
 }
-  
-.basket-frame .all-check-box {
-    padding: 0px 6px;
-    width: 100%;
-    height: 35px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-width: 1px 0px;
+
+.basket-frame::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    border-width: 10px;
     border-style: solid;
-    background: var(--highlight-color, #d7b586);
-    border-color: var(--border-color, #343434);
+    border-color: transparent transparent var(--card-bg) transparent;
+}
+
+.basket-frame h4,
+.basket-frame p {
+  margin: 0;
+  padding: 8px 0;
+  color: var(--text-color);
+}
+
+.basket-frame .all-check-box {
+    background-color: var(--highlight-color);
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 500;
 }
   
 .basket-frame .basket-info-box {
     position: relative;
-    margin-top: 6px;
+    /* margin-top: 3px; */
     width: 100%;
     height: auto;
     display: flex;
@@ -269,15 +285,15 @@
 }
   
 .basket-info-box .product-img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 50px;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     border-radius: 29px;
 }
   
 .basket-info-box .product-name {
     margin-left: 11px;
-    width: 185px;
+    width: 250px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
@@ -293,6 +309,7 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 22px;
+    gap: 15px;
     color: var(--text-color);
 }
   
@@ -305,7 +322,7 @@
 }
   
 .basket-frame .cancel-btn {
-    position: absolute;
+    /* position: absolute; */
     top: 33%;
     right: 2%;
     cursor: pointer;
@@ -323,7 +340,7 @@
 }
   
 .basket-order .price {
-    width: 200px;
+    width: 250px;
     display: flex;
     font-family: "Poppins";
     font-style: normal;

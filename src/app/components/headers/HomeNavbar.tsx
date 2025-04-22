@@ -100,13 +100,15 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                                 Help
                             </NavLink>
                         </Box>
-                        <Basket 
-                            cartItems={cartItems} 
-                            onAdd={onAdd} 
-                            onRemove={onRemove} 
-                            onDelete={onDelete} 
-                            onDeleteAll={onDeleteAll}
-                        />
+                        <div className={"basket"}>
+                            <Basket 
+                                cartItems={cartItems} 
+                                onAdd={onAdd} 
+                                onRemove={onRemove} 
+                                onDelete={onDelete} 
+                                onDeleteAll={onDeleteAll}
+                            />
+                        </div>
                         <Box className="hover-line">
                             <button
                                 className="theme-toggle"
