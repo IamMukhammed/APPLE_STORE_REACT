@@ -68,6 +68,9 @@ export default function PausedOrders(props: PausedOrdersProps) {
         <TabPanel value={"1"}>
         <Stack>
             {pausedOrders?.map((order: Order) => {
+                const subtotal = (order.orderTotal ?? 0) - (order.orderDelivery ?? 0);
+                const taxPrice = parseFloat((subtotal * 0.1).toFixed(2));
+
             return (
                 <Box key={order._id} className="order-main-box">
                     <Box className="order-box-scroll">
@@ -98,20 +101,16 @@ export default function PausedOrders(props: PausedOrdersProps) {
                     </Box>
                     <Box className="total-price-box">
                         <Box className={"box-total"}>
-                            <p>Subtotal</p>
-                            <p>${((order.orderTotal ?? 0) - (order.orderDelivery ?? 0) - (order.orderTax ?? 0)).toFixed(2)}</p>
-                            <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
-
-                            <p>Tax</p>
-                            <p>${(order.orderTax ?? 0).toFixed(2)}</p>
-                            <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
-
-                            {/* <p>Shipping</p>
-                            <p>${(order.orderDelivery ?? 0).toFixed(2)}</p>
-                            <img src={"/icons/pause.svg"} alt="" style={{ marginLeft: "20px" }} /> */}
-
-                            <p>Total</p>
-                            <p>${(order.orderTotal ?? 0).toFixed(2)}</p>
+                            <p>Subtotal:</p>
+                            <p>${subtotal.toFixed(2)}</p>
+                                <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
+  
+                            <p>Tax:</p>
+                            <p>${taxPrice.toFixed(2)}</p>
+                                <img src={"/icons/pause.svg"} alt="" style={{ marginLeft: "20px" }} />
+  
+                            <p>Total:</p>
+                            <p>${(order.orderTotal + taxPrice).toFixed(2)}</p>
                         </Box>
                         <Button
                             value={order._id}

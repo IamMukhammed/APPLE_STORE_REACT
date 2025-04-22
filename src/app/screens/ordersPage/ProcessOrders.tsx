@@ -63,6 +63,9 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
         <TabPanel value={"2"}>
             <Stack>
                 {processOrders?.map((order: Order) => {
+                    const subtotal = (order.orderTotal ?? 0) - (order.orderDelivery ?? 0);
+                    const taxPrice = parseFloat((subtotal * 0.1).toFixed(2));
+
                     return (
                         <Box key={order._id} className={"order-main-box"}>
                             <Box className={"order-box-scroll"}>
@@ -72,7 +75,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                                     );
 
                                     if (!product) return null;
-                                    const imagePath = product.productImages?.[0]
+                                        const imagePath = product.productImages?.[0]
                                         ? `${serverApi}/${product.productImages[0]}`
                                         : "/icons/default-product.svg";
                                     return (
@@ -96,20 +99,16 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                             </Box>
                             <Box className={"total-price-box"}>
                                 <Box className={"box-total"}>
-                                    <p>Product price</p>
-                                    <p>${order.orderTotal - order.orderDelivery}</p>
-                                    <img
-                                        src={"/icons/plus.svg"} alt=""
-                                        style={{ marginLeft: "20px" }}
-                                    />
-                                    <p>Delivery cost</p>
-                                    <p>${order.orderDelivery}</p>
-                                    <img
-                                        src={"/icons/pause.svg"} alt=""
-                                        style={{ marginLeft: "20px" }}
-                                    />
+                                    <p>Price</p>
+                                    <p>${subtotal.toFixed(2)}</p>
+                                        <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
+
+                                    <p>Tax</p>
+                                    <p>${taxPrice.toFixed(2)}</p>
+                                        <img src={"/icons/pause.svg"} alt="" style={{ marginLeft: "20px" }} />
+
                                     <p>Total</p>
-                                    <p>${order.orderTotal}</p>
+                                    <p>${(order.orderTotal + taxPrice).toFixed(2)}</p>
                                 </Box>
                                 <p className={"data-compl"}>
                                     {moment(order.createdAt).format("MM-DD-YY HH:mm")}
