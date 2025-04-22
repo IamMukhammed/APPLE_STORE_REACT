@@ -12,6 +12,7 @@ import { Messages, serverApi } from "../../../lib/config";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
+import { useMemo } from "react";
 
 interface BasketProps {
   cartItems: CartItem[];
@@ -19,6 +20,10 @@ interface BasketProps {
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
+}
+
+interface OrderSummaryProps {
+  itemsPrice: number;
 }
 
 export default function Basket(props: BasketProps) {
@@ -29,9 +34,24 @@ export default function Basket(props: BasketProps) {
     (a: number, c: CartItem) => a + c.quantity * c.price, 
     0
   );
-  const shippingCost: number = itemsPrice < 100 ? 5 : 0;
-  const totalPrice = (itemsPrice + shippingCost).toFixed(1);
 
+  // const shippingCost: number = itemsPrice < 100 ? 5 : 0;
+  // const totalPrice = (itemsPrice + shippingCost).toFixed(1);
+
+  const shippingCost = useMemo(() => {
+    return itemsPrice < 100 ? 5 : 0;
+  }, [itemsPrice]);
+  
+  const taxPrice = useMemo(() => {
+    return parseFloat((itemsPrice * 0.1).toFixed(2));
+  }, [itemsPrice]);
+  
+  const totalPrice = useMemo(() => {
+    return parseFloat((itemsPrice + shippingCost).toFixed(1));
+  }, [itemsPrice, shippingCost]);
+
+
+    
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -43,47 +63,29 @@ export default function Basket(props: BasketProps) {
     setAnchorEl(null);
   };
 
-  // const proceedOrderHandler = async () => {
-  //   try {
-  //     handleClose();
-  //     if(!authMember) throw new Error(Messages.error2);
-
-  //     const order = new OrderService();
-  //     await order.createOrder(cartItems);
-
-  //     onDeleteAll();
-
-  //     // REFRESH VIA CONTEXT
-  //     setOrderBuilder(new Date());
-  //     history.push("/orders");
-
-  //   } catch (err) {
-  //     console.log(err);
-  //     sweetErrorHandling(err).then();
-  //   }
-  // };
-
   const proceedOrderHandler = async () => {
     try {
       handleClose();
       if (!authMember) throw new Error(Messages.error2);
-  
+
       const orderPayload = {
         items: cartItems.map(({ _id, quantity, price }) => ({
           productId: _id,
           qty: quantity,
           price,
         })),
-        totalPrice: Number(totalPrice),
+        totalPrice,
+        shippingCost,
+        taxPrice
       };
-  
+
       const order = new OrderService();
-      await order.createOrder(cartItems); // ✅ orderPayload yuboriladi
-  
+      await order.createOrder(cartItems);
+
       onDeleteAll();
       setOrderBuilder(new Date());
       history.push("/orders");
-  
+
     } catch (err) {
       sweetErrorHandling(err);
     }
@@ -108,7 +110,6 @@ export default function Basket(props: BasketProps) {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -196,11 +197,17 @@ export default function Basket(props: BasketProps) {
           {cartItems.length !== 0 ? (
             <Box className={"basket-order"}>
               <span className={"price"}>
-                Total: ${totalPrice} ({itemsPrice} + {shippingCost})
+                Total: ${totalPrice.toFixed(2)} <br />
+                Tax: ${taxPrice.toFixed(2)}
+                {/* (
+                  {itemsPrice.toFixed(2)} 
+                  + {shippingCost.toFixed(2)} 
+                  + {taxPrice.toFixed(2)}
+                ) */}
               </span>
               <Button
                 onClick={proceedOrderHandler} 
-                startIcon={<ShoppingCartIcon />}
+                startIcon={ <ShoppingCartIcon /> }
                 variant={"contained"}
               >
                 Order

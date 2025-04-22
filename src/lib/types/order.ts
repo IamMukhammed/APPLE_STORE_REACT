@@ -19,6 +19,7 @@ export interface OrderItem {
 }
 
 export interface Order {
+    orderTax: number;
     _id: string;
     orderTotal: number;
     orderDelivery: number;

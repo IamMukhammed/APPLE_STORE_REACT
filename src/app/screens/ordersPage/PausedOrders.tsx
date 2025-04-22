@@ -97,15 +97,21 @@ export default function PausedOrders(props: PausedOrdersProps) {
                         })}
                     </Box>
                     <Box className="total-price-box">
-                        <Box className="box-total">
+                        <Box className={"box-total"}>
                             <p>Subtotal</p>
-                            <p>${order.orderTotal - order.orderDelivery}</p>
-                            <img src="/icons/plus.svg" alt="" style={{ marginLeft: "20px" }} />
-                            <p>Shipping</p>
-                            <p>${order.orderDelivery}</p>
-                            <img src="/icons/pause.svg" alt="" style={{ marginLeft: "20px" }} />
+                            <p>${((order.orderTotal ?? 0) - (order.orderDelivery ?? 0) - (order.orderTax ?? 0)).toFixed(2)}</p>
+                            <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
+
+                            <p>Tax</p>
+                            <p>${(order.orderTax ?? 0).toFixed(2)}</p>
+                            <img src={"/icons/plus.svg"} alt="" style={{ marginLeft: "20px" }} />
+
+                            {/* <p>Shipping</p>
+                            <p>${(order.orderDelivery ?? 0).toFixed(2)}</p>
+                            <img src={"/icons/pause.svg"} alt="" style={{ marginLeft: "20px" }} /> */}
+
                             <p>Total</p>
-                            <p>${order.orderTotal}</p>
+                            <p>${(order.orderTotal ?? 0).toFixed(2)}</p>
                         </Box>
                         <Button
                             value={order._id}
