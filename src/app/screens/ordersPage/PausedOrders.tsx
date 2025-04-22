@@ -183,7 +183,14 @@ export default function PausedOrders(props: PausedOrdersProps) {
                             label="Card Number"
                             margin="normal"
                             placeholder="5243 4090 2002 7495"
+                            required
                             value={cardNumber}
+                            onInput={(e) => {
+                                const target = e.target as HTMLInputElement;
+                                let value = target.value.replace(/\D/g, "").substring(0, 16); // Faqat raqam
+                                value = value.replace(/(\d{4})(?=\d)/g, "$1 "); // Har 4 ta raqamdan keyin bo‘sh joy
+                                target.value = value;
+                            }}
                             onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
                             inputProps={{ inputMode: "numeric", maxLength: 16 }}
                             sx={{
@@ -237,11 +244,17 @@ export default function PausedOrders(props: PausedOrdersProps) {
                         />
 
                         <TextField
+                            type="text"
                             fullWidth
                             label="Cardholder Name"
                             margin="normal"
+                            required
                             placeholder="Your full name"
                             value={cardHolder}
+                            onInput={(e) => {
+                                const target = e.target as HTMLInputElement;
+                                target.value = target.value.replace(/[^a-zA-Z\s]/g, ""); // Faqat harflar va bo‘sh joy
+                            }}
                             onChange={(e) => setCardHolder(e.target.value)}
                             sx={{
                                 input: { backgroundColor: "var(--input-bg)", color: "var(--text-color)" },
