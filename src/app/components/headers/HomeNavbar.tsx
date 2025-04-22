@@ -36,24 +36,21 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         handleLogoutRequest
     } = props;
     const { authMember } = useGlobals();
-
-    const [theme, setTheme] = useState<"light" | "dark">("light");
-
-    useEffect(() => {
-        const saved = localStorage.getItem("theme");
-        if (saved === "dark") {
-            document.documentElement.classList.add("dark-theme");
-            setTheme("dark");
-        }
-    }, []);
-
-    const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        document.documentElement.classList.toggle("dark-theme");
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-    };
     
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'light';
+    });
+      
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+        document.documentElement.classList.toggle('dark-theme', newTheme === 'dark');
+    };
+      
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark-theme', theme === 'dark');
+    }, [theme]);
 
     /* HANDLERS */
     
@@ -67,15 +64,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                         </NavLink>
                     </Box>
                     <Stack className="links">
-                        <Box className="hover-line">
-                            <button
-                                className="theme-toggle"
-                                onClick={toggleTheme}
-                                aria-label="Toggle Dark/Light Mode"
-                            >
-                                {theme === "light" ? "🌙" : "☀️"}
-                            </button>
-                        </Box>
                         <Box className={"hover-line"}>
                             <NavLink to="/" activeClassName={"underline"}>
                                 Home
@@ -119,6 +107,15 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                             onDelete={onDelete} 
                             onDeleteAll={onDeleteAll}
                         />
+                        <Box className="hover-line">
+                            <button
+                                className="theme-toggle"
+                                onClick={toggleTheme}
+                                aria-label="Toggle Dark/Light Mode"
+                            >
+                                {theme === "light" ? "🌙" : "☀️"}
+                            </button>
+                        </Box>
                         {!authMember ? (
                             <Box className={"hover-line"}>
                                 <Button 
@@ -195,13 +192,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                         <Box className={"service-txt"}>
                             Fast delivery & 24/7 customer support
                         </Box>
-                        {/* <div className="hero-section">
-                            <h1 className="head-main-txt">
-                                Your Gateway to Premium Tech
-                            </h1>
-                            <p className="wel-txt">Explore the latest devices with unbeatable deals</p>
-                            <small className="service-txt">Fast delivery & 24/7 customer support</small>
-                        </div> */}
                         <Box className={"signup"}>
                             {!authMember ? ( 
                                 <Button variant={"contained"} 

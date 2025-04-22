@@ -36,7 +36,6 @@ export default function OtherNavbar(props: OtherNavbarProps) {
     onRemove,
     onDelete,
     onDeleteAll,
-    setSignupOpen,
     setLoginOpen,
     handleLogoutClick,
     anchorEl,
@@ -45,23 +44,20 @@ export default function OtherNavbar(props: OtherNavbarProps) {
   } = props;
   const { authMember } = useGlobals();
 
-  // ✅ DARK / LIGHT TOGGLE STATE
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      document.documentElement.classList.add("dark-theme");
-      setTheme("dark");
-    }
-  }, []);
-
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
+  
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    document.documentElement.classList.toggle("dark-theme");
+    const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark-theme', newTheme === 'dark');
   };
+  
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark-theme', theme === 'dark');
+  }, [theme]);
 
   return (
     <div className="other-navbar">
@@ -69,7 +65,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/apple.svg" alt="brand" />
+              {/* <img className="brand-logo" src="/icons/apple.svg" alt="brand" /> */}
             </NavLink>
           </Box>
           <Stack className="links">
