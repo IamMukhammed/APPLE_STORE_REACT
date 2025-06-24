@@ -43,27 +43,47 @@ export default function Footer() {
           <Box sx={{ maxWidth: "320px" }}>
             <Logo src="/icons/apple-store.svg" alt="" />
             <Box sx={{ mt: 2, fontSize: "14px", lineHeight: "2" }}>
-              Apple Store delivers premium electronics from global brands.
-              Fast shipping, trusted warranty, and top-tier customer support.
+              TechGrid delivers premium electronics from global brands. Fast
+              shipping, trusted warranty, and top-tier customer support.
             </Box>
             <SocialIcons>
-              <a href="https://www.facebook.com/apple/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.facebook.com/apple/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/icons/facebook.svg" alt="Facebook" />
               </a>
 
-              <a href="https://twitter.com/Apple" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://twitter.com/Apple"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/icons/x.svg" alt="X" />
               </a>
 
-              <a href="https://www.instagram.com/apple/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.instagram.com/apple/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/icons/instagram.svg" alt="Instagram" />
               </a>
 
-              <a href="https://www.youtube.com/@Apple" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.youtube.com/@Apple"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/icons/youtube.svg" alt="YouTube" />
               </a>
 
-              <a href="https://t.me/apple" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://t.me/apple"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src="/icons/telegram.svg" alt="Telegram" />
               </a>
             </SocialIcons>
@@ -99,9 +119,9 @@ export default function Footer() {
             color: "#999",
           }}
         >
-          © {new Date().getFullYear()} Apple Tech Store. All rights reserved.
+          © {new Date().getFullYear()} TechGrid. All rights reserved.
         </Box>
       </Container>
     </FooterWrapper>
   );
-};
+}
